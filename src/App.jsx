@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
 import { 
   Leaf, 
   TrendingUp, 
@@ -27,8 +27,6 @@ import './App.css';
 import pecuariaLogo from './assets/pecuaria_logo.svg';
 import heroImage from './assets/banner_pecumais4.webp';
 import sustainableImage from './assets/xcXwS7plUGet.jpg';
-import regenerativeImage from './assets/3fiwOK2RcRpo.jpg';
-import familyFarmImage from './assets/bFuKBr7V6bFG.jpg';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
