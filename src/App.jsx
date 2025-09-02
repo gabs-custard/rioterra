@@ -385,7 +385,7 @@ function App() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <img src={pecuariaLogo} alt="Pecuária+" className="h-12 w-auto" />
+              <img src={pecuariaLogo} alt="Pecuária+" id="pecuariamais-logo" className="h-12 w-auto" />
             </div>
             
             {/* Menu Desktop */}

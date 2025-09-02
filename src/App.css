@@ -97,6 +97,10 @@
   background: linear-gradient(135deg, var(--green-primary) 0%, var(--green-secondary) 100%);
 }
 
+#pecuariamais-logo {
+  height: 80px;
+}
+
 .text-green-primary {
   color: var(--green-primary);
 }
