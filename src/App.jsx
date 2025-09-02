@@ -242,7 +242,139 @@ function App() {
         cta: 'Learn About the Project',
         cta2: 'Contact Us'
       },
-      // ... outras traduções
+      why: {
+        title: 'Why Sustainable Livestock?',
+        subtitle:
+          'Livestock is fundamental to the Amazon economy, but it must evolve toward more sustainable and productive models.',
+        items: [
+          {
+            icon: TrendingUp,
+            title: 'Higher Productivity',
+            description:
+              'Sustainable intensification increases production per hectare, reducing pressure on new areas.'
+          },
+          {
+            icon: Leaf,
+            title: 'Lower Environmental Impact',
+            description:
+              'Sustainable practices reduce carbon emissions and preserve Amazonian biodiversity.'
+          },
+          {
+            icon: Award,
+            title: 'Greater Profitability',
+            description:
+              'Sustainable producers gain access to premium markets and financial incentives.'
+          }
+        ]
+      },
+      about: {
+        title: 'About the Pecuária+ Project',
+        subtitle:
+          'An initiative by Rioterra to promote sustainable livestock in the Amazon through innovation, technical assistance and technology.',
+        objectives: [
+          'Train rural producers in sustainable practices',
+          'Implement monitoring technologies and AI',
+          'Promote environmental regularization of properties',
+          'Develop integrated agroforestry systems',
+          'Connect producers to sustainable markets'
+        ],
+        innovation:
+          'Highlighting innovation through the use of Artificial Intelligence, data analysis and specialized technical assistance.'
+      },
+      practices: {
+        title: 'Sustainable Livestock Practices',
+        subtitle:
+          'Discover the main techniques that transform traditional livestock into a sustainable and profitable model.',
+        items: [
+          {
+            title: 'Rotational Grazing',
+            description:
+              'A system that allows natural pasture recovery, increasing productivity.',
+            benefits: ['Higher forage production', 'Soil improvement', 'Cost reduction']
+          },
+          {
+            title: 'Agroforestry Systems',
+            description:
+              'Integration of trees, pastures and animals in the same production system.',
+            benefits: ['Income diversification', 'Biodiversity conservation', 'Carbon sequestration']
+          },
+          {
+            title: 'Pasture Restoration',
+            description:
+              'Restoring degraded areas to increase productive capacity.',
+            benefits: ['Greater stocking rate', 'Cost reduction', 'Environmental improvement']
+          },
+          {
+            title: 'Technological Monitoring',
+            description:
+              'Use of sensors and AI to optimize management and productivity.',
+            benefits: ['Data-driven decisions', 'Operational efficiency', 'Sustainability']
+          }
+        ]
+      },
+      videos: {
+        title: 'Videos',
+        subtitle:
+          'Coming soon, you will find here a complete gallery with institutional and field videos showing sustainable practices in action.',
+        placeholder: 'Content in production...'
+      },
+      publications: {
+        title: 'Useful Publications',
+        subtitle:
+          'Technical materials and resources to support the implementation of sustainable practices.',
+        items: [
+          {
+            title: 'Rotational Grazing Guide',
+            description:
+              'Complete manual on implementing rotational grazing systems.',
+            type: 'PDF'
+          },
+          {
+            title: 'Agroforestry Systems Booklet',
+            description:
+              'Practical guidelines for crop-livestock-forest integration.',
+            type: 'PDF'
+          },
+          {
+            title: 'Pasture Restoration Manual',
+            description:
+              'Techniques and methodologies for restoring degraded areas.',
+            type: 'PDF'
+          }
+        ]
+      },
+      chatbot: {
+        title: 'Virtual Assistant',
+        subtitle:
+          'Get your questions about sustainable livestock answered by our specialized assistant.',
+        description:
+          'Our chatbot is available to answer technical questions, provide guidance and connect you with our team.',
+        cta: 'Start Conversation'
+      },
+      contact: {
+        title: 'Contact',
+        subtitle:
+          'Get in touch with us to learn more about the project or participate in the initiatives.',
+        form: {
+          name: 'Name',
+          email: 'Email',
+          message: 'Message',
+          send: 'Send Message'
+        },
+        info: {
+          address:
+            'Rua Padre Chiquinho, 1651, B. São João Bosco, Porto Velho – Rondônia – Brasil',
+          phone: '(69) 99248-1087',
+          email: 'rioterra@rioterra.org.br'
+        }
+      },
+      footer: {
+        description:
+          'Transforming Amazonian livestock through sustainability and innovation.',
+        links: 'Useful Links',
+        social: 'Social Media',
+        rights: '© 2025 Rioterra. All rights reserved.'
+      }
     }
   };
 
