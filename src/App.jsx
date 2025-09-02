@@ -446,9 +446,9 @@ function App() {
             <motion.div 
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="lg:hidden mt-4 pb-4 border-t border-gray-200"
+              className="lg:hidden mt-4 pb-4 border-t border-gray-200 max-w-full overflow-x-hidden"
             >
-              <div className="flex flex-col space-y-4 pt-4">
+              <div className="flex flex-col space-y-4 pt-4 w-full">
                 <button onClick={() => scrollToSection('home')} className="text-left text-gray-700 hover:text-green-primary">
                   {currentContent.nav.home}
                 </button>
