@@ -25,7 +25,7 @@ import './App.css';
 
 // Importar assets
 import pecuariaLogo from './assets/pecuaria_logo.svg';
-import heroImage from './assets/banner_pecumais4.png';
+import heroImage from './assets/banner_pecumais4.webp';
 import sustainableImage from './assets/xcXwS7plUGet.jpg';
 import regenerativeImage from './assets/3fiwOK2RcRpo.jpg';
 import familyFarmImage from './assets/bFuKBr7V6bFG.jpg';
