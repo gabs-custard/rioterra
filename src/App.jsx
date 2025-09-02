@@ -746,7 +746,7 @@ function App() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white p-8 rounded-2xl shadow-lg card-hover"
+                className="bg-white p-8 rounded-2xl shadow-lg card-hover flex flex-col h-full"
               >
                 <div className="flex items-center justify-between mb-4">
                   <Download size={24} className="text-green-primary" />
@@ -760,12 +760,14 @@ function App() {
                 <p className="text-gray-600 mb-6 leading-relaxed">
                   {publication.description}
                 </p>
-                <button 
-                  onClick={handleDownload}
-                  className="btn-primary w-full"
-                >
-                  Baixar Material
-                </button>
+                <div className="mt-auto">
+                  <button 
+                    onClick={handleDownload}
+                    className="btn-primary w-full"
+                  >
+                    Baixar Material
+                  </button>
+                </div>
               </motion.div>
             ))}
           </div>
