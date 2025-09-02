@@ -379,7 +379,7 @@ function App() {
   const currentContent = content[language];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-x-hidden max-w-[100vw]">
       {/* Navegação */}
       <nav className={`navbar-fixed ${isScrolled ? 'shadow-lg' : ''}`}>
         <div className="container mx-auto px-4 py-4">
