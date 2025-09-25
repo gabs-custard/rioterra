@@ -26,8 +26,10 @@ import './App.css';
 // Importar assets
 import pecuariaLogo from './assets/pecuaria_logo.svg';
 import heroImage from './assets/banner_pecumais4.webp';
+import publiImage from './assets/banner_pecumais.png';
 import sustainableImage from './assets/xcXwS7plUGet.jpg';
 import rubricaImagem from './assets/rubricaprojeto.jpeg';
+import porqueImage from './assets/porquebg.png';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -537,7 +539,7 @@ function App() {
       <section id="why" className="section-padding relative overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={sustainableImage}
+            src={porqueImage}
             alt=""
             className="w-full h-full object-cover"
             loading="lazy"
@@ -715,7 +717,7 @@ function App() {
       <section id="publications" className="section-padding relative overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={rubricaImagem}
+            src={publiImage}
             alt=""
             className="w-full h-full object-cover"
             loading="lazy"
