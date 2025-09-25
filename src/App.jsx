@@ -364,7 +364,18 @@ function App() {
   const currentContent = content[language];
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden max-w-[100vw]">
+    <div className="min-h-screen bg-transparent overflow-x-hidden max-w-[100vw] relative">
+      {/* Background Global */}
+      <div className="fixed inset-0 -z-10">
+        <img
+          src={heroImage}
+          alt="Pecuária Sustentável"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-green-primary/80 to-green-secondary/60"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+      </div>
+
       {/* Navegação */}
       <nav className={`navbar-fixed ${isScrolled ? 'shadow-lg' : ''}`}>
         <div className="container mx-auto px-4 py-4">
@@ -375,28 +386,28 @@ function App() {
             
             {/* Menu Desktop */}
             <div className="hidden lg:flex items-center space-x-8">
-              <button onClick={() => scrollToSection('home')} className="text-gray-700 hover:text-green-primary transition-colors">
+              <button onClick={() => scrollToSection('home')} className="text-white hover:text-green-200 transition-colors">
                 {currentContent.nav.home}
               </button>
-              <button onClick={() => scrollToSection('why')} className="text-gray-700 hover:text-green-primary transition-colors">
+              <button onClick={() => scrollToSection('why')} className="text-white hover:text-green-200 transition-colors">
                 {currentContent.nav.why}
               </button>
-              <button onClick={() => scrollToSection('about')} className="text-gray-700 hover:text-green-primary transition-colors">
+              <button onClick={() => scrollToSection('about')} className="text-white hover:text-green-200 transition-colors">
                 {currentContent.nav.about}
               </button>
-              <button onClick={() => scrollToSection('practices')} className="text-gray-700 hover:text-green-primary transition-colors">
+              <button onClick={() => scrollToSection('practices')} className="text-white hover:text-green-200 transition-colors">
                 {currentContent.nav.practices}
               </button>
-              <button onClick={() => scrollToSection('videos')} className="text-gray-700 hover:text-green-primary transition-colors">
+              <button onClick={() => scrollToSection('videos')} className="text-white hover:text-green-200 transition-colors">
                 {currentContent.nav.videos}
               </button>
-              <button onClick={() => scrollToSection('publications')} className="text-gray-700 hover:text-green-primary transition-colors">
+              <button onClick={() => scrollToSection('publications')} className="text-white hover:text-green-200 transition-colors">
                 {currentContent.nav.publications}
               </button>
-              <button onClick={() => scrollToSection('chatbot')} className="text-gray-700 hover:text-green-primary transition-colors">
+              <button onClick={() => scrollToSection('chatbot')} className="text-white hover:text-green-200 transition-colors">
                 {currentContent.nav.chatbot}
               </button>
-              <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-green-primary transition-colors">
+              <button onClick={() => scrollToSection('contact')} className="text-white hover:text-green-200 transition-colors">
                 {currentContent.nav.contact}
               </button>
               
@@ -404,13 +415,13 @@ function App() {
               <div className="flex items-center space-x-2">
                 <button 
                   onClick={() => setLanguage('pt')} 
-                  className={`px-2 py-1 rounded ${language === 'pt' ? 'bg-green-primary text-white' : 'text-gray-700'}`}
+                  className={`px-2 py-1 rounded ${language === 'pt' ? 'bg-green-primary text-white' : 'text-gray-300'}`}
                 >
                   PT
                 </button>
                 <button 
                   onClick={() => setLanguage('en')} 
-                  className={`px-2 py-1 rounded ${language === 'en' ? 'bg-green-primary text-white' : 'text-gray-700'}`}
+                  className={`px-2 py-1 rounded ${language === 'en' ? 'bg-green-primary text-white' : 'text-gray-300'}`}
                 >
                   EN
                 </button>
@@ -419,7 +430,7 @@ function App() {
 
             {/* Menu Mobile */}
             <button 
-              className="lg:hidden"
+              className="lg:hidden text-white"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -431,43 +442,43 @@ function App() {
             <motion.div 
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="lg:hidden mt-4 pb-4 border-t border-gray-200 max-w-full overflow-x-hidden"
+              className="lg:hidden mt-4 pb-4 border-t border-gray-700 max-w-full overflow-x-hidden"
             >
               <div className="flex flex-col space-y-4 pt-4 w-full">
-                <button onClick={() => scrollToSection('home')} className="text-left text-gray-700 hover:text-green-primary">
+                <button onClick={() => scrollToSection('home')} className="text-left text-white hover:text-green-200">
                   {currentContent.nav.home}
                 </button>
-                <button onClick={() => scrollToSection('why')} className="text-left text-gray-700 hover:text-green-primary">
+                <button onClick={() => scrollToSection('why')} className="text-left text-white hover:text-green-200">
                   {currentContent.nav.why}
                 </button>
-                <button onClick={() => scrollToSection('about')} className="text-left text-gray-700 hover:text-green-primary">
+                <button onClick={() => scrollToSection('about')} className="text-left text-white hover:text-green-200">
                   {currentContent.nav.about}
                 </button>
-                <button onClick={() => scrollToSection('practices')} className="text-left text-gray-700 hover:text-green-primary">
+                <button onClick={() => scrollToSection('practices')} className="text-left text-white hover:text-green-200">
                   {currentContent.nav.practices}
                 </button>
-                <button onClick={() => scrollToSection('videos')} className="text-left text-gray-700 hover:text-green-primary">
+                <button onClick={() => scrollToSection('videos')} className="text-left text-white hover:text-green-200">
                   {currentContent.nav.videos}
                 </button>
-                <button onClick={() => scrollToSection('publications')} className="text-left text-gray-700 hover:text-green-primary">
+                <button onClick={() => scrollToSection('publications')} className="text-left text-white hover:text-green-200">
                   {currentContent.nav.publications}
                 </button>
-                <button onClick={() => scrollToSection('chatbot')} className="text-left text-gray-700 hover:text-green-primary">
+                <button onClick={() => scrollToSection('chatbot')} className="text-left text-white hover:text-green-200">
                   {currentContent.nav.chatbot}
                 </button>
-                <button onClick={() => scrollToSection('contact')} className="text-left text-gray-700 hover:text-green-primary">
+                <button onClick={() => scrollToSection('contact')} className="text-left text-white hover:text-green-200">
                   {currentContent.nav.contact}
                 </button>
                 <div className="flex space-x-2 pt-2">
                   <button 
                     onClick={() => setLanguage('pt')} 
-                    className={`px-3 py-1 rounded ${language === 'pt' ? 'bg-green-primary text-white' : 'text-gray-700 border'}`}
+                    className={`px-3 py-1 rounded ${language === 'pt' ? 'bg-green-primary text-white' : 'text-gray-300 border border-gray-600'}`}
                   >
                     PT
                   </button>
                   <button 
                     onClick={() => setLanguage('en')} 
-                    className={`px-3 py-1 rounded ${language === 'en' ? 'bg-green-primary text-white' : 'text-gray-700 border'}`}
+                    className={`px-3 py-1 rounded ${language === 'en' ? 'bg-green-primary text-white' : 'text-gray-300 border border-gray-600'}`}
                   >
                     EN
                   </button>
@@ -479,17 +490,7 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="hero-bg min-h-screen flex items-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-        <div className="absolute inset-0">
-          <img 
-            src={heroImage} 
-            alt="Pecuária Sustentável" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-green-primary/80 to-green-secondary/60"></div>
-        </div>
-        
+      <section id="home" className="min-h-screen flex items-center relative">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl">
             <motion.h1 
@@ -534,7 +535,7 @@ function App() {
       </section>
 
       {/* Por que Pecuária Sustentável */}
-      <section id="why" className="section-padding bg-gray-light">
+      <section id="why" className="section-padding">
         <div className="container mx-auto px-4">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -542,10 +543,10 @@ function App() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6 font-grotesk">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 font-grotesk">
               {currentContent.why.title}
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-200 max-w-3xl mx-auto">
               {currentContent.why.subtitle}
             </p>
           </motion.div>
@@ -557,15 +558,15 @@ function App() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white p-8 rounded-2xl shadow-lg card-hover text-center"
+                className="bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-2xl shadow-lg card-hover text-center"
               >
-                <div className="w-16 h-16 bg-green-light/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <item.icon size={32} className="text-green-primary" />
+                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <item.icon size={32} className="text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-green-primary mb-4">
+                <h3 className="text-2xl font-bold text-white mb-4">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-200 leading-relaxed">
                   {item.description}
                 </p>
               </motion.div>
@@ -575,7 +576,7 @@ function App() {
       </section>
 
       {/* Sobre o Projeto */}
-      <section id="about" className="section-padding">
+      <section id="about" className="section-padding bg-gray-light">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -676,7 +677,7 @@ function App() {
       </section>
 
       {/* Vídeos */}
-      <section id="videos" className="section-padding">
+      <section id="videos" className="section-padding bg-white">
         <div className="container mx-auto px-4">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -702,7 +703,7 @@ function App() {
       </section>
 
       {/* Publicações */}
-      <section id="publications" className="section-padding bg-gray-light">
+      <section id="publications" className="section-padding">
         <div className="container mx-auto px-4">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -710,10 +711,10 @@ function App() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6 font-grotesk">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 font-grotesk">
               {currentContent.publications.title}
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-200 max-w-3xl mx-auto">
               {currentContent.publications.subtitle}
             </p>
           </motion.div>
@@ -725,18 +726,18 @@ function App() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white p-8 rounded-2xl shadow-lg card-hover flex flex-col h-full"
+                className="bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-2xl shadow-lg card-hover flex flex-col h-full"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <Download size={24} className="text-green-primary" />
-                  <span className="text-sm bg-green-light/20 text-green-primary px-3 py-1 rounded-full">
+                  <Download size={24} className="text-white" />
+                  <span className="text-sm bg-white/20 text-white px-3 py-1 rounded-full">
                     {publication.type}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold text-green-primary mb-3">
+                <h3 className="text-xl font-bold text-white mb-3">
                   {publication.title}
                 </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">
+                <p className="text-gray-200 mb-6 leading-relaxed">
                   {publication.description}
                 </p>
                 <div className="mt-auto">
@@ -755,7 +756,7 @@ function App() {
       </section>
 
       {/* Chatbot */}
-      <section id="chatbot" className="section-padding">
+      <section id="chatbot" className="section-padding bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
@@ -909,7 +910,7 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-green-primary text-white py-16">
+      <footer className="bg-green-primary/80 text-white py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8">
             <div className="col-span-2">

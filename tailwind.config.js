@@ -12,6 +12,9 @@ export default {
         sans: ["var(--font-sans)", ...fontFamily.sans],
         grotesk: ["\"Space Grotesk\"", ...fontFamily.sans],
       },
+      backdropBlur: {
+        lg: '16px',
+      }
     },
   },
   plugins: [],
