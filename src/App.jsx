@@ -185,7 +185,7 @@ function App() {
             title: 'Guia Arbopasto – Manual de Espécies para Sistemas Silvipastoris',
             description:
               'Referência da Embrapa para identificar e selecionar espécies arbóreas que qualificam sistemas silvipastoris.',
-            type: 'PDF • Embrapa',
+            type: 'APP • Embrapa',
             link:
               'https://www.embrapa.br/busca-de-solucoes-tecnologicas/-/produto-servico/1479/guia-arbopasto---manual-de-identificacao-e-selecao-de-especies-arboreas-para-sistemas-silvipastoris'
           },
@@ -337,7 +337,7 @@ function App() {
             title: 'Arbopasto Guide – Tree Species for Silvopastoral Systems',
             description:
               'Embrapa reference to identify and select tree species that strengthen silvopastoral systems.',
-            type: 'PDF • Embrapa',
+            type: 'APP • Embrapa',
             link:
               'https://www.embrapa.br/busca-de-solucoes-tecnologicas/-/produto-servico/1479/guia-arbopasto---manual-de-identificacao-e-selecao-de-especies-arboreas-para-sistemas-silvipastoris'
           },
