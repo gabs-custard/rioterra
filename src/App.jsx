@@ -1,20 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
-import { 
-  Leaf, 
-  TrendingUp, 
-  Users, 
-  Award, 
-  Play, 
-  Download, 
-  MessageCircle, 
-  Mail, 
-  Phone, 
-  MapPin,
+import {
+  Leaf,
+  TrendingUp,
+  Award,
+  Play,
+  Download,
+  MessageCircle,
   Menu,
   X,
-  ChevronDown,
-  Globe,
   Facebook,
   Twitter,
   Instagram,
@@ -22,6 +16,11 @@ import {
   Linkedin
 } from 'lucide-react';
 import './App.css';
+import Hero from './components/Hero';
+import Practices from './components/Practices';
+import ContactSection from './components/Contact';
+import SectionTitle from './components/SectionTitle';
+import Card from './components/Card';
 
 // Importar assets
 import pecuariaLogo from './assets/pecuaria_logo.svg';
@@ -480,60 +479,12 @@ function App() {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section id="home" className="hero-bg min-h-screen flex items-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-        <div className="absolute inset-0">
-          <img 
-            src={heroImage} 
-            alt="Pecuária Sustentável" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-green-primary/80 to-green-secondary/60"></div>
-        </div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl">
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight font-grotesk"
-            >
-              {currentContent.hero.title}
-            </motion.h1>
-            
-            <motion.p 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl lg:text-2xl text-white/90 mb-8 leading-relaxed"
-            >
-              {currentContent.hero.subtitle}
-            </motion.p>
-            
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex flex-col sm:flex-row gap-4"
-            >
-              <button 
-                onClick={() => scrollToSection('about')}
-                className="btn-primary text-lg px-8 py-4"
-              >
-                {currentContent.hero.cta}
-              </button>
-              <button 
-                onClick={() => scrollToSection('contact')}
-                className="btn-secondary text-lg px-8 py-4"
-              >
-                {currentContent.hero.cta2}
-              </button>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      <Hero
+        content={currentContent.hero}
+        backgroundImage={heroImage}
+        onPrimaryClick={() => scrollToSection('about')}
+        onSecondaryClick={() => scrollToSection('contact')}
+      />
 
       {/* Por que Pecuária Sustentável */}
       <section id="why" className="section-padding relative overflow-hidden">
@@ -552,34 +503,31 @@ function App() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 font-grotesk">
-              {currentContent.why.title}
-            </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
-              {currentContent.why.subtitle}
-            </p>
+            <SectionTitle
+              title={currentContent.why.title}
+              subtitle={currentContent.why.subtitle}
+              titleClassName="text-white"
+              subtitleClassName="text-white/80"
+            />
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {currentContent.why.items.map((item, index) => (
               <motion.div
-                key={index}
+                key={item.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="glass-card p-8 rounded-2xl text-center"
               >
-                <div className="w-16 h-16 bg-white/10 border border-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <item.icon size={32} className="text-green-light" />
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  {item.title}
-                </h3>
-                <p className="text-white/80 leading-relaxed">
-                  {item.description}
-                </p>
+                <Card className="glass-card p-8 text-center h-full">
+                  <div className="w-16 h-16 bg-white/10 border border-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <item.icon size={32} className="text-green-light" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
+                  <p className="text-white/80 leading-relaxed">{item.description}</p>
+                </Card>
               </motion.div>
             ))}
           </div>
@@ -590,18 +538,19 @@ function App() {
       <section id="about" className="section-padding">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6 font-grotesk">
-                {currentContent.about.title}
-              </h2>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                {currentContent.about.subtitle}
-              </p>
-              
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+              <SectionTitle
+                title={currentContent.about.title}
+                subtitle={currentContent.about.subtitle}
+                align="left"
+                className="mb-2"
+                subtitleClassName="mb-8 leading-relaxed"
+              />
+
               <div className="space-y-4 mb-8">
                 {currentContent.about.objectives.map((objective, index) => (
                   <motion.div
@@ -640,68 +589,26 @@ function App() {
         </div>
       </section>
 
-      {/* Práticas de Pecuária Sustentável */}
-      <section id="practices" className="section-padding bg-gray-light">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6 font-grotesk">
-              {currentContent.practices.title}
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {currentContent.practices.subtitle}
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {currentContent.practices.items.map((practice, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white p-8 rounded-2xl shadow-lg card-hover"
-              >
-                <h3 className="text-2xl font-bold text-green-primary mb-4">
-                  {practice.title}
-                </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  {practice.description}
-                </p>
-                <div className="space-y-2">
-                  <h4 className="font-semibold text-green-secondary mb-3">Benefícios:</h4>
-                  {practice.benefits.map((benefit, benefitIndex) => (
-                    <div key={benefitIndex} className="flex items-center space-x-2">
-                      <div className="w-1.5 h-1.5 bg-green-light rounded-full"></div>
-                      <span className="text-sm text-gray-600">{benefit}</span>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Practices
+        title={currentContent.practices.title}
+        subtitle={currentContent.practices.subtitle}
+        items={currentContent.practices.items}
+      />
 
       {/* Vídeos */}
       <section id="videos" className="section-padding">
         <div className="container mx-auto px-4">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6 font-grotesk">
-              {currentContent.videos.title}
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-              {currentContent.videos.subtitle}
-            </p>
+            <SectionTitle
+              title={currentContent.videos.title}
+              subtitle={currentContent.videos.subtitle}
+              subtitleClassName="mb-8"
+            />
           </motion.div>
 
           <div className="bg-gray-light rounded-2xl p-16 text-center">
@@ -730,45 +637,46 @@ function App() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 font-grotesk">
-              {currentContent.publications.title}
-            </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
-              {currentContent.publications.subtitle}
-            </p>
+            <SectionTitle
+              title={currentContent.publications.title}
+              subtitle={currentContent.publications.subtitle}
+              titleClassName="text-white"
+              subtitleClassName="text-white/80"
+            />
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {currentContent.publications.items.map((publication, index) => (
               <motion.div
-                key={index}
+                key={publication.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="glass-card p-8 rounded-2xl flex flex-col h-full"
               >
-                <div className="flex items-center justify-between mb-4">
-                  <Download size={24} className="text-white" />
-                  <span className="text-sm bg-white/10 text-white/80 px-3 py-1 rounded-full border border-white/20">
-                    {publication.type}
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">
-                  {publication.title}
-                </h3>
-                <p className="text-white/80 mb-6 leading-relaxed">
-                  {publication.description}
-                </p>
-                <div className="mt-auto">
-                  <button
-                    onClick={() => handleDownload(publication.link)}
-                    className="btn-primary w-full"
-                  >
-                    Baixar Material
-                  </button>
-                </div>
+                <Card className="glass-card p-8 flex flex-col h-full">
+                  <div className="flex items-center justify-between mb-4">
+                    <Download size={24} className="text-white" />
+                    <span className="text-sm bg-white/10 text-white/80 px-3 py-1 rounded-full border border-white/20">
+                      {publication.type}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3">
+                    {publication.title}
+                  </h3>
+                  <p className="text-white/80 mb-6 leading-relaxed">
+                    {publication.description}
+                  </p>
+                  <div className="mt-auto">
+                    <button
+                      onClick={() => handleDownload(publication.link)}
+                      className="btn-primary w-full"
+                    >
+                      Baixar Material
+                    </button>
+                  </div>
+                </Card>
               </motion.div>
             ))}
           </div>
@@ -785,17 +693,16 @@ function App() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6 font-grotesk">
-                {currentContent.chatbot.title}
-              </h2>
-              <p className="text-xl text-gray-600 mb-8">
-                {currentContent.chatbot.subtitle}
-              </p>
+              <SectionTitle
+                title={currentContent.chatbot.title}
+                subtitle={currentContent.chatbot.subtitle}
+                subtitleClassName="mb-8"
+              />
               <p className="text-lg text-gray-600 mb-12 leading-relaxed">
                 {currentContent.chatbot.description}
               </p>
-              
-              <button 
+
+              <button
                 onClick={handleChatbotClick}
                 className="btn-primary text-xl px-12 py-6 inline-flex items-center space-x-3"
               >
@@ -807,128 +714,7 @@ function App() {
         </div>
       </section>
 
-      {/* Contato */}
-      <section id="contact" className="section-padding bg-gray-light">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6 font-grotesk">
-              {currentContent.contact.title}
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {currentContent.contact.subtitle}
-            </p>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-2 gap-16">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="bg-white p-8 rounded-2xl shadow-lg"
-            >
-              <h3 className="text-2xl font-bold text-green-primary mb-6">
-                Envie uma mensagem
-              </h3>
-              <form className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {currentContent.contact.form.name}
-                  </label>
-                  <input 
-                    type="text" 
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-primary focus:border-transparent"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {currentContent.contact.form.email}
-                  </label>
-                  <input 
-                    type="email" 
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-primary focus:border-transparent"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {currentContent.contact.form.message}
-                  </label>
-                  <textarea 
-                    rows={5}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-primary focus:border-transparent"
-                  ></textarea>
-                </div>
-                <button type="submit" className="btn-primary w-full">
-                  {currentContent.contact.form.send}
-                </button>
-              </form>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="space-y-8"
-            >
-              <div className="bg-white p-8 rounded-2xl shadow-lg">
-                <h3 className="text-2xl font-bold text-green-primary mb-6">
-                  Informações de Contato
-                </h3>
-                <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <MapPin size={24} className="text-green-primary mt-1" />
-                    <div>
-                      <h4 className="font-semibold text-gray-800 mb-1">Endereço</h4>
-                      <p className="text-gray-600">{currentContent.contact.info.address}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-4">
-                    <Phone size={24} className="text-green-primary" />
-                    <div>
-                      <h4 className="font-semibold text-gray-800 mb-1">Telefone</h4>
-                      <p className="text-gray-600">{currentContent.contact.info.phone}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-4">
-                    <Mail size={24} className="text-green-primary" />
-                    <div>
-                      <h4 className="font-semibold text-gray-800 mb-1">E-mail</h4>
-                      <p className="text-gray-600">{currentContent.contact.info.email}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white p-8 rounded-2xl shadow-lg">
-                <h3 className="text-xl font-bold text-green-primary mb-4">
-                  Redes Sociais da Rioterra
-                </h3>
-                <div className="flex space-x-4">
-                  <a href="#" className="w-12 h-12 bg-green-primary text-white rounded-full flex items-center justify-center hover:bg-green-secondary transition-colors">
-                    <Facebook size={20} />
-                  </a>
-                  <a href="#" className="w-12 h-12 bg-green-primary text-white rounded-full flex items-center justify-center hover:bg-green-secondary transition-colors">
-                    <Twitter size={20} />
-                  </a>
-                  <a href="#" className="w-12 h-12 bg-green-primary text-white rounded-full flex items-center justify-center hover:bg-green-secondary transition-colors">
-                    <Instagram size={20} />
-                  </a>
-                  <a href="#" className="w-12 h-12 bg-green-primary text-white rounded-full flex items-center justify-center hover:bg-green-secondary transition-colors">
-                    <Youtube size={20} />
-                  </a>
-                  <a href="#" className="w-12 h-12 bg-green-primary text-white rounded-full flex items-center justify-center hover:bg-green-secondary transition-colors">
-                    <Linkedin size={20} />
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      <ContactSection content={currentContent.contact} />
 
       {/* Footer */}
       <footer className="bg-green-primary text-white py-16">

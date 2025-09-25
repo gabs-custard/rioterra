@@ -1,0 +1,45 @@
+import React from 'react';
+import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
+import Card from './Card';
+import SectionTitle from './SectionTitle';
+
+const Practices = ({ title, subtitle, items }) => (
+  <section id="practices" className="section-padding bg-gray-50">
+    <div className="container mx-auto px-4">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="mb-16"
+      >
+        <SectionTitle title={title} subtitle={subtitle} />
+      </motion.div>
+
+      <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
+        {items.map((practice, index) => (
+          <motion.div
+            key={practice.title}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+          >
+            <Card className="bg-white h-full p-8 shadow-lg">
+              <h3 className="text-2xl font-bold text-green-primary mb-4">{practice.title}</h3>
+              <p className="text-gray-600 mb-6 leading-relaxed">{practice.description}</p>
+              <div className="space-y-3">
+                {practice.benefits.map((benefit) => (
+                  <div key={benefit} className="flex items-center space-x-2">
+                    <div className="w-1.5 h-1.5 bg-green-light rounded-full" />
+                    <span className="text-sm text-gray-600">{benefit}</span>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+export default Practices;
