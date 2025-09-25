@@ -64,13 +64,16 @@ function App() {
     localStorage.setItem('pecuaria-counters', JSON.stringify(newCounters));
   }, []);
 
-  const handleDownload = () => {
+  const handleDownload = (url) => {
     const newCounters = {
       ...counters,
       downloads: counters.downloads + 1
     };
     setCounters(newCounters);
     localStorage.setItem('pecuaria-counters', JSON.stringify(newCounters));
+    if (url) {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
   };
 
   const handleChatbotClick = () => {
@@ -179,19 +182,28 @@ function App() {
         subtitle: 'Materiais técnicos e recursos para apoiar a implementação de práticas sustentáveis.',
         items: [
           {
-            title: 'Guia de Pastejo Rotacionado',
-            description: 'Manual completo sobre implementação de sistemas de pastejo rotacionado.',
-            type: 'PDF'
+            title: 'Guia Arbopasto – Manual de Espécies para Sistemas Silvipastoris',
+            description:
+              'Referência da Embrapa para identificar e selecionar espécies arbóreas que qualificam sistemas silvipastoris.',
+            type: 'PDF • Embrapa',
+            link:
+              'https://www.embrapa.br/busca-de-solucoes-tecnologicas/-/produto-servico/1479/guia-arbopasto---manual-de-identificacao-e-selecao-de-especies-arboreas-para-sistemas-silvipastoris'
           },
           {
-            title: 'Cartilha de Sistemas Agroflorestais',
-            description: 'Orientações práticas para integração lavoura-pecuária-floresta.',
-            type: 'PDF'
+            title: 'Pecuária Leiteira na Amazônia',
+            description:
+              'Estudo com recomendações para ampliar a produtividade e a sustentabilidade da pecuária de leite amazônica.',
+            type: 'PDF • Embrapa',
+            link:
+              'https://www.embrapa.br/busca-de-publicacoes/-/publicacao/1126135/pecuaria-leiteira-na-amazonia'
           },
           {
-            title: 'Manual de Recuperação de Pastagens',
-            description: 'Técnicas e metodologias para restauração de áreas degradadas.',
-            type: 'PDF'
+            title: 'ILPF – Olhares para o Brasil Sustentável',
+            description:
+              'Panorama das experiências brasileiras com Integração Lavoura-Pecuária-Floresta e seus resultados sustentáveis.',
+            type: 'PDF • Embrapa',
+            link:
+              'https://www.embrapa.br/agrossilvipastoril/busca-de-publicacoes/-/publicacao/1163804/ilpf-olhares-para-o-brasil-sustentavel--iclf-a-portrait-of-sustainable-production-in-brazil'
           }
         ]
       },
@@ -322,22 +334,28 @@ function App() {
           'Technical materials and resources to support the implementation of sustainable practices.',
         items: [
           {
-            title: 'Rotational Grazing Guide',
+            title: 'Arbopasto Guide – Tree Species for Silvopastoral Systems',
             description:
-              'Complete manual on implementing rotational grazing systems.',
-            type: 'PDF'
+              'Embrapa reference to identify and select tree species that strengthen silvopastoral systems.',
+            type: 'PDF • Embrapa',
+            link:
+              'https://www.embrapa.br/busca-de-solucoes-tecnologicas/-/produto-servico/1479/guia-arbopasto---manual-de-identificacao-e-selecao-de-especies-arboreas-para-sistemas-silvipastoris'
           },
           {
-            title: 'Agroforestry Systems Booklet',
+            title: 'Dairy Farming in the Amazon',
             description:
-              'Practical guidelines for crop-livestock-forest integration.',
-            type: 'PDF'
+              'Study with recommendations to increase productivity and sustainability of Amazonian dairy production.',
+            type: 'PDF • Embrapa',
+            link:
+              'https://www.embrapa.br/busca-de-publicacoes/-/publicacao/1126135/pecuaria-leiteira-na-amazonia'
           },
           {
-            title: 'Pasture Restoration Manual',
+            title: 'ILPF – Perspectives for a Sustainable Brazil',
             description:
-              'Techniques and methodologies for restoring degraded areas.',
-            type: 'PDF'
+              'Overview of Brazilian Crop-Livestock-Forest Integration cases and their sustainable outcomes.',
+            type: 'PDF • Embrapa',
+            link:
+              'https://www.embrapa.br/agrossilvipastoril/busca-de-publicacoes/-/publicacao/1163804/ilpf-olhares-para-o-brasil-sustentavel--iclf-a-portrait-of-sustainable-production-in-brazil'
           }
         ]
       },
@@ -761,8 +779,8 @@ function App() {
                   {publication.description}
                 </p>
                 <div className="mt-auto">
-                  <button 
-                    onClick={handleDownload}
+                  <button
+                    onClick={() => handleDownload(publication.link)}
                     className="btn-primary w-full"
                   >
                     Baixar Material
