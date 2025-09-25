@@ -550,14 +550,16 @@ function App() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {currentContent.why.items.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white p-8 rounded-2xl shadow-lg card-hover text-center"
+                className={`bg-white p-8 rounded-2xl shadow-lg card-hover text-center ${
+                  index === 0 ? 'md:col-span-2' : ''
+                }`}
               >
                 <div className="w-16 h-16 bg-green-light/20 rounded-full flex items-center justify-center mx-auto mb-6">
                   <item.icon size={32} className="text-green-primary" />
@@ -645,18 +647,22 @@ function App() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {currentContent.practices.items.map((practice, index) => (
               <motion.div
-                key={index}
+                key={practice.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white p-8 rounded-2xl shadow-lg card-hover"
+                className={`bg-white p-8 rounded-2xl shadow-lg card-hover ${
+                  index < 2 ? 'md:col-span-2' : ''
+                }`}
               >
-                <h3 className="text-2xl font-bold text-green-primary mb-4">
-                  {practice.title}
-                </h3>
+                <div>
+                  <h3 className="text-2xl font-bold text-green-primary mb-4">
+                    {practice.title}
+                  </h3>
+                </div>
                 <p className="text-gray-600 mb-6 leading-relaxed">
                   {practice.description}
                 </p>
@@ -718,14 +724,16 @@ function App() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {currentContent.publications.items.map((publication, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white p-8 rounded-2xl shadow-lg card-hover flex flex-col h-full"
+                className={`bg-white p-8 rounded-2xl shadow-lg card-hover flex flex-col h-full ${
+                  index === 0 ? 'md:col-span-2' : ''
+                }`}
               >
                 <div className="flex items-center justify-between mb-4">
                   <Download size={24} className="text-green-primary" />
