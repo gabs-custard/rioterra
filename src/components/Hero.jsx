@@ -35,12 +35,24 @@ const Hero = ({ content, backgroundImage, onPrimaryClick, onSecondaryClick }) =>
           transition={{ duration: 0.8, delay: 0.4 }}
           className="flex flex-col sm:flex-row gap-4"
         >
-          <button onClick={onPrimaryClick} className="btn-primary text-lg px-8 py-4">
+          <motion.button
+            whileHover={{ scale: 1.06 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+            onClick={onPrimaryClick}
+            className="btn-primary text-lg px-8 py-4"
+          >
             {content.cta}
-          </button>
-          <button onClick={onSecondaryClick} className="btn-secondary text-lg px-8 py-4">
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.06 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+            onClick={onSecondaryClick}
+            className="btn-secondary text-lg px-8 py-4"
+          >
             {content.cta2}
-          </button>
+          </motion.button>
         </motion.div>
       </div>
     </div>
