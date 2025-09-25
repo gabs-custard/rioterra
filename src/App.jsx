@@ -534,18 +534,28 @@ function App() {
       </section>
 
       {/* Por que Pecuária Sustentável */}
-      <section id="why" className="section-padding bg-gray-light">
-        <div className="container mx-auto px-4">
-          <motion.div 
+      <section id="why" className="section-padding relative overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src={sustainableImage}
+            alt=""
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div className="absolute inset-0 bg-emerald-900/80 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/70 via-emerald-800/40 to-slate-900/70"></div>
+        <div className="relative z-10 container mx-auto px-4">
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6 font-grotesk">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 font-grotesk">
               {currentContent.why.title}
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
               {currentContent.why.subtitle}
             </p>
           </motion.div>
@@ -557,15 +567,15 @@ function App() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white p-8 rounded-2xl shadow-lg card-hover text-center"
+                className="glass-card p-8 rounded-2xl text-center"
               >
-                <div className="w-16 h-16 bg-green-light/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <item.icon size={32} className="text-green-primary" />
+                <div className="w-16 h-16 bg-white/10 border border-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <item.icon size={32} className="text-green-light" />
                 </div>
-                <h3 className="text-2xl font-bold text-green-primary mb-4">
+                <h3 className="text-2xl font-bold text-white mb-4">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-white/80 leading-relaxed">
                   {item.description}
                 </p>
               </motion.div>
@@ -702,18 +712,28 @@ function App() {
       </section>
 
       {/* Publicações */}
-      <section id="publications" className="section-padding bg-gray-light">
-        <div className="container mx-auto px-4">
-          <motion.div 
+      <section id="publications" className="section-padding relative overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src={rubricaImagem}
+            alt=""
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div className="absolute inset-0 bg-emerald-950/75 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-emerald-900/60 via-emerald-800/45 to-slate-900/70"></div>
+        <div className="relative z-10 container mx-auto px-4">
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6 font-grotesk">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 font-grotesk">
               {currentContent.publications.title}
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
               {currentContent.publications.subtitle}
             </p>
           </motion.div>
@@ -725,18 +745,18 @@ function App() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white p-8 rounded-2xl shadow-lg card-hover flex flex-col h-full"
+                className="glass-card p-8 rounded-2xl flex flex-col h-full"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <Download size={24} className="text-green-primary" />
-                  <span className="text-sm bg-green-light/20 text-green-primary px-3 py-1 rounded-full">
+                  <Download size={24} className="text-white" />
+                  <span className="text-sm bg-white/10 text-white/80 px-3 py-1 rounded-full border border-white/20">
                     {publication.type}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold text-green-primary mb-3">
+                <h3 className="text-xl font-bold text-white mb-3">
                   {publication.title}
                 </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">
+                <p className="text-white/80 mb-6 leading-relaxed">
                   {publication.description}
                 </p>
                 <div className="mt-auto">
