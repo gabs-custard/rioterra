@@ -74,12 +74,12 @@
   --sidebar-ring: oklch(0.708 0 0);
   
   /* Cores personalizadas do Pecuária+ */
-  --green-primary: #2D5016;
-  --green-secondary: #4A7C59;
-  --green-light: #7FB069;
-  --yellow-accent: #F4D35E;
-  --gray-dark: #2C2C2C;
-  --gray-light: #F8F9FA;
+  --green-primary: #15803d;    /* Um verde mais vibrante e moderno */
+  --green-secondary: #16a34a; /* Um tom complementar para gradientes e destaques */
+  --green-light: #ecfdf5;     /* Um verde bem claro para fundos sutis */
+  --cta-blue: #3b82f6;        /* Azul elétrico para CTAs e elementos interativos */
+  --gray-dark: #1f2937;       /* Um cinza mais azulado e moderno */
+  --gray-light: #f9fafb;      /* Um cinza claro e limpo para fundos */
 }
 
 @layer base {
@@ -118,9 +118,6 @@
   color: var(--green-light);
 }
 
-.text-yellow-accent {
-  color: var(--yellow-accent);
-}
 
 .bg-green-primary {
   background-color: var(--green-primary);
@@ -134,9 +131,6 @@
   background-color: var(--green-light);
 }
 
-.bg-yellow-accent {
-  background-color: var(--yellow-accent);
-}
 
 .bg-gray-light {
   background-color: var(--gray-light);
@@ -154,9 +148,6 @@
   background-color: var(--green-secondary);
 }
 
-.hover\:bg-yellow-accent:hover {
-  background-color: var(--yellow-accent);
-}
 
 /* Animações suaves */
 .fade-in {
@@ -231,8 +222,8 @@ html {
 }
 
 .btn-secondary {
-  background-color: var(--yellow-accent);
-  color: var(--gray-dark);
+  background-color: var(--cta-blue);
+  color: white;
   padding: 0.75rem 2rem;
   border-radius: 0.5rem;
   font-weight: 600;
@@ -243,7 +234,7 @@ html {
 
 .btn-secondary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(244, 211, 94, 0.3);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
 }
 
 /* Estilo para navegação fixa */
