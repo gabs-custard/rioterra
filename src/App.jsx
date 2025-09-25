@@ -33,11 +33,6 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [language, setLanguage] = useState('pt');
-  const [counters, setCounters] = useState({
-    visitors: 0,
-    downloads: 0,
-    chatbotClicks: 0
-  });
 
   // Efeito para detectar scroll
   useEffect(() => {
@@ -48,42 +43,13 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Simulação de contadores (em produção, viria de analytics)
-  useEffect(() => {
-    const savedCounters = localStorage.getItem('pecuaria-counters');
-    if (savedCounters) {
-      setCounters(JSON.parse(savedCounters));
-    }
-    
-    // Incrementar visitantes
-    const newCounters = {
-      visitors: (counters.visitors || 0) + 1,
-      downloads: counters.downloads || 0,
-      chatbotClicks: counters.chatbotClicks || 0
-    };
-    setCounters(newCounters);
-    localStorage.setItem('pecuaria-counters', JSON.stringify(newCounters));
-  }, []);
-
   const handleDownload = (url) => {
-    const newCounters = {
-      ...counters,
-      downloads: counters.downloads + 1
-    };
-    setCounters(newCounters);
-    localStorage.setItem('pecuaria-counters', JSON.stringify(newCounters));
     if (url) {
       window.open(url, '_blank', 'noopener,noreferrer');
     }
   };
 
   const handleChatbotClick = () => {
-    const newCounters = {
-      ...counters,
-      chatbotClicks: counters.chatbotClicks + 1
-    };
-    setCounters(newCounters);
-    localStorage.setItem('pecuaria-counters', JSON.stringify(newCounters));
     // Redirecionar para WhatsApp
     window.open('https://wa.me/5569992481087', '_blank');
   };
@@ -657,12 +623,6 @@ function App() {
                 alt="Projeto Sustentável" 
                 className="w-full rounded-2xl shadow-2xl"
               />
-              <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg">
-                <div className="text-center">
-                  <div className="counter text-green-primary">{counters.visitors}</div>
-                  <div className="text-sm text-gray-600">Visitantes</div>
-                </div>
-              </div>
             </motion.div>
           </div>
         </div>
@@ -791,17 +751,6 @@ function App() {
             ))}
           </div>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-center mt-12"
-          >
-            <div className="bg-white p-6 rounded-xl shadow-lg inline-block">
-              <div className="counter text-green-primary">{counters.downloads}</div>
-              <div className="text-sm text-gray-600">Downloads realizados</div>
-            </div>
-          </motion.div>
         </div>
       </section>
 
@@ -831,13 +780,6 @@ function App() {
                 <MessageCircle size={24} />
                 <span>{currentContent.chatbot.cta}</span>
               </button>
-              
-              <div className="mt-8">
-                <div className="bg-green-light/20 p-4 rounded-xl inline-block">
-                  <div className="counter text-green-primary">{counters.chatbotClicks}</div>
-                  <div className="text-sm text-gray-600">Conversas iniciadas</div>
-                </div>
-              </div>
             </motion.div>
           </div>
         </div>
