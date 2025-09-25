@@ -27,6 +27,7 @@ import './App.css';
 import pecuariaLogo from './assets/pecuaria_logo.svg';
 import heroImage from './assets/banner_pecumais4.webp';
 import sustainableImage from './assets/xcXwS7plUGet.jpg';
+import rubricaImagem from './assets/rubrica.svg';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -1021,6 +1022,14 @@ function App() {
             </div>
           </div>
           
+          <div className="mt-12 flex justify-center">
+            <img
+              src={rubricaImagem}
+              alt="Rubrica do Projeto Pecuária+"
+              className="max-w-full h-auto w-[min(100%,48rem)]"
+            />
+          </div>
+
           <div className="border-t border-white/20 mt-12 pt-8 text-center">
             <p className="text-white/60">
               {currentContent.footer.rights}

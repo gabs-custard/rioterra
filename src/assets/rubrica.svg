@@ -1,0 +1,27 @@
+<svg width="1600" height="200" viewBox="0 0 1600 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="200" fill="#ffffff" />
+  <!-- Cooperação Alemã / GIZ -->
+  <rect x="60" y="70" width="160" height="20" fill="#000000" />
+  <rect x="60" y="90" width="160" height="20" fill="#dd0000" />
+  <rect x="60" y="110" width="160" height="20" fill="#ffce00" />
+  <text x="240" y="95" font-family="'Arial', sans-serif" font-size="28" fill="#444444">cooperação</text>
+  <text x="240" y="125" font-family="'Arial', sans-serif" font-size="28" fill="#444444">alemã</text>
+  <text x="240" y="60" font-family="'Arial', sans-serif" font-size="50" fill="#c00000">giz</text>
+  <text x="240" y="160" font-family="'Arial', sans-serif" font-size="20" fill="#c00000">DEUTSCHE GESELLSCHAFT FÜR INTERNATIONALE ZUSAMMENARBEIT</text>
+
+  <!-- Rioterra -->
+  <ellipse cx="760" cy="100" rx="70" ry="45" fill="#3a8d3f" />
+  <rect x="750" y="120" width="10" height="45" fill="#3a8d3f" />
+  <text x="820" y="105" font-family="'Arial', sans-serif" font-size="46" fill="#3a8d3f" font-weight="bold">RIOTERRA</text>
+  <text x="820" y="140" font-family="'Arial', sans-serif" font-size="22" fill="#3a8d3f">GESTÃO SOCIOAMBIENTAL AMAZÔNICA</text>
+
+  <!-- Governo Federal / MAPA -->
+  <text x="1110" y="70" font-family="'Arial', sans-serif" font-size="20" fill="#333333">GOVERNO FEDERAL</text>
+  <text x="1110" y="95" font-family="'Arial', sans-serif" font-size="20" fill="#333333">MINISTÉRIO DA AGRICULTURA E PECUÁRIA</text>
+  <text x="1110" y="135" font-family="'Arial', sans-serif" font-size="58" fill="#007b3d" font-weight="bold">BRASIL</text>
+  <text x="1110" y="165" font-family="'Arial', sans-serif" font-size="20" fill="#333333">UNIÃO E RECONSTRUÇÃO</text>
+  <rect x="1110" y="175" width="60" height="15" fill="#1f3c88" />
+  <rect x="1175" y="175" width="60" height="15" fill="#fecb00" />
+  <rect x="1240" y="175" width="60" height="15" fill="#009b3a" />
+  <rect x="1305" y="175" width="60" height="15" fill="#ff1c1c" />
+</svg>
