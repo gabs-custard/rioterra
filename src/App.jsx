@@ -496,7 +496,7 @@ function App() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+              className="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight font-grotesk"
             >
               {currentContent.hero.title}
             </motion.h1>
@@ -542,7 +542,7 @@ function App() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6">
+            <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6 font-grotesk">
               {currentContent.why.title}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -583,7 +583,7 @@ function App() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6">
+              <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6 font-grotesk">
                 {currentContent.about.title}
               </h2>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
@@ -605,7 +605,7 @@ function App() {
                 ))}
               </div>
               
-              <div className="bg-yellow-accent/20 p-6 rounded-xl border-l-4 border-yellow-accent">
+              <div className="bg-green-light p-6 rounded-xl border-l-4 border-green-secondary">
                 <p className="text-gray-700 font-medium">
                   {currentContent.about.innovation}
                 </p>
@@ -637,7 +637,7 @@ function App() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6">
+            <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6 font-grotesk">
               {currentContent.practices.title}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -684,7 +684,7 @@ function App() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6">
+            <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6 font-grotesk">
               {currentContent.videos.title}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
@@ -710,7 +710,7 @@ function App() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6">
+            <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6 font-grotesk">
               {currentContent.publications.title}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -763,7 +763,7 @@ function App() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6">
+              <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6 font-grotesk">
                 {currentContent.chatbot.title}
               </h2>
               <p className="text-xl text-gray-600 mb-8">
@@ -794,7 +794,7 @@ function App() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6">
+            <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6 font-grotesk">
               {currentContent.contact.title}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
