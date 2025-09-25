@@ -364,9 +364,9 @@ function App() {
   const currentContent = content[language];
 
   return (
-    <div className="min-h-screen bg-transparent overflow-x-hidden max-w-[100vw] relative">
+    <div className="min-h-screen bg-transparent overflow-x-hidden max-w-[100vw]">
       {/* Background Global */}
-      <div className="fixed inset-0 -z-10">
+      <div className="fixed inset-0">
         <img
           src={heroImage}
           alt="Pecuária Sustentável"
@@ -376,610 +376,613 @@ function App() {
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
       </div>
 
-      {/* Navegação */}
-      <nav className={`navbar-fixed ${isScrolled ? 'shadow-lg' : ''}`}>
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <img src={pecuariaLogo} alt="Pecuária+" id="pecuariamais-logo" className="h-12 w-auto" />
-            </div>
-            
-            {/* Menu Desktop */}
-            <div className="hidden lg:flex items-center space-x-8">
-              <button onClick={() => scrollToSection('home')} className="text-white hover:text-green-200 transition-colors">
-                {currentContent.nav.home}
-              </button>
-              <button onClick={() => scrollToSection('why')} className="text-white hover:text-green-200 transition-colors">
-                {currentContent.nav.why}
-              </button>
-              <button onClick={() => scrollToSection('about')} className="text-white hover:text-green-200 transition-colors">
-                {currentContent.nav.about}
-              </button>
-              <button onClick={() => scrollToSection('practices')} className="text-white hover:text-green-200 transition-colors">
-                {currentContent.nav.practices}
-              </button>
-              <button onClick={() => scrollToSection('videos')} className="text-white hover:text-green-200 transition-colors">
-                {currentContent.nav.videos}
-              </button>
-              <button onClick={() => scrollToSection('publications')} className="text-white hover:text-green-200 transition-colors">
-                {currentContent.nav.publications}
-              </button>
-              <button onClick={() => scrollToSection('chatbot')} className="text-white hover:text-green-200 transition-colors">
-                {currentContent.nav.chatbot}
-              </button>
-              <button onClick={() => scrollToSection('contact')} className="text-white hover:text-green-200 transition-colors">
-                {currentContent.nav.contact}
-              </button>
-              
-              {/* Seletor de idioma */}
-              <div className="flex items-center space-x-2">
-                <button 
-                  onClick={() => setLanguage('pt')} 
-                  className={`px-2 py-1 rounded ${language === 'pt' ? 'bg-green-primary text-white' : 'text-gray-300'}`}
-                >
-                  PT
-                </button>
-                <button 
-                  onClick={() => setLanguage('en')} 
-                  className={`px-2 py-1 rounded ${language === 'en' ? 'bg-green-primary text-white' : 'text-gray-300'}`}
-                >
-                  EN
-                </button>
+      <div className="relative z-10">
+        {/* Navegação */}
+        <nav className={`navbar-fixed ${isScrolled ? 'shadow-lg' : ''}`}>
+          <div className="container mx-auto px-4 py-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-4">
+                <img src={pecuariaLogo} alt="Pecuária+" id="pecuariamais-logo" className="h-12 w-auto" />
               </div>
-            </div>
 
-            {/* Menu Mobile */}
-            <button 
-              className="lg:hidden text-white"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-
-          {/* Menu Mobile Expandido */}
-          {isMenuOpen && (
-            <motion.div 
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="lg:hidden mt-4 pb-4 border-t border-gray-700 max-w-full overflow-x-hidden"
-            >
-              <div className="flex flex-col space-y-4 pt-4 w-full">
-                <button onClick={() => scrollToSection('home')} className="text-left text-white hover:text-green-200">
+              {/* Menu Desktop */}
+              <div className="hidden lg:flex items-center space-x-8">
+                <button onClick={() => scrollToSection('home')} className="text-white hover:text-green-200 transition-colors">
                   {currentContent.nav.home}
                 </button>
-                <button onClick={() => scrollToSection('why')} className="text-left text-white hover:text-green-200">
+                <button onClick={() => scrollToSection('why')} className="text-white hover:text-green-200 transition-colors">
                   {currentContent.nav.why}
                 </button>
-                <button onClick={() => scrollToSection('about')} className="text-left text-white hover:text-green-200">
+                <button onClick={() => scrollToSection('about')} className="text-white hover:text-green-200 transition-colors">
                   {currentContent.nav.about}
                 </button>
-                <button onClick={() => scrollToSection('practices')} className="text-left text-white hover:text-green-200">
+                <button onClick={() => scrollToSection('practices')} className="text-white hover:text-green-200 transition-colors">
                   {currentContent.nav.practices}
                 </button>
-                <button onClick={() => scrollToSection('videos')} className="text-left text-white hover:text-green-200">
+                <button onClick={() => scrollToSection('videos')} className="text-white hover:text-green-200 transition-colors">
                   {currentContent.nav.videos}
                 </button>
-                <button onClick={() => scrollToSection('publications')} className="text-left text-white hover:text-green-200">
+                <button onClick={() => scrollToSection('publications')} className="text-white hover:text-green-200 transition-colors">
                   {currentContent.nav.publications}
                 </button>
-                <button onClick={() => scrollToSection('chatbot')} className="text-left text-white hover:text-green-200">
+                <button onClick={() => scrollToSection('chatbot')} className="text-white hover:text-green-200 transition-colors">
                   {currentContent.nav.chatbot}
                 </button>
-                <button onClick={() => scrollToSection('contact')} className="text-left text-white hover:text-green-200">
+                <button onClick={() => scrollToSection('contact')} className="text-white hover:text-green-200 transition-colors">
                   {currentContent.nav.contact}
                 </button>
-                <div className="flex space-x-2 pt-2">
+
+                {/* Seletor de idioma */}
+                <div className="flex items-center space-x-2">
                   <button 
                     onClick={() => setLanguage('pt')} 
-                    className={`px-3 py-1 rounded ${language === 'pt' ? 'bg-green-primary text-white' : 'text-gray-300 border border-gray-600'}`}
+                    className={`px-2 py-1 rounded ${language === 'pt' ? 'bg-green-primary text-white' : 'text-gray-300'}`}
                   >
                     PT
                   </button>
                   <button 
                     onClick={() => setLanguage('en')} 
-                    className={`px-3 py-1 rounded ${language === 'en' ? 'bg-green-primary text-white' : 'text-gray-300 border border-gray-600'}`}
+                    className={`px-2 py-1 rounded ${language === 'en' ? 'bg-green-primary text-white' : 'text-gray-300'}`}
                   >
                     EN
                   </button>
                 </div>
               </div>
-            </motion.div>
-          )}
-        </div>
-      </nav>
 
-      {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center relative">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl">
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight font-grotesk"
-            >
-              {currentContent.hero.title}
-            </motion.h1>
-            
-            <motion.p 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl lg:text-2xl text-white/90 mb-8 leading-relaxed"
-            >
-              {currentContent.hero.subtitle}
-            </motion.p>
-            
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex flex-col sm:flex-row gap-4"
-            >
+              {/* Menu Mobile */}
               <button 
-                onClick={() => scrollToSection('about')}
-                className="btn-primary text-lg px-8 py-4"
+                className="lg:hidden text-white"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
               >
-                {currentContent.hero.cta}
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
-              <button 
-                onClick={() => scrollToSection('contact')}
-                className="btn-secondary text-lg px-8 py-4"
-              >
-                {currentContent.hero.cta2}
-              </button>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+            </div>
 
-      {/* Por que Pecuária Sustentável */}
-      <section id="why" className="section-padding">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 font-grotesk">
-              {currentContent.why.title}
-            </h2>
-            <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-              {currentContent.why.subtitle}
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {currentContent.why.items.map((item, index) => (
+            {/* Menu Mobile Expandido */}
+            {isMenuOpen && (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-2xl shadow-lg card-hover text-center"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="lg:hidden mt-4 pb-4 border-t border-gray-700 max-w-full overflow-x-hidden"
               >
-                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <item.icon size={32} className="text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  {item.title}
-                </h3>
-                <p className="text-gray-200 leading-relaxed">
-                  {item.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Sobre o Projeto */}
-      <section id="about" className="section-padding bg-gray-light">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6 font-grotesk">
-                {currentContent.about.title}
-              </h2>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                {currentContent.about.subtitle}
-              </p>
-              
-              <div className="space-y-4 mb-8">
-                {currentContent.about.objectives.map((objective, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="flex items-center space-x-3"
-                  >
-                    <div className="w-2 h-2 bg-green-primary rounded-full"></div>
-                    <span className="text-gray-700">{objective}</span>
-                  </motion.div>
-                ))}
-              </div>
-              
-              <div className="bg-green-light p-6 rounded-xl border-l-4 border-green-secondary">
-                <p className="text-gray-700 font-medium">
-                  {currentContent.about.innovation}
-                </p>
-              </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="relative"
-            >
-              <img 
-                src={sustainableImage} 
-                alt="Projeto Sustentável" 
-                className="w-full rounded-2xl shadow-2xl"
-              />
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Práticas de Pecuária Sustentável */}
-      <section id="practices" className="section-padding bg-gray-light">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6 font-grotesk">
-              {currentContent.practices.title}
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {currentContent.practices.subtitle}
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {currentContent.practices.items.map((practice, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white p-8 rounded-2xl shadow-lg card-hover"
-              >
-                <h3 className="text-2xl font-bold text-green-primary mb-4">
-                  {practice.title}
-                </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  {practice.description}
-                </p>
-                <div className="space-y-2">
-                  <h4 className="font-semibold text-green-secondary mb-3">Benefícios:</h4>
-                  {practice.benefits.map((benefit, benefitIndex) => (
-                    <div key={benefitIndex} className="flex items-center space-x-2">
-                      <div className="w-1.5 h-1.5 bg-green-light rounded-full"></div>
-                      <span className="text-sm text-gray-600">{benefit}</span>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Vídeos */}
-      <section id="videos" className="section-padding bg-white">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6 font-grotesk">
-              {currentContent.videos.title}
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-              {currentContent.videos.subtitle}
-            </p>
-          </motion.div>
-
-          <div className="bg-gray-light rounded-2xl p-16 text-center">
-            <Play size={64} className="text-green-primary mx-auto mb-6" />
-            <p className="text-2xl font-semibold text-gray-600">
-              {currentContent.videos.placeholder}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Publicações */}
-      <section id="publications" className="section-padding">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 font-grotesk">
-              {currentContent.publications.title}
-            </h2>
-            <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-              {currentContent.publications.subtitle}
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {currentContent.publications.items.map((publication, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-2xl shadow-lg card-hover flex flex-col h-full"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <Download size={24} className="text-white" />
-                  <span className="text-sm bg-white/20 text-white px-3 py-1 rounded-full">
-                    {publication.type}
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">
-                  {publication.title}
-                </h3>
-                <p className="text-gray-200 mb-6 leading-relaxed">
-                  {publication.description}
-                </p>
-                <div className="mt-auto">
-                  <button
-                    onClick={() => handleDownload(publication.link)}
-                    className="btn-primary w-full"
-                  >
-                    Baixar Material
+                <div className="flex flex-col space-y-4 pt-4 w-full">
+                  <button onClick={() => scrollToSection('home')} className="text-left text-white hover:text-green-200">
+                    {currentContent.nav.home}
                   </button>
+                  <button onClick={() => scrollToSection('why')} className="text-left text-white hover:text-green-200">
+                    {currentContent.nav.why}
+                  </button>
+                  <button onClick={() => scrollToSection('about')} className="text-left text-white hover:text-green-200">
+                    {currentContent.nav.about}
+                  </button>
+                  <button onClick={() => scrollToSection('practices')} className="text-left text-white hover:text-green-200">
+                    {currentContent.nav.practices}
+                  </button>
+                  <button onClick={() => scrollToSection('videos')} className="text-left text-white hover:text-green-200">
+                    {currentContent.nav.videos}
+                  </button>
+                  <button onClick={() => scrollToSection('publications')} className="text-left text-white hover:text-green-200">
+                    {currentContent.nav.publications}
+                  </button>
+                  <button onClick={() => scrollToSection('chatbot')} className="text-left text-white hover:text-green-200">
+                    {currentContent.nav.chatbot}
+                  </button>
+                  <button onClick={() => scrollToSection('contact')} className="text-left text-white hover:text-green-200">
+                    {currentContent.nav.contact}
+                  </button>
+                  <div className="flex space-x-2 pt-2">
+                    <button
+                      onClick={() => setLanguage('pt')}
+                      className={`px-3 py-1 rounded ${language === 'pt' ? 'bg-green-primary text-white' : 'text-gray-300 border border-gray-600'}`}
+                    >
+                      PT
+                    </button>
+                    <button
+                      onClick={() => setLanguage('en')}
+                      className={`px-3 py-1 rounded ${language === 'en' ? 'bg-green-primary text-white' : 'text-gray-300 border border-gray-600'}`}
+                    >
+                      EN
+                    </button>
+                  </div>
                 </div>
               </motion.div>
-            ))}
+            )}
           </div>
+        </nav>
 
-        </div>
-      </section>
+        {/* Hero Section */}
+        <section id="home" className="min-h-screen flex items-center relative">
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-4xl">
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight font-grotesk"
+              >
+                {currentContent.hero.title}
+              </motion.h1>
 
-      {/* Chatbot */}
-      <section id="chatbot" className="section-padding bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-xl lg:text-2xl text-white/90 mb-8 leading-relaxed"
+              >
+                {currentContent.hero.subtitle}
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="flex flex-col sm:flex-row gap-4"
+              >
+                <button
+                  onClick={() => scrollToSection('about')}
+                  className="btn-primary text-lg px-8 py-4"
+                >
+                  {currentContent.hero.cta}
+                </button>
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="btn-secondary text-lg px-8 py-4"
+                >
+                  {currentContent.hero.cta2}
+                </button>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Por que Pecuária Sustentável */}
+        <section id="why" className="section-padding">
+          <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              className="text-center mb-16"
             >
-              <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6 font-grotesk">
-                {currentContent.chatbot.title}
+              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 font-grotesk">
+                {currentContent.why.title}
               </h2>
-              <p className="text-xl text-gray-600 mb-8">
-                {currentContent.chatbot.subtitle}
+              <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+                {currentContent.why.subtitle}
               </p>
-              <p className="text-lg text-gray-600 mb-12 leading-relaxed">
-                {currentContent.chatbot.description}
-              </p>
-              
-              <button 
-                onClick={handleChatbotClick}
-                className="btn-primary text-xl px-12 py-6 inline-flex items-center space-x-3"
+            </motion.div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {currentContent.why.items.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-2xl shadow-lg card-hover text-center"
+                >
+                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <item.icon size={32} className="text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-200 leading-relaxed">
+                    {item.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Sobre o Projeto */}
+        <section id="about" className="section-padding">
+          <div className="container mx-auto px-4">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-2xl shadow-lg"
               >
-                <MessageCircle size={24} />
-                <span>{currentContent.chatbot.cta}</span>
-              </button>
-            </motion.div>
+                <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 font-grotesk">
+                  {currentContent.about.title}
+                </h2>
+                <p className="text-xl text-gray-200 mb-8 leading-relaxed">
+                  {currentContent.about.subtitle}
+                </p>
+
+                <div className="space-y-4 mb-8">
+                  {currentContent.about.objectives.map((objective, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                      className="flex items-center space-x-3"
+                    >
+                      <div className="w-2 h-2 bg-white rounded-full"></div>
+                      <span className="text-gray-200">{objective}</span>
+                    </motion.div>
+                  ))}
+                </div>
+
+                <div className="bg-white/10 backdrop-blur-lg border border-white/20 p-6 rounded-xl">
+                  <p className="text-white font-medium">
+                    {currentContent.about.innovation}
+                  </p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="relative"
+              >
+                <img
+                  src={sustainableImage}
+                  alt="Projeto Sustentável"
+                  className="w-full rounded-2xl shadow-2xl"
+                />
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Contato */}
-      <section id="contact" className="section-padding bg-gray-light">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-bold text-green-primary mb-6 font-grotesk">
-              {currentContent.contact.title}
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {currentContent.contact.subtitle}
-            </p>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-2 gap-16">
+        {/* Práticas de Pecuária Sustentável */}
+        <section id="practices" className="section-padding">
+          <div className="container mx-auto px-4">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="bg-white p-8 rounded-2xl shadow-lg"
+              className="text-center mb-16"
             >
-              <h3 className="text-2xl font-bold text-green-primary mb-6">
-                Envie uma mensagem
-              </h3>
-              <form className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {currentContent.contact.form.name}
-                  </label>
-                  <input 
-                    type="text" 
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-primary focus:border-transparent"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {currentContent.contact.form.email}
-                  </label>
-                  <input 
-                    type="email" 
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-primary focus:border-transparent"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {currentContent.contact.form.message}
-                  </label>
-                  <textarea 
-                    rows={5}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-primary focus:border-transparent"
-                  ></textarea>
-                </div>
-                <button type="submit" className="btn-primary w-full">
-                  {currentContent.contact.form.send}
-                </button>
-              </form>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="space-y-8"
-            >
-              <div className="bg-white p-8 rounded-2xl shadow-lg">
-                <h3 className="text-2xl font-bold text-green-primary mb-6">
-                  Informações de Contato
-                </h3>
-                <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <MapPin size={24} className="text-green-primary mt-1" />
-                    <div>
-                      <h4 className="font-semibold text-gray-800 mb-1">Endereço</h4>
-                      <p className="text-gray-600">{currentContent.contact.info.address}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-4">
-                    <Phone size={24} className="text-green-primary" />
-                    <div>
-                      <h4 className="font-semibold text-gray-800 mb-1">Telefone</h4>
-                      <p className="text-gray-600">{currentContent.contact.info.phone}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-4">
-                    <Mail size={24} className="text-green-primary" />
-                    <div>
-                      <h4 className="font-semibold text-gray-800 mb-1">E-mail</h4>
-                      <p className="text-gray-600">{currentContent.contact.info.email}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white p-8 rounded-2xl shadow-lg">
-                <h3 className="text-xl font-bold text-green-primary mb-4">
-                  Redes Sociais da Rioterra
-                </h3>
-                <div className="flex space-x-4">
-                  <a href="#" className="w-12 h-12 bg-green-primary text-white rounded-full flex items-center justify-center hover:bg-green-secondary transition-colors">
-                    <Facebook size={20} />
-                  </a>
-                  <a href="#" className="w-12 h-12 bg-green-primary text-white rounded-full flex items-center justify-center hover:bg-green-secondary transition-colors">
-                    <Twitter size={20} />
-                  </a>
-                  <a href="#" className="w-12 h-12 bg-green-primary text-white rounded-full flex items-center justify-center hover:bg-green-secondary transition-colors">
-                    <Instagram size={20} />
-                  </a>
-                  <a href="#" className="w-12 h-12 bg-green-primary text-white rounded-full flex items-center justify-center hover:bg-green-secondary transition-colors">
-                    <Youtube size={20} />
-                  </a>
-                  <a href="#" className="w-12 h-12 bg-green-primary text-white rounded-full flex items-center justify-center hover:bg-green-secondary transition-colors">
-                    <Linkedin size={20} />
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-green-primary/80 text-white py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="col-span-2">
-              <img src={pecuariaLogo} alt="Pecuária+" className="h-16 w-auto mb-6 brightness-0 invert" />
-              <p className="text-white/80 leading-relaxed mb-6">
-                {currentContent.footer.description}
+              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 font-grotesk">
+                {currentContent.practices.title}
+              </h2>
+              <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+                {currentContent.practices.subtitle}
               </p>
-              <div className="flex space-x-4">
-                <a href="#" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                  <Facebook size={18} />
-                </a>
-                <a href="#" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                  <Twitter size={18} />
-                </a>
-                <a href="#" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                  <Instagram size={18} />
-                </a>
-                <a href="#" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                  <Youtube size={18} />
-                </a>
-                <a href="#" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                  <Linkedin size={18} />
-                </a>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="text-xl font-bold mb-6">{currentContent.footer.links}</h4>
-              <div className="space-y-3">
-                <button onClick={() => scrollToSection('about')} className="block text-white/80 hover:text-white transition-colors">
-                  Sobre o Projeto
-                </button>
-                <button onClick={() => scrollToSection('practices')} className="block text-white/80 hover:text-white transition-colors">
-                  Práticas Sustentáveis
-                </button>
-                <button onClick={() => scrollToSection('publications')} className="block text-white/80 hover:text-white transition-colors">
-                  Publicações
-                </button>
-                <button onClick={() => scrollToSection('contact')} className="block text-white/80 hover:text-white transition-colors">
-                  Contato
-                </button>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="text-xl font-bold mb-6">Rioterra</h4>
-              <div className="space-y-3 text-white/80">
-                <p>Porto Velho - RO</p>
-                <p>Brasil</p>
-                <p className="text-sm">rioterra@rioterra.org.br</p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="mt-12 flex justify-center">
-            <img
-              src={rubricaImagem}
-              alt="Rubrica do Projeto Pecuária+"
-              className="max-w-full h-auto w-[min(100%,48rem)]"
-            />
-          </div>
+            </motion.div>
 
-          <div className="border-t border-white/20 mt-12 pt-8 text-center">
-            <p className="text-white/60">
-              {currentContent.footer.rights}
-            </p>
+            <div className="grid md:grid-cols-2 gap-8">
+              {currentContent.practices.items.map((practice, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-2xl shadow-lg card-hover"
+                >
+                  <h3 className="text-2xl font-bold text-white mb-4">
+                    {practice.title}
+                  </h3>
+                  <p className="text-gray-200 mb-6 leading-relaxed">
+                    {practice.description}
+                  </p>
+                  <div className="space-y-2">
+                    <h4 className="font-semibold text-gray-100 mb-3">Benefícios:</h4>
+                    {practice.benefits.map((benefit, benefitIndex) => (
+                      <div key={benefitIndex} className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-white/50 rounded-full"></div>
+                        <span className="text-sm text-gray-300">{benefit}</span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </div>
-      </footer>
+        </section>
+
+        {/* Vídeos */}
+        <section id="videos" className="section-padding">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 font-grotesk">
+                {currentContent.videos.title}
+              </h2>
+              <p className="text-xl text-gray-200 max-w-3xl mx-auto mb-8">
+                {currentContent.videos.subtitle}
+              </p>
+            </motion.div>
+
+            <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-16 text-center">
+              <Play size={64} className="text-white mx-auto mb-6" />
+              <p className="text-2xl font-semibold text-white">
+                {currentContent.videos.placeholder}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Publicações */}
+        <section id="publications" className="section-padding">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 font-grotesk">
+                {currentContent.publications.title}
+              </h2>
+              <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+                {currentContent.publications.subtitle}
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {currentContent.publications.items.map((publication, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-2xl shadow-lg card-hover flex flex-col h-full"
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <Download size={24} className="text-white" />
+                    <span className="text-sm bg-white/20 text-white px-3 py-1 rounded-full">
+                      {publication.type}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3">
+                    {publication.title}
+                  </h3>
+                  <p className="text-gray-200 mb-6 leading-relaxed">
+                    {publication.description}
+                  </p>
+                  <div className="mt-auto">
+                    <button
+                      onClick={() => handleDownload(publication.link)}
+                      className="btn-primary w-full"
+                    >
+                      Baixar Material
+                    </button>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+          </div>
+        </section>
+
+        {/* Chatbot */}
+        <section id="chatbot" className="section-padding">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center bg-white/10 backdrop-blur-lg border border-white/20 p-12 rounded-2xl">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 font-grotesk">
+                  {currentContent.chatbot.title}
+                </h2>
+                <p className="text-xl text-gray-200 mb-8">
+                  {currentContent.chatbot.subtitle}
+                </p>
+                <p className="text-lg text-gray-200 mb-12 leading-relaxed">
+                  {currentContent.chatbot.description}
+                </p>
+
+                <button
+                  onClick={handleChatbotClick}
+                  className="btn-primary text-xl px-12 py-6 inline-flex items-center space-x-3"
+                >
+                  <MessageCircle size={24} />
+                  <span>{currentContent.chatbot.cta}</span>
+                </button>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Contato */}
+        <section id="contact" className="section-padding">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 font-grotesk">
+                {currentContent.contact.title}
+              </h2>
+              <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+                {currentContent.contact.subtitle}
+              </p>
+            </motion.div>
+
+            <div className="grid lg:grid-cols-2 gap-16">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-2xl shadow-lg"
+              >
+                <h3 className="text-2xl font-bold text-white mb-6">
+                  Envie uma mensagem
+                </h3>
+                <form className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-200 mb-2">
+                      {currentContent.contact.form.name}
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-white/50 focus:border-transparent"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-200 mb-2">
+                      {currentContent.contact.form.email}
+                    </label>
+                    <input
+                      type="email"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-white/50 focus:border-transparent"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-200 mb-2">
+                      {currentContent.contact.form.message}
+                    </label>
+                    <textarea
+                      rows={5}
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-white/50 focus:border-transparent"
+                    ></textarea>
+                  </div>
+                  <button type="submit" className="btn-primary w-full">
+                    {currentContent.contact.form.send}
+                  </button>
+                </form>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="space-y-8"
+              >
+                <div className="bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-2xl shadow-lg">
+                  <h3 className="text-2xl font-bold text-white mb-6">
+                    Informações de Contato
+                  </h3>
+                  <div className="space-y-6">
+                    <div className="flex items-start space-x-4">
+                      <MapPin size={24} className="text-white mt-1" />
+                      <div>
+                        <h4 className="font-semibold text-gray-100 mb-1">Endereço</h4>
+                        <p className="text-gray-300">{currentContent.contact.info.address}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-4">
+                      <Phone size={24} className="text-white" />
+                      <div>
+                        <h4 className="font-semibold text-gray-100 mb-1">Telefone</h4>
+                        <p className="text-gray-300">{currentContent.contact.info.phone}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-4">
+                      <Mail size={24} className="text-white" />
+                      <div>
+                        <h4 className="font-semibold text-gray-100 mb-1">E-mail</h4>
+                        <p className="text-gray-300">{currentContent.contact.info.email}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-2xl shadow-lg">
+                  <h3 className="text-xl font-bold text-white mb-4">
+                    Redes Sociais da Rioterra
+                  </h3>
+                  <div className="flex space-x-4">
+                    <a href="#" className="w-12 h-12 bg-white/20 text-white rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                      <Facebook size={20} />
+                    </a>
+                    <a href="#" className="w-12 h-12 bg-white/20 text-white rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                      <Twitter size={20} />
+                    </a>
+                    <a href="#" className="w-12 h-12 bg-white/20 text-white rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                      <Instagram size={20} />
+                    </a>
+                    <a href="#" className="w-12 h-12 bg-white/20 text-white rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                      <Youtube size={20} />
+                    </a>
+                    <a href="#" className="w-12 h-12 bg-white/20 text-white rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                      <Linkedin size={20} />
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="bg-black/20 backdrop-blur-lg text-white py-16">
+          <div className="container mx-auto px-4">
+            <div className="grid md:grid-cols-4 gap-8">
+              <div className="col-span-2">
+                <img src={pecuariaLogo} alt="Pecuária+" className="h-16 w-auto mb-6 brightness-0 invert" />
+                <p className="text-white/80 leading-relaxed mb-6">
+                  {currentContent.footer.description}
+                </p>
+                <div className="flex space-x-4">
+                  <a href="#" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                    <Facebook size={18} />
+                  </a>
+                  <a href="#" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                    <Twitter size={18} />
+                  </a>
+                  <a href="#" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                    <Instagram size={18} />
+                  </a>
+                  <a href="#" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                    <Youtube size={18} />
+                  </a>
+                  <a href="#" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                    <Linkedin size={18} />
+                  </a>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-xl font-bold mb-6">{currentContent.footer.links}</h4>
+                <div className="space-y-3">
+                  <button onClick={() => scrollToSection('about')} className="block text-white/80 hover:text-white transition-colors">
+                    Sobre o Projeto
+                  </button>
+                  <button onClick={() => scrollToSection('practices')} className="block text-white/80 hover:text-white transition-colors">
+                    Práticas Sustentáveis
+                  </button>
+                  <button onClick={() => scrollToSection('publications')} className="block text-white/80 hover:text-white transition-colors">
+                    Publicações
+                  </button>
+                  <button onClick={() => scrollToSection('contact')} className="block text-white/80 hover:text-white transition-colors">
+                    Contato
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-xl font-bold mb-6">Rioterra</h4>
+                <div className="space-y-3 text-white/80">
+                  <p>Porto Velho - RO</p>
+                  <p>Brasil</p>
+                  <p className="text-sm">rioterra@rioterra.org.br</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="mt-12 flex justify-center">
+              <img
+                src={rubricaImagem}
+                alt="Rubrica do Projeto Pecuária+"
+                className="max-w-full h-auto w-[min(100%,48rem)]"
+              />
+            </div>
+
+            <div className="border-t border-white/20 mt-12 pt-8 text-center">
+              <p className="text-white/60">
+                {currentContent.footer.rights}
+              </p>
+            </div>
+          </div>
+        </footer>
+      </div>
     </div>
   );
 }
