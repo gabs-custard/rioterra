@@ -261,19 +261,6 @@ html {
   overflow-x: hidden;
 }
 
-/* Estilo para contadores */
-.counter {
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--green-primary);
-}
-
-@media (max-width: 768px) {
-  .counter {
-    font-size: 2rem;
-  }
-}
-
 @media (max-width: 600px) {
   html, body {
     overflow-x: hidden;
