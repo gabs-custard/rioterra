@@ -27,7 +27,7 @@ import './App.css';
 import pecuariaLogo from './assets/pecuaria_logo.svg';
 import heroImage from './assets/banner_pecumais4.webp';
 import sustainableImage from './assets/xcXwS7plUGet.jpg';
-import rubricaImagem from './assets/rubrica.svg';
+import rubricaImagem from './assets/rubricaprojeto.jpeg';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
