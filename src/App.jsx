@@ -364,6 +364,36 @@ function App() {
 
   const currentContent = content[language];
 
+  const interactiveMotion = {
+    whileHover: { scale: 1.05 },
+    whileTap: { scale: 0.97 },
+    transition: { type: 'spring', stiffness: 400, damping: 25 }
+  };
+
+  const navMotion = {
+    whileHover: { scale: 1.05 },
+    whileTap: { scale: 0.92 },
+    transition: { type: 'spring', stiffness: 500, damping: 30 }
+  };
+
+  const cardHover = {
+    whileHover: { y: -10, scale: 1.01 },
+    transition: { type: 'spring', stiffness: 250, damping: 18 }
+  };
+
+  const objectiveContainerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.18, delayChildren: 0.1 }
+    }
+  };
+
+  const objectiveItemVariants = {
+    hidden: { opacity: 0, x: -24 },
+    show: { opacity: 1, x: 0 }
+  };
+
   return (
     <div className="min-h-screen bg-white overflow-x-hidden max-w-[100vw]">
       {/* Navegação */}
@@ -376,55 +406,101 @@ function App() {
             
             {/* Menu Desktop */}
             <div className="hidden lg:flex items-center space-x-8">
-              <button onClick={() => scrollToSection('home')} className="text-gray-700 hover:text-green-primary transition-colors">
+              <motion.button
+                {...navMotion}
+                type="button"
+                onClick={() => scrollToSection('home')}
+                className="text-gray-700 hover:text-green-primary transition-colors"
+              >
                 {currentContent.nav.home}
-              </button>
-              <button onClick={() => scrollToSection('why')} className="text-gray-700 hover:text-green-primary transition-colors">
+              </motion.button>
+              <motion.button
+                {...navMotion}
+                type="button"
+                onClick={() => scrollToSection('why')}
+                className="text-gray-700 hover:text-green-primary transition-colors"
+              >
                 {currentContent.nav.why}
-              </button>
-              <button onClick={() => scrollToSection('about')} className="text-gray-700 hover:text-green-primary transition-colors">
+              </motion.button>
+              <motion.button
+                {...navMotion}
+                type="button"
+                onClick={() => scrollToSection('about')}
+                className="text-gray-700 hover:text-green-primary transition-colors"
+              >
                 {currentContent.nav.about}
-              </button>
-              <button onClick={() => scrollToSection('practices')} className="text-gray-700 hover:text-green-primary transition-colors">
+              </motion.button>
+              <motion.button
+                {...navMotion}
+                type="button"
+                onClick={() => scrollToSection('practices')}
+                className="text-gray-700 hover:text-green-primary transition-colors"
+              >
                 {currentContent.nav.practices}
-              </button>
-              <button onClick={() => scrollToSection('videos')} className="text-gray-700 hover:text-green-primary transition-colors">
+              </motion.button>
+              <motion.button
+                {...navMotion}
+                type="button"
+                onClick={() => scrollToSection('videos')}
+                className="text-gray-700 hover:text-green-primary transition-colors"
+              >
                 {currentContent.nav.videos}
-              </button>
-              <button onClick={() => scrollToSection('publications')} className="text-gray-700 hover:text-green-primary transition-colors">
+              </motion.button>
+              <motion.button
+                {...navMotion}
+                type="button"
+                onClick={() => scrollToSection('publications')}
+                className="text-gray-700 hover:text-green-primary transition-colors"
+              >
                 {currentContent.nav.publications}
-              </button>
-              <button onClick={() => scrollToSection('chatbot')} className="text-gray-700 hover:text-green-primary transition-colors">
+              </motion.button>
+              <motion.button
+                {...navMotion}
+                type="button"
+                onClick={() => scrollToSection('chatbot')}
+                className="text-gray-700 hover:text-green-primary transition-colors"
+              >
                 {currentContent.nav.chatbot}
-              </button>
-              <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-green-primary transition-colors">
+              </motion.button>
+              <motion.button
+                {...navMotion}
+                type="button"
+                onClick={() => scrollToSection('contact')}
+                className="text-gray-700 hover:text-green-primary transition-colors"
+              >
                 {currentContent.nav.contact}
-              </button>
-              
+              </motion.button>
+
               {/* Seletor de idioma */}
               <div className="flex items-center space-x-2">
-                <button 
-                  onClick={() => setLanguage('pt')} 
+                <motion.button
+                  {...navMotion}
+                  type="button"
+                  onClick={() => setLanguage('pt')}
                   className={`px-2 py-1 rounded ${language === 'pt' ? 'bg-green-primary text-white' : 'text-gray-700'}`}
                 >
                   PT
-                </button>
-                <button 
-                  onClick={() => setLanguage('en')} 
+                </motion.button>
+                <motion.button
+                  {...navMotion}
+                  type="button"
+                  onClick={() => setLanguage('en')}
                   className={`px-2 py-1 rounded ${language === 'en' ? 'bg-green-primary text-white' : 'text-gray-700'}`}
                 >
                   EN
-                </button>
+                </motion.button>
               </div>
             </div>
 
             {/* Menu Mobile */}
-            <button 
+            <motion.button
+              {...navMotion}
+              type="button"
               className="lg:hidden"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            </motion.button>
           </div>
 
           {/* Menu Mobile Expandido */}
@@ -435,43 +511,87 @@ function App() {
               className="lg:hidden mt-4 pb-4 border-t border-gray-200 max-w-full overflow-x-hidden"
             >
               <div className="flex flex-col space-y-4 pt-4 w-full">
-                <button onClick={() => scrollToSection('home')} className="text-left text-gray-700 hover:text-green-primary">
+                <motion.button
+                  {...navMotion}
+                  type="button"
+                  onClick={() => scrollToSection('home')}
+                  className="text-left text-gray-700 hover:text-green-primary"
+                >
                   {currentContent.nav.home}
-                </button>
-                <button onClick={() => scrollToSection('why')} className="text-left text-gray-700 hover:text-green-primary">
+                </motion.button>
+                <motion.button
+                  {...navMotion}
+                  type="button"
+                  onClick={() => scrollToSection('why')}
+                  className="text-left text-gray-700 hover:text-green-primary"
+                >
                   {currentContent.nav.why}
-                </button>
-                <button onClick={() => scrollToSection('about')} className="text-left text-gray-700 hover:text-green-primary">
+                </motion.button>
+                <motion.button
+                  {...navMotion}
+                  type="button"
+                  onClick={() => scrollToSection('about')}
+                  className="text-left text-gray-700 hover:text-green-primary"
+                >
                   {currentContent.nav.about}
-                </button>
-                <button onClick={() => scrollToSection('practices')} className="text-left text-gray-700 hover:text-green-primary">
+                </motion.button>
+                <motion.button
+                  {...navMotion}
+                  type="button"
+                  onClick={() => scrollToSection('practices')}
+                  className="text-left text-gray-700 hover:text-green-primary"
+                >
                   {currentContent.nav.practices}
-                </button>
-                <button onClick={() => scrollToSection('videos')} className="text-left text-gray-700 hover:text-green-primary">
+                </motion.button>
+                <motion.button
+                  {...navMotion}
+                  type="button"
+                  onClick={() => scrollToSection('videos')}
+                  className="text-left text-gray-700 hover:text-green-primary"
+                >
                   {currentContent.nav.videos}
-                </button>
-                <button onClick={() => scrollToSection('publications')} className="text-left text-gray-700 hover:text-green-primary">
+                </motion.button>
+                <motion.button
+                  {...navMotion}
+                  type="button"
+                  onClick={() => scrollToSection('publications')}
+                  className="text-left text-gray-700 hover:text-green-primary"
+                >
                   {currentContent.nav.publications}
-                </button>
-                <button onClick={() => scrollToSection('chatbot')} className="text-left text-gray-700 hover:text-green-primary">
+                </motion.button>
+                <motion.button
+                  {...navMotion}
+                  type="button"
+                  onClick={() => scrollToSection('chatbot')}
+                  className="text-left text-gray-700 hover:text-green-primary"
+                >
                   {currentContent.nav.chatbot}
-                </button>
-                <button onClick={() => scrollToSection('contact')} className="text-left text-gray-700 hover:text-green-primary">
+                </motion.button>
+                <motion.button
+                  {...navMotion}
+                  type="button"
+                  onClick={() => scrollToSection('contact')}
+                  className="text-left text-gray-700 hover:text-green-primary"
+                >
                   {currentContent.nav.contact}
-                </button>
+                </motion.button>
                 <div className="flex space-x-2 pt-2">
-                  <button 
-                    onClick={() => setLanguage('pt')} 
+                  <motion.button
+                    {...navMotion}
+                    type="button"
+                    onClick={() => setLanguage('pt')}
                     className={`px-3 py-1 rounded ${language === 'pt' ? 'bg-green-primary text-white' : 'text-gray-700 border'}`}
                   >
                     PT
-                  </button>
-                  <button 
-                    onClick={() => setLanguage('en')} 
+                  </motion.button>
+                  <motion.button
+                    {...navMotion}
+                    type="button"
+                    onClick={() => setLanguage('en')}
                     className={`px-3 py-1 rounded ${language === 'en' ? 'bg-green-primary text-white' : 'text-gray-700 border'}`}
                   >
                     EN
-                  </button>
+                  </motion.button>
                 </div>
               </div>
             </motion.div>
@@ -551,20 +671,24 @@ function App() {
                 subtitleClassName="mb-8 leading-relaxed"
               />
 
-              <div className="space-y-4 mb-8">
+              <motion.div
+                className="space-y-4 mb-8"
+                variants={objectiveContainerVariants}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.4 }}
+              >
                 {currentContent.about.objectives.map((objective, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    variants={objectiveItemVariants}
                     className="flex items-center space-x-3"
                   >
                     <div className="w-2 h-2 bg-green-primary rounded-full"></div>
                     <span className="text-gray-700">{objective}</span>
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
               
               <div className="bg-green-light p-6 rounded-xl border-l-4 border-green-secondary">
                 <p className="text-gray-700 font-medium">
@@ -654,6 +778,7 @@ function App() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
+                {...cardHover}
               >
                 <Card className="glass-card p-8 flex flex-col h-full">
                   <div className="flex items-center justify-between mb-4">
@@ -669,12 +794,14 @@ function App() {
                     {publication.description}
                   </p>
                   <div className="mt-auto">
-                    <button
+                    <motion.button
+                      {...interactiveMotion}
+                      type="button"
                       onClick={() => handleDownload(publication.link)}
                       className="btn-primary w-full"
                     >
                       Baixar Material
-                    </button>
+                    </motion.button>
                   </div>
                 </Card>
               </motion.div>
@@ -702,13 +829,15 @@ function App() {
                 {currentContent.chatbot.description}
               </p>
 
-              <button
+              <motion.button
+                {...interactiveMotion}
+                type="button"
                 onClick={handleChatbotClick}
                 className="btn-primary text-xl px-12 py-6 inline-flex items-center space-x-3"
               >
                 <MessageCircle size={24} />
                 <span>{currentContent.chatbot.cta}</span>
-              </button>
+              </motion.button>
             </motion.div>
           </div>
         </div>
@@ -726,39 +855,79 @@ function App() {
                 {currentContent.footer.description}
               </p>
               <div className="flex space-x-4">
-                <a href="#" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                <motion.a
+                  {...interactiveMotion}
+                  href="#"
+                  className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                >
                   <Facebook size={18} />
-                </a>
-                <a href="#" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                </motion.a>
+                <motion.a
+                  {...interactiveMotion}
+                  href="#"
+                  className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                >
                   <Twitter size={18} />
-                </a>
-                <a href="#" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                </motion.a>
+                <motion.a
+                  {...interactiveMotion}
+                  href="#"
+                  className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                >
                   <Instagram size={18} />
-                </a>
-                <a href="#" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                </motion.a>
+                <motion.a
+                  {...interactiveMotion}
+                  href="#"
+                  className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                >
                   <Youtube size={18} />
-                </a>
-                <a href="#" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                </motion.a>
+                <motion.a
+                  {...interactiveMotion}
+                  href="#"
+                  className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                >
                   <Linkedin size={18} />
-                </a>
+                </motion.a>
               </div>
             </div>
             
             <div>
               <h4 className="text-xl font-bold mb-6">{currentContent.footer.links}</h4>
               <div className="space-y-3">
-                <button onClick={() => scrollToSection('about')} className="block text-white/80 hover:text-white transition-colors">
+                <motion.button
+                  {...navMotion}
+                  type="button"
+                  onClick={() => scrollToSection('about')}
+                  className="block text-white/80 hover:text-white transition-colors"
+                >
                   Sobre o Projeto
-                </button>
-                <button onClick={() => scrollToSection('practices')} className="block text-white/80 hover:text-white transition-colors">
+                </motion.button>
+                <motion.button
+                  {...navMotion}
+                  type="button"
+                  onClick={() => scrollToSection('practices')}
+                  className="block text-white/80 hover:text-white transition-colors"
+                >
                   Práticas Sustentáveis
-                </button>
-                <button onClick={() => scrollToSection('publications')} className="block text-white/80 hover:text-white transition-colors">
+                </motion.button>
+                <motion.button
+                  {...navMotion}
+                  type="button"
+                  onClick={() => scrollToSection('publications')}
+                  className="block text-white/80 hover:text-white transition-colors"
+                >
                   Publicações
-                </button>
-                <button onClick={() => scrollToSection('contact')} className="block text-white/80 hover:text-white transition-colors">
+                </motion.button>
+                <motion.button
+                  {...navMotion}
+                  type="button"
+                  onClick={() => scrollToSection('contact')}
+                  className="block text-white/80 hover:text-white transition-colors"
+                >
                   Contato
-                </button>
+                </motion.button>
               </div>
             </div>
             
