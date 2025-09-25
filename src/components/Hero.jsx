@@ -1,13 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
+import HeroGlobe from './HeroGlobe';
 
 const Hero = ({ content, backgroundImage, onPrimaryClick, onSecondaryClick }) => (
   <section id="home" className="hero-bg min-h-screen flex items-center relative overflow-hidden">
-    <div className="absolute inset-0 bg-black bg-opacity-40" />
     <div className="absolute inset-0">
-      <img src={backgroundImage} alt="Pecuária Sustentável" className="w-full h-full object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-r from-green-primary/80 to-green-secondary/60" />
+      <img
+        src={backgroundImage}
+        alt="Pecuária Sustentável"
+        className="w-full h-full object-cover opacity-40"
+        loading="lazy"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/80 via-green-900/70 to-emerald-700/40 mix-blend-multiply" />
     </div>
+
+    <HeroGlobe />
 
     <div className="container mx-auto px-4 relative z-10">
       <div className="max-w-4xl">
