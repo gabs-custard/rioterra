@@ -37,6 +37,18 @@ const HeroLandscape = () => (
           <stop offset="0%" stopColor="rgba(255,255,255,0.18)" />
           <stop offset="100%" stopColor="rgba(255,255,255,0.05)" />
         </linearGradient>
+        <linearGradient id="treeTrunk" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#3f2f1e" />
+          <stop offset="100%" stopColor="#1f1b16" />
+        </linearGradient>
+        <linearGradient id="treeFoliage" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#2f855a" />
+          <stop offset="100%" stopColor="#0f5132" />
+        </linearGradient>
+        <linearGradient id="cowBody" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#fefefe" />
+          <stop offset="100%" stopColor="#e2e8f0" />
+        </linearGradient>
       </defs>
 
       <rect width="1440" height="720" fill="url(#skyGradient)" />
@@ -116,6 +128,77 @@ const HeroLandscape = () => (
           fill="#e0f2fe"
           fillOpacity="0.3"
         />
+      </MotionGroup>
+
+      <g opacity="0.7">
+        {[120, 320, 520, 940, 1180, 1340].map((x) => (
+          <g key={`tree-back-${x}`} transform={`translate(${x} 430)`}>
+            <rect x="-6" y="10" width="12" height="60" rx="3" fill="url(#treeTrunk)" />
+            <path
+              d="M0 -40 C -35 -10 -20 20 0 30 C 20 20 35 -10 0 -40 Z"
+              fill="url(#treeFoliage)"
+              opacity="0.9"
+            />
+            <path
+              d="M0 -20 C -28 0 -18 25 0 30 C 18 25 28 0 0 -20 Z"
+              fill="#1f8f51"
+              opacity="0.8"
+            />
+          </g>
+        ))}
+      </g>
+
+      <g opacity="0.9">
+        {[240, 420, 780, 1030].map((x) => (
+          <g key={`tree-front-${x}`} transform={`translate(${x} 500)`}>
+            <rect x="-8" y="20" width="16" height="90" rx="4" fill="url(#treeTrunk)" />
+            <path
+              d="M0 -50 C -45 -15 -25 25 0 40 C 25 25 45 -15 0 -50 Z"
+              fill="url(#treeFoliage)"
+            />
+            <path
+              d="M0 -15 C -30 5 -20 30 0 35 C 20 30 30 5 0 -15 Z"
+              fill="#1c8d54"
+              opacity="0.85"
+            />
+          </g>
+        ))}
+      </g>
+
+      <MotionGroup
+        initial={{ y: 0 }}
+        animate={{ y: [0, -6, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        <g transform="translate(620 520)">
+          <ellipse cx="0" cy="28" rx="60" ry="18" fill="rgba(15, 118, 110, 0.35)" />
+          <path
+            d="M-50 0 C -40 -35 -10 -45 20 -40 C 50 -35 70 -15 68 10 C 65 35 40 45 10 40 C -10 36 -45 25 -50 0 Z"
+            fill="url(#cowBody)"
+          />
+          <path d="M62 5 C 80 2 85 15 78 28 C 70 38 50 35 52 18 Z" fill="#0f172a" opacity="0.8" />
+          <circle cx="65" cy="13" r="4" fill="#1e293b" />
+          <rect x="-42" y="22" width="8" height="32" rx="3" fill="#0f172a" />
+          <rect x="-8" y="26" width="8" height="30" rx="3" fill="#0f172a" />
+          <rect x="22" y="28" width="8" height="26" rx="3" fill="#0f172a" />
+          <rect x="48" y="24" width="8" height="28" rx="3" fill="#0f172a" />
+          <path d="M-60 2 C -70 -6 -80 -10 -78 5 C -75 25 -55 28 -45 18 Z" fill="#0f172a" />
+          <path d="M-12 -32 C 6 -40 18 -28 12 -10 C 8 -2 -12 8 -28 2 C -40 -2 -28 -20 -12 -32 Z" fill="#0f172a" opacity="0.12" />
+        </g>
+        <g transform="translate(940 550)">
+          <ellipse cx="0" cy="24" rx="48" ry="14" fill="rgba(13, 148, 136, 0.3)" />
+          <path
+            d="M-38 0 C -30 -28 0 -34 24 -30 C 48 -26 64 -10 60 10 C 56 28 36 34 10 30 C -6 28 -36 18 -38 0 Z"
+            fill="url(#cowBody)"
+          />
+          <path d="M54 4 C 68 2 72 14 66 24 C 60 32 44 30 46 16 Z" fill="#0f172a" opacity="0.85" />
+          <circle cx="56" cy="11" r="3.6" fill="#1e293b" />
+          <rect x="-34" y="18" width="7" height="24" rx="3" fill="#0f172a" />
+          <rect x="-10" y="20" width="7" height="22" rx="3" fill="#0f172a" />
+          <rect x="14" y="20" width="7" height="22" rx="3" fill="#0f172a" />
+          <rect x="32" y="18" width="7" height="24" rx="3" fill="#0f172a" />
+          <path d="M-46 1 C -54 -5 -62 -8 -60 6 C -58 22 -44 24 -34 16 Z" fill="#0f172a" />
+        </g>
       </MotionGroup>
     </svg>
   </div>
