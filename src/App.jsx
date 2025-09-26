@@ -948,7 +948,7 @@ function App() {
         <div className="absolute right-0 top-1/2 transform -translate-y-1/2 pointer-events-none">
           <img 
             src={assistantAvatar} 
-            className="w-64 h-64 lg:w-80 lg:h-80 opacity-80"
+            className="w-64 h-64 lg:w-80 lg:h-80 opacity-50"
             style={{
               filter: 'blur(1px)',
               background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(147, 51, 234, 0.05))'
