@@ -25,7 +25,7 @@ const SectionTitle = ({
     .join(' ');
   const subtitleClasses = [
     'text-xl',
-    'text-gray-600',
+    'text-black/70',
     align === 'center' ? 'max-w-3xl mx-auto' : '',
     subtitleClassName
   ]
