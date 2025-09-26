@@ -182,6 +182,7 @@ const Hero = ({ content, backgroundImage, onPrimaryClick, onSecondaryClick }) =>
         </motion.span>
 
         <motion.h1
+
           className="text-balance text-5xl font-extrabold leading-[1.05] text-white drop-shadow-[0_16px_40px_rgba(0,0,0,0.55)] sm:text-6xl lg:text-7xl"
           variants={childVariants}
         >
@@ -189,6 +190,7 @@ const Hero = ({ content, backgroundImage, onPrimaryClick, onSecondaryClick }) =>
         </motion.h1>
 
         <motion.p
+
           className="mt-6 max-w-3xl text-lg text-white/80 sm:text-xl"
           variants={childVariants}
         >
@@ -230,24 +232,6 @@ const Hero = ({ content, backgroundImage, onPrimaryClick, onSecondaryClick }) =>
               {content.cta2}
             </motion.button>
           )}
-        </motion.div>
-
-        <motion.div
-          className="mt-14 grid w-full gap-6 text-left sm:grid-cols-2"
-          variants={childVariants}
-        >
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
-            <p className="text-sm uppercase tracking-[0.24em] text-[#bcdb2e]/80">Monitoramento inteligente</p>
-            <p className="mt-3 text-lg font-semibold text-white">
-              Sensoriamento remoto e IA para decisões baseadas em dados, preservando até 40% mais floresta.
-            </p>
-          </div>
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
-            <p className="text-sm uppercase tracking-[0.24em] text-[#bcdb2e]/80">Impacto socioambiental</p>
-            <p className="mt-3 text-lg font-semibold text-white">
-              Produtividade regenerativa que conecta comunidades amazônicas a mercados sustentáveis globais.
-            </p>
-          </div>
         </motion.div>
       </motion.div>
     </section>
