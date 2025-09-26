@@ -115,7 +115,7 @@
 }
 
 .text-green-primary {
-  color: var(--green-primary);
+  color: var(--green-secondary);
 }
 
 .text-green-secondary {
@@ -247,7 +247,7 @@ html {
 
 /* Estilo para botões */
 .btn-primary {
-  background: linear-gradient(135deg, var(--green-primary) 0%, var(--green-secondary) 100%);
+  background: linear-gradient(135deg, var(--green-secondary) 0%, var(--green-secondary) 100%);
   color: white;
   padding: 0.75rem 2rem;
   border-radius: 0.5rem;
@@ -285,7 +285,7 @@ html {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(7, 69, 54, 0.82);
+  background: transparent;
   backdrop-filter: blur(18px);
   border-bottom: 1px solid rgba(188, 219, 46, 0.35);
   box-shadow: 0 32px 60px rgba(7, 69, 54, 0.45);

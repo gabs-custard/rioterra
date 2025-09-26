@@ -659,7 +659,7 @@ function App() {
 
       {/* Sobre o Projeto */}
       <section id="about" className="section-padding">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 ">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -687,7 +687,7 @@ function App() {
                     variants={objectiveItemVariants}
                     className="flex items-center space-x-3"
                   >
-                    <div className="w-2 h-2 bg-green-primary rounded-full"></div>
+                    <div className="w-2 h-2 bg-green-secondary rounded-full"></div>
                     <span className="text-[#074536]">{objective}</span>
                   </motion.div>
                 ))}
@@ -738,8 +738,8 @@ function App() {
             />
           </motion.div>
 
-          <div className="bg-gray-light rounded-2xl p-16 text-center">
-            <Play size={64} className="text-green-primary mx-auto mb-6" />
+          <div className="bg-gray-light rounded-2xl p-16 text-center text-green-secondary">
+            <Play size={64} className="text-green-secondary mx-auto mb-6" />
             <p className="text-2xl font-semibold text-[#074536]">
               {currentContent.videos.placeholder}
             </p>
