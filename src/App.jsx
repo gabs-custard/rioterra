@@ -605,7 +605,7 @@ function App() {
       <Hero
         content={currentContent.hero}
         backgroundImage={heroImage}
-        onPrimaryClick={() => scrollToSection('about')}
+        onPrimaryClick={() => scrollToSection('why')}
         onSecondaryClick={() => scrollToSection('contact')}
       />
 

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
 import heroVideo from '../assets/hero.mp4';
 
 const containerVariants = {
-  hidden: { opacity: 0, y: 32 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
@@ -230,24 +230,6 @@ const Hero = ({ content, backgroundImage, onPrimaryClick, onSecondaryClick }) =>
               {content.cta2}
             </motion.button>
           )}
-        </motion.div>
-
-        <motion.div
-          className="mt-14 grid w-full gap-6 text-left sm:grid-cols-2"
-          variants={childVariants}
-        >
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
-            <p className="text-sm uppercase tracking-[0.24em] text-[#00BFFF]/80">Monitoramento inteligente</p>
-            <p className="mt-3 text-lg font-semibold text-[#F5F5F5]">
-              Sensoriamento remoto e IA para decisões baseadas em dados, preservando até 40% mais floresta.
-            </p>
-          </div>
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
-            <p className="text-sm uppercase tracking-[0.24em] text-[#00BFFF]/80">Impacto socioambiental</p>
-            <p className="mt-3 text-lg font-semibold text-[#F5F5F5]">
-              Produtividade regenerativa que conecta comunidades amazônicas a mercados sustentáveis globais.
-            </p>
-          </div>
         </motion.div>
       </motion.div>
     </section>
