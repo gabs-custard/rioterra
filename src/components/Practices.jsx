@@ -58,15 +58,10 @@ const Practices = ({ title, subtitle, items }) => {
                 <div className="absolute -top-24 left-1/2 h-40 w-40 -translate-x-1/2 rounded-full bg-green-light/30 blur-3xl opacity-60 transition duration-500 group-hover:opacity-80" />
                 <div className="relative flex h-full flex-col">
                   <div className="flex items-start justify-between">
-                    <div>
-                      <span className="text-xs uppercase tracking-[0.4em] text-green-light/80">
-                        Prática {String(index + 1).padStart(2, '0')}
-                      </span>
-                      <h3 className="mt-4 text-2xl font-semibold text-white md:text-3xl">
-                        {practice.title}
-                      </h3>
-                    </div>
-                    <span className="text-5xl font-bold text-white/10 leading-none">
+                    <h3 className="max-w-[75%] text-2xl font-semibold text-white md:text-3xl">
+                      {practice.title}
+                    </h3>
+                    <span className="text-5xl font-bold text-white/10 leading-tight">
                       {String(index + 1).padStart(2, '0')}
                     </span>
                   </div>
