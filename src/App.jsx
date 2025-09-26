@@ -475,7 +475,7 @@ function App() {
   };
 
   const navLinkClasses =
-    'font-semibold tracking-tight text-white hover:text-[#ffd301] transition-colors';
+    'nav-link font-semibold tracking-tight text-white hover:text-[#ffd301] transition-colors';
 
   const cardHover = {
     whileHover: { y: -10, scale: 1.01 },

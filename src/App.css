@@ -295,6 +295,10 @@ html {
   overflow-x: hidden;
 }
 
+.nav-link {
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
 @media (max-width: 600px) {
   html, body {
     overflow-x: hidden;
