@@ -744,22 +744,22 @@ function App() {
 
       {/* Sobre o Projeto */}
       <section id="about" className="section-padding">
-        <div className="container mx-auto px-4">
+        <div className="mx-auto flex max-w-6xl flex-col items-center px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-3xl mb-12"
+            className="max-w-3xl mb-12 text-center"
           >
             <SectionTitle
               title={currentContent.about.title}
               subtitle={currentContent.about.subtitle}
-              align="left"
+              align="center"
               subtitleClassName="mb-0 leading-relaxed"
             />
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-8 auto-rows-[minmax(180px,1fr)] gap-6">
+          <div className="grid w-full grid-cols-1 auto-rows-[minmax(180px,1fr)] gap-6 md:grid-cols-6 lg:grid-cols-8">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -773,7 +773,7 @@ function App() {
                 loading="lazy"
               />
               {currentContent.about.hero.caption && (
-                <div className="absolute inset-x-6 bottom-6 rounded-2xl bg-white/85 p-4 backdrop-blur">
+                <div className="absolute inset-x-6 bottom-6 rounded-2xl border border-white/30 bg-white/15 p-4 backdrop-blur-lg">
                   <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#0A4738]">
                     Pecuária+
                   </p>
@@ -809,10 +809,10 @@ function App() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="group relative overflow-hidden rounded-3xl bg-[#FFE28A] p-8 shadow-lg md:col-span-6 lg:col-span-3 lg:row-span-2"
+              className="group relative overflow-hidden rounded-3xl bg-[#FFE28A] p-6 shadow-lg md:col-span-6 lg:col-span-3"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-[#F9C642]/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-              <div className="relative flex h-full flex-col justify-between gap-4">
+              <div className="relative flex flex-col gap-6 text-left">
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#A45A00]">
                     {currentContent.about.innovation.title}
