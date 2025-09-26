@@ -58,7 +58,7 @@ const Practices = ({ title, subtitle, items }) => {
                 <div className="absolute -top-24 left-1/2 h-40 w-40 -translate-x-1/2 rounded-full bg-green-light/30 blur-3xl opacity-60 transition duration-500 group-hover:opacity-80" />
                 <div className="relative flex h-full flex-col">
                   <div className="flex items-start justify-between">
-                    <h3 className="max-w-[75%] text-2xl font-semibold text-white md:text-3xl">
+                    <h3 className="max-w-[75%] text-2xl font-semibold text-white md:text-2xl">
                       {practice.title}
                     </h3>
                     <span className="text-5xl font-bold text-white/10 leading-tight">
