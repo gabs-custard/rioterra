@@ -1,34 +1,64 @@
-import React, { Suspense, useRef, useMemo, useState, useEffect } from 'react';
+import React, { Suspense, useRef, useMemo, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, useGLTF, Environment } from '@react-three/drei';
-import { BufferGeometry, Material, Mesh } from 'three';
+import { OrbitControls, Environment } from '@react-three/drei';
 
-// This component loads and displays the 3D model.
-// It uses useGLTF for efficient loading and is wrapped in Suspense.
-const Model = ({ glowIntensity }) => {
-  // useGLTF loads the model. The path is relative to the public directory.
-  const { scene } = useGLTF('/model.glb');
-  const modelRef = useRef();
+// This component serves as a placeholder for a real 3D model.
+// It displays a rotating green cube and implements the interactive glow effect.
+const PlaceholderModel = ({ glowIntensity }) => {
+  const meshRef = useRef(null);
 
-  // This effect will run when the glowIntensity changes.
-  // It traverses the model and updates the emissive properties of its materials.
-  useEffect(() => {
-    if (!modelRef.current) return;
+  // Rotate the box on each frame for some subtle animation.
+  useFrame(() => {
+    if (meshRef.current) {
+      meshRef.current.rotation.x += 0.001;
+      meshRef.current.rotation.y += 0.001;
+    }
+  });
 
-    modelRef.current.traverse((child) => {
-      if (child.isMesh && child.material) {
-        // We clone the material to avoid altering the original cache
-        child.material = child.material.clone();
-        child.material.emissiveIntensity = glowIntensity;
-        child.material.emissive.setHex(0x00BFFF); // Set emissive color to cyan
-      }
-    });
-  }, [glowIntensity]);
-
-  // The primitive object is a flexible way to render complex scenes from useGLTF.
-  // castShadow and receiveShadow are enabled for all meshes in the model.
-  return <primitive object={scene} ref={modelRef} scale={1.5} castShadow receiveShadow />;
+  // The material's emissive color and intensity are updated based on the glowIntensity prop.
+  // This creates the visual "glow" effect when particles hit the ground.
+  return (
+    <mesh ref={meshRef} castShadow receiveShadow>
+      <boxGeometry args={[2, 2, 2]} />
+      <meshStandardMaterial
+        color="#1A4D2E"
+        roughness={0.5}
+        emissive="#00BFFF" // The color of the glow
+        emissiveIntensity={glowIntensity} // The strength of the glow
+      />
+    </mesh>
+  );
 };
+
+/*
+  TO IMPLEMENT A REAL .GLB MODEL:
+  1. Add the .glb file to the `public/` directory.
+  2. Uncomment the `useGLTF` import from `@react-three/drei`.
+  3. Replace the `PlaceholderModel` component with this `Model` component:
+
+  import { useGLTF } from '@react-three/drei';
+
+  const Model = ({ glowIntensity }) => {
+    const { scene } = useGLTF('/your-model-name.glb');
+    const modelRef = useRef();
+
+    useEffect(() => {
+      if (!modelRef.current) return;
+      modelRef.current.traverse((child) => {
+        if (child.isMesh && child.material) {
+          child.material = child.material.clone();
+          child.material.emissiveIntensity = glowIntensity;
+          child.material.emissive.setHex(0x00BFFF);
+        }
+      });
+    }, [glowIntensity]);
+
+    return <primitive object={scene} ref={modelRef} scale={1.5} castShadow receiveShadow />;
+  };
+
+  4. In the `NewThreeScene` component, replace `<PlaceholderModel ... />` with `<Model ... />`.
+  5. Remember to preload your model with `useGLTF.preload('/your-model-name.glb');`
+*/
 
 // This component creates the particle stream effect.
 const Particles = ({ count = 200, onParticleHit }) => {
@@ -37,9 +67,9 @@ const Particles = ({ count = 200, onParticleHit }) => {
   const initialPositions = useMemo(() => {
     const positions = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 10; // x
-      positions[i * 3 + 1] = Math.random() * 10;      // y
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 10; // z
+      positions[i * 3] = (Math.random() - 0.5) * 10;
+      positions[i * 3 + 1] = Math.random() * 10;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
     }
     return positions;
   }, [count]);
@@ -48,11 +78,10 @@ const Particles = ({ count = 200, onParticleHit }) => {
     if (meshRef.current) {
       const positions = meshRef.current.geometry.attributes.position.array;
       for (let i = 0; i < count; i++) {
-        positions[i * 3 + 1] -= 1.5 * delta; // Increased speed
-        // When a particle hits the "ground" (y=0), trigger the callback.
+        positions[i * 3 + 1] -= 1.5 * delta;
         if (positions[i * 3 + 1] < 0) {
           onParticleHit();
-          positions[i * 3 + 1] = 10; // Reset to the top
+          positions[i * 3 + 1] = 10;
         }
       }
       meshRef.current.geometry.attributes.position.needsUpdate = true;
@@ -78,16 +107,13 @@ const Particles = ({ count = 200, onParticleHit }) => {
 const NewThreeScene = () => {
   const [glowIntensity, setGlowIntensity] = useState(0);
 
-  // This function is called by the Particles component.
-  // It sets the glow intensity, which then fades out.
   const handleParticleHit = () => {
-    setGlowIntensity(1.5); // Set to a high intensity
+    setGlowIntensity(1.5);
   };
 
-  // useFrame is used here to fade the glow effect over time.
   useFrame((_state, delta) => {
     if (glowIntensity > 0) {
-      setGlowIntensity(prev => Math.max(0, prev - delta * 1.5)); // Fade out
+      setGlowIntensity(prev => Math.max(0, prev - delta * 1.5));
     }
   });
 
@@ -103,15 +129,10 @@ const NewThreeScene = () => {
           position={[5, 10, 7.5]}
           intensity={1.5}
           castShadow
-          shadow-mapSize-width={1024}
-          shadow-mapSize-height={1024}
         />
         <Environment preset="sunset" />
 
-        {/* Pass the glow intensity to the Model */}
-        <Model glowIntensity={glowIntensity} />
-
-        {/* Pass the callback to the Particles */}
+        <PlaceholderModel glowIntensity={glowIntensity} />
         <Particles onParticleHit={handleParticleHit} />
 
         <OrbitControls
@@ -126,8 +147,5 @@ const NewThreeScene = () => {
     </Canvas>
   );
 };
-
-// Preload the model for a smoother loading experience
-useGLTF.preload('/model.glb');
 
 export default NewThreeScene;
