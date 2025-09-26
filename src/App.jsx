@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
 import {
   Leaf,
@@ -16,7 +16,7 @@ import {
   Linkedin
 } from 'lucide-react';
 import './App.css';
-import Hero from './components/Hero';
+import HeroSection from './components/immersive/HeroSection';
 import Practices from './components/Practices';
 import ContactSection from './components/Contact';
 import SectionTitle from './components/SectionTitle';
@@ -363,6 +363,17 @@ function App() {
   };
 
   const currentContent = content[language];
+  const heroNavLinks = useMemo(
+    () => [
+      { label: currentContent.nav.home, href: '#home' },
+      { label: currentContent.nav.why, href: '#why' },
+      { label: currentContent.nav.about, href: '#about' },
+      { label: currentContent.nav.practices, href: '#practices' },
+      { label: currentContent.nav.publications, href: '#publications' },
+      { label: currentContent.nav.contact, href: '#contact' },
+    ],
+    [currentContent.nav]
+  );
 
   const interactiveMotion = {
     whileHover: { scale: 1.05 },
@@ -599,11 +610,21 @@ function App() {
         </div>
       </nav>
 
-      <Hero
-        content={currentContent.hero}
-        backgroundImage={heroImage}
-        onPrimaryClick={() => scrollToSection('about')}
-        onSecondaryClick={() => scrollToSection('contact')}
+      <HeroSection
+        id="home"
+        title={currentContent.hero.title}
+        subtitle={currentContent.hero.subtitle}
+        ctaLabel={currentContent.hero.cta}
+        onCtaClick={() => scrollToSection('about')}
+        onNavigate={(href) => {
+          if (href.startsWith('#')) {
+            scrollToSection(href.replace('#', ''));
+          }
+        }}
+        navLinks={heroNavLinks}
+        logoSrc={pecuariaLogo}
+        logoAlt="Logomarca Pecuária Mais"
+        fallbackImageSrc={heroImage}
       />
 
       {/* Por que Pecuária Sustentável */}
