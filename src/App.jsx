@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import './App.css';
 import Hero from './components/Hero';
+import NewHeroSection from './components/NewHeroSection';
 import Practices from './components/Practices';
 import ContactSection from './components/Contact';
 import SectionTitle from './components/SectionTitle';
@@ -24,7 +25,7 @@ import Card from './components/Card';
 
 // Importar assets
 import pecuariaLogo from './assets/pecuaria_logo.svg';
-import heroImage from './assets/banner_pecumais4.webp';
+// import heroImage from './assets/banner_pecumais4.webp';
 import publiImage from './assets/banner_pecumais.png';
 import sustainableImage from './assets/xcXwS7plUGet.jpg';
 import rubricaImagem from './assets/rubricaprojeto.jpeg';
@@ -599,12 +600,13 @@ function App() {
         </div>
       </nav>
 
-      <Hero
+      <NewHeroSection />
+      {/* <Hero
         content={currentContent.hero}
         backgroundImage={heroImage}
         onPrimaryClick={() => scrollToSection('about')}
         onSecondaryClick={() => scrollToSection('contact')}
-      />
+      /> */}
 
       {/* Por que Pecuária Sustentável */}
       <section id="why" className="section-padding relative overflow-hidden">

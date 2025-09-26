@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom CSS Variables for the new Hero Section, as per the prompt */
+:root {
+  --color-earth-green: #1A4D2E;
+  --color-earth-brown: #4F3422;
+  --color-off-white: #F5F5F5;
+  --color-accent-cyan: #00BFFF;
+}
