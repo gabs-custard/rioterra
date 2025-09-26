@@ -33,6 +33,8 @@ import publiImage from './assets/banner_pecumais.png';
 import aboutHeroImage from './assets/pecuaria_sustentavel_tech.png';
 import rubricaImagem from './assets/rubricaprojeto.jpeg';
 import porqueImage from './assets/porquebg.png';
+import whatsappIcon from './assets/whatsapp.png';
+import assistantAvatar from './assets/leaf-assistant.png';
 
 const AnimatedCounter = ({ value, duration = 2.4, prefix = '', suffix = '', locale = 'pt-BR' }) => {
   const counterRef = useRef(null);
@@ -941,8 +943,20 @@ function App() {
       </section>
 
       {/* Chatbot */}
-      <section id="chatbot" className="section-padding">
-        <div className="container mx-auto px-4">
+   <section id="chatbot" className="section-padding relative overflow-hidden">
+        {/* Mascote como background da seção */}
+        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 pointer-events-none">
+          <img 
+            src={assistantAvatar} 
+            className="w-64 h-64 lg:w-80 lg:h-80 opacity-80"
+            style={{
+              filter: 'blur(1px)',
+              background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(147, 51, 234, 0.05))'
+            }}
+          />
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -957,14 +971,14 @@ function App() {
               <p className="text-lg text-black/70 mb-12 leading-relaxed">
                 {currentContent.chatbot.description}
               </p>
-
+              
               <motion.button
                 {...interactiveMotion}
                 type="button"
                 onClick={handleChatbotClick}
                 className="btn-primary text-xl px-12 py-6 inline-flex items-center space-x-3"
               >
-                <MessageCircle size={24} />
+                <img src={whatsappIcon} className="w-10 h-10 justify-center" />
                 <span>{currentContent.chatbot.cta}</span>
               </motion.button>
             </motion.div>
