@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
+import React, { useState, useEffect, useRef } from 'react';
+import { animate, motion, useInView } from 'framer-motion'; // eslint-disable-line no-unused-vars
 import {
   Leaf,
   TrendingUp,
   Award,
+  Users,
+  BrainCircuit,
+  ShieldCheck,
+  Recycle,
   Play,
   Download,
   MessageCircle,
@@ -26,9 +30,37 @@ import Card from './components/Card';
 import pecuariaLogo from './assets/pecuaria_logo.svg';
 import heroImage from './assets/banner_pecumais4.webp';
 import publiImage from './assets/banner_pecumais.png';
-import sustainableImage from './assets/xcXwS7plUGet.jpg';
+import aboutHeroImage from './assets/pecuaria_sustentavel_tech.jpg';
 import rubricaImagem from './assets/rubricaprojeto.jpeg';
 import porqueImage from './assets/porquebg.png';
+
+const AnimatedCounter = ({ value, duration = 2.4, prefix = '', suffix = '', locale = 'pt-BR' }) => {
+  const counterRef = useRef(null);
+  const isInView = useInView(counterRef, { once: true, amount: 0.5 });
+  const [displayValue, setDisplayValue] = useState(0);
+
+  useEffect(() => {
+    if (!isInView) {
+      return undefined;
+    }
+
+    const controls = animate(0, value, {
+      duration,
+      ease: 'easeOut',
+      onUpdate: (latest) => {
+        setDisplayValue(Math.floor(latest));
+      }
+    });
+
+    return () => controls.stop();
+  }, [isInView, value, duration]);
+
+  return (
+    <span ref={counterRef} className="text-5xl font-black text-[#0A4738]">
+      {`${prefix}${displayValue.toLocaleString(locale)}${suffix}`}
+    </span>
+  );
+};
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -105,14 +137,47 @@ function App() {
       about: {
         title: 'Sobre o Projeto Pecuária+',
         subtitle: 'Uma iniciativa da Rioterra para promover a pecuária sustentável na Amazônia através de inovação, assistência técnica e tecnologia.',
+        hero: {
+          alt: 'Produtor rural utilizando tecnologia no campo amazônico',
+          caption: 'Tecnologia e tradição caminhando juntas na Amazônia'
+        },
         objectives: [
-          'Capacitar produtores rurais em práticas sustentáveis',
-          'Implementar tecnologias de monitoramento e IA',
-          'Promover a regularização ambiental das propriedades',
-          'Desenvolver sistemas agroflorestais integrados',
-          'Conectar produtores a mercados sustentáveis'
+          {
+            icon: Users,
+            title: 'Capacitar produtores rurais',
+            description: 'Formação contínua em gestão, manejo sustentável e uso de dados.'
+          },
+          {
+            icon: BrainCircuit,
+            title: 'Implementar tecnologias de IA',
+            description: 'Soluções inteligentes para monitoramento em tempo real das propriedades.'
+          },
+          {
+            icon: ShieldCheck,
+            title: 'Promover a regularização ambiental',
+            description: 'Apoio técnico para adequação legal e conservação de áreas sensíveis.'
+          },
+          {
+            icon: Recycle,
+            title: 'Desenvolver sistemas agroflorestais',
+            description: 'Integração de produção pecuária com florestas e agricultura regenerativa.'
+          },
+          {
+            icon: TrendingUp,
+            title: 'Conectar a mercados sustentáveis',
+            description: 'Acesso a compradores que valorizam rastreabilidade e baixo impacto.'
+          }
         ],
-        innovation: 'Destaque para inovação com uso de Inteligência Artificial, análise de dados e assistência técnica especializada.'
+        innovation: {
+          title: 'Destaque para inovação',
+          description: 'Uso de Inteligência Artificial, análise de dados e assistência técnica especializada para acelerar a transição para uma pecuária de baixo carbono.',
+          tagline: 'IA • Dados • Assistência Técnica'
+        },
+        metric: {
+          value: 5000,
+          prefix: '+',
+          label: 'Hectares em recuperação com práticas sustentáveis'
+        }
       },
       practices: {
         title: 'Práticas de Pecuária Sustentável',
@@ -249,15 +314,48 @@ function App() {
         title: 'About the Pecuária+ Project',
         subtitle:
           'An initiative by Rioterra to promote sustainable livestock in the Amazon through innovation, technical assistance and technology.',
+        hero: {
+          alt: 'Rural producer smiling while using technology in the field',
+          caption: 'Technology empowering fieldwork in the Amazon'
+        },
         objectives: [
-          'Train rural producers in sustainable practices',
-          'Implement monitoring technologies and AI',
-          'Promote environmental regularization of properties',
-          'Develop integrated agroforestry systems',
-          'Connect producers to sustainable markets'
+          {
+            icon: Users,
+            title: 'Empower rural producers',
+            description: 'Continuous training in management, sustainable practices and data use.'
+          },
+          {
+            icon: BrainCircuit,
+            title: 'Deploy AI technologies',
+            description: 'Intelligent solutions for real-time monitoring of farm operations.'
+          },
+          {
+            icon: ShieldCheck,
+            title: 'Advance environmental compliance',
+            description: 'Technical support for legal alignment and preservation of sensitive areas.'
+          },
+          {
+            icon: Recycle,
+            title: 'Develop integrated agroforestry',
+            description: 'Bringing livestock, forests and regenerative agriculture together.'
+          },
+          {
+            icon: TrendingUp,
+            title: 'Unlock sustainable markets',
+            description: 'Connecting producers with buyers who value traceability and low impact.'
+          }
         ],
-        innovation:
-          'Highlighting innovation through the use of Artificial Intelligence, data analysis and specialized technical assistance.'
+        innovation: {
+          title: 'Innovation highlight',
+          description:
+            'Artificial Intelligence, data analysis and specialized technical support accelerating the shift to low-carbon livestock.',
+          tagline: 'AI • Data • Technical Assistance'
+        },
+        metric: {
+          value: 5000,
+          prefix: '+',
+          label: 'Hectares under ecological restoration'
+        }
       },
       practices: {
         title: 'Sustainable Livestock Practices',
@@ -382,19 +480,6 @@ function App() {
   const cardHover = {
     whileHover: { y: -10, scale: 1.01 },
     transition: { type: 'spring', stiffness: 250, damping: 18 }
-  };
-
-  const objectiveContainerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.18, delayChildren: 0.1 }
-    }
-  };
-
-  const objectiveItemVariants = {
-    hidden: { opacity: 0, x: -24 },
-    show: { opacity: 1, x: 0 }
   };
 
   return (
@@ -659,59 +744,109 @@ function App() {
 
       {/* Sobre o Projeto */}
       <section id="about" className="section-padding">
-        <div className="container mx-auto px-4 ">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="container mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            className="max-w-3xl mb-12"
           >
-              <SectionTitle
-                title={currentContent.about.title}
-                subtitle={currentContent.about.subtitle}
-                align="left"
-                className="mb-2"
-                subtitleClassName="mb-8 leading-relaxed"
-              />
+            <SectionTitle
+              title={currentContent.about.title}
+              subtitle={currentContent.about.subtitle}
+              align="left"
+              subtitleClassName="mb-0 leading-relaxed"
+            />
+          </motion.div>
 
+          <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-8 auto-rows-[minmax(180px,1fr)] gap-6">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="group relative overflow-hidden rounded-3xl md:col-span-6 lg:col-span-5 lg:row-span-2 shadow-xl"
+            >
+              <img
+                src={aboutHeroImage}
+                alt={currentContent.about.hero.alt}
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              {currentContent.about.hero.caption && (
+                <div className="absolute inset-x-6 bottom-6 rounded-2xl bg-white/85 p-4 backdrop-blur">
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#0A4738]">
+                    Pecuária+
+                  </p>
+                  <p className="text-lg font-medium text-[#0A4738]">
+                    {currentContent.about.hero.caption}
+                  </p>
+                </div>
+              )}
+            </motion.div>
+
+            {currentContent.about.objectives.map((objective) => (
               <motion.div
-                className="space-y-4 mb-8"
-                variants={objectiveContainerVariants}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.4 }}
+                key={objective.title}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="group relative overflow-hidden rounded-3xl bg-[#F4F9F7] border border-green-secondary/10 p-6 shadow-sm md:col-span-3 lg:col-span-2"
               >
-                {currentContent.about.objectives.map((objective, index) => (
-                  <motion.div
-                    key={index}
-                    variants={objectiveItemVariants}
-                    className="flex items-center space-x-3"
-                  >
-                    <div className="w-2 h-2 bg-green-secondary rounded-full"></div>
-                    <span className="text-[#074536]">{objective}</span>
-                  </motion.div>
-                ))}
+                <div className="absolute inset-0 bg-gradient-to-br from-green-light/0 via-green-light/0 to-green-light/0 transition-colors duration-500 group-hover:from-green-light/40 group-hover:via-green-light/20 group-hover:to-green-secondary/10"></div>
+                <div className="relative flex h-full flex-col justify-between gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-green-light/60 text-[#0A4738] transition-all duration-500 group-hover:scale-110 group-hover:bg-[#0A4738] group-hover:text-white">
+                    <objective.icon size={26} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-[#0A4738] mb-2">{objective.title}</h3>
+                    <p className="text-sm text-[#14594A] leading-relaxed">{objective.description}</p>
+                  </div>
+                </div>
               </motion.div>
-              
-              <div className="bg-green-light p-6 rounded-xl border-l-4 border-green-secondary">
-                <p className="text-[#074536] font-medium">
-                  {currentContent.about.innovation}
+            ))}
+
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="group relative overflow-hidden rounded-3xl bg-[#FFE28A] p-8 shadow-lg md:col-span-6 lg:col-span-3 lg:row-span-2"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-[#F9C642]/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+              <div className="relative flex h-full flex-col justify-between gap-4">
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#A45A00]">
+                    {currentContent.about.innovation.title}
+                  </p>
+                  <h3 className="text-2xl font-semibold text-[#7A4100] leading-snug">
+                    {currentContent.about.innovation.description}
+                  </h3>
+                </div>
+                <p className="text-sm text-[#A45A00]/80">
+                  {currentContent.about.innovation.tagline}
                 </p>
               </div>
             </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="relative"
-            >
-              <img 
-                src={sustainableImage} 
-                alt="Projeto Sustentável" 
-                className="w-full rounded-2xl shadow-2xl"
-              />
-            </motion.div>
+
+            {currentContent.about.metric && (
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+                className="group relative overflow-hidden rounded-3xl bg-[#E2F2EB] p-8 shadow-md md:col-span-6 lg:col-span-3"
+              >
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/50 via-transparent to-green-light/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+                <div className="relative flex h-full flex-col justify-center gap-2">
+                  <AnimatedCounter
+                    value={currentContent.about.metric.value}
+                    prefix={currentContent.about.metric.prefix}
+                    locale={language === 'pt' ? 'pt-BR' : 'en-US'}
+                  />
+                  <p className="text-base font-medium text-[#14594A]">
+                    {currentContent.about.metric.label}
+                  </p>
+                </div>
+              </motion.div>
+            )}
           </div>
         </div>
       </section>
