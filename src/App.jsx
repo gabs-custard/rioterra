@@ -743,91 +743,103 @@ function App() {
       </section>
 
       {/* Sobre o Projeto */}
-      <section id="about" className="section-padding">
-        <div className="mx-auto flex max-w-6xl flex-col items-center px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl mb-12 text-center"
-          >
-            <SectionTitle
-              title={currentContent.about.title}
-              subtitle={currentContent.about.subtitle}
-              align="center"
-              subtitleClassName="mb-0 leading-relaxed"
-            />
-          </motion.div>
-
-          <div className="grid w-full grid-cols-1 auto-rows-[minmax(180px,1fr)] gap-10 md:grid-cols-6 lg:grid-cols-7">
+     <section id="about" className="section-padding">
+          <div className="mx-auto flex max-w-6xl flex-col items-center px-4">
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="group relative overflow-hidden rounded-3xl md:col-span-8 lg:col-span-5 lg:row-span-3 shadow-xl"
+              transition={{ duration: 0.6 }}
+              className="max-w-3xl mb-12 text-center"
             >
-              <img
-                src={aboutHeroImage}
-                alt={currentContent.about.hero.alt}
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                loading="lazy"
+              <SectionTitle
+                title={currentContent.about.title}
+                subtitle={currentContent.about.subtitle}
+                align="center"
+                subtitleClassName="mb-0 leading-relaxed"
               />
-              {currentContent.about.hero.caption && (
-                <div className="absolute inset-x-6 bottom-6 rounded-2xl border border-white/30 bg-white/15 p-4 backdrop-blur-lg">
-                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white">
-                    Pecuária+
-                  </p>
-                  <p className="text-lg font-medium text-white">
-                    {currentContent.about.hero.caption}
-                  </p>
-                </div>
-              )}
             </motion.div>
 
-            {currentContent.about.objectives.map((objective) => (
-              <motion.div
-                key={objective.title}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="group relative overflow-hidden rounded-3xl bg-[#F4F9F7] border border-green-secondary/10 p-6 shadow-sm md:col-span-3 lg:col-span-2"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-green-light/0 via-green-light/0 to-green-light/0 transition-colors duration-500 group-hover:from-green-light/40 group-hover:via-green-light/20 group-hover:to-green-secondary/10"></div>
-                <div className="relative flex h-full flex-col justify-between gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-green-light/60 text-[#0A4738] transition-all duration-500 group-hover:scale-110 group-hover:bg-[#0A4738] group-hover:text-white">
-                    <objective.icon size={26} />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-[#0A4738] mb-2">{objective.title}</h3>
-                    <p className="text-sm text-[#14594A] leading-relaxed">{objective.description}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+            {/* Grid Bento Centralizado */}
+            <div className="w-full max-w-5xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-8 gap-6 auto-rows-[200px]">
+                
+                {/* Imagem Principal - Centralizada */}
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  className="group relative overflow-hidden rounded-3xl md:col-span-6 lg:col-span-4 lg:col-start-3 lg:row-span-2 shadow-xl"
+                >
+                  <img
+                    src={aboutHeroImage}
+                    alt={currentContent.about.hero.alt}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  {currentContent.about.hero.caption && (
+                    <div className="absolute inset-x-6 bottom-6 rounded-2xl border border-white/30 bg-white/15 p-4 backdrop-blur-lg">
+                      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white">
+                        Pecuária+
+                      </p>
+                      <p className="text-lg font-medium text-white">
+                        {currentContent.about.hero.caption}
+                      </p>
+                    </div>
+                  )}
+                </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="group relative overflow-hidden rounded-3xl bg-[#FFE28A] p-6 shadow-lg md:col-span-6 lg:col-span-3"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-[#F9C642]/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-              <div className="relative flex flex-col gap-6 text-left">
-                <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#A45A00]">
-                    {currentContent.about.innovation.title}
-                  </p>
-                  <h3 className="text-2xl font-semibold text-[#7A4100] leading-snug">
-                    {currentContent.about.innovation.description}
-                  </h3>
-                </div>
-                <p className="text-sm text-[#A45A00]/80">
-                  {currentContent.about.innovation.tagline}
-                </p>
+                {/* Cards dos Objetivos - Laterais */}
+                {currentContent.about.objectives.map((objective, index) => (
+                  <motion.div
+                    key={objective.title}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className={`group relative overflow-hidden rounded-3xl bg-[#F4F9F7] border border-green-secondary/10 p-4 shadow-sm md:col-span-3 lg:col-span-2 ${
+                      index === 0 ? 'lg:col-start-1 lg:row-start-1' : 
+                      index === 1 ? 'lg:col-start-7 lg:row-start-1' :
+                      index === 2 ? 'lg:col-start-1 lg:row-start-2' :
+                      'lg:col-start-7 lg:row-start-2'
+                    }`}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-light/0 via-green-light/0 to-green-light/0 transition-colors duration-500 group-hover:from-green-light/40 group-hover:via-green-light/20 group-hover:to-green-secondary/10"></div>
+                    <div className="relative flex h-full flex-col justify-between gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-light/60 text-[#0A4738] transition-all duration-500 group-hover:scale-110 group-hover:bg-[#0A4738] group-hover:text-white shrink-0">
+                        <objective.icon size={22} />
+                      </div>
+                      <div className="flex-1 min-h-0">
+                        <h3 className="text-lg font-semibold text-[#0A4738] mb-1 line-clamp-2">{objective.title}</h3>
+                        <p className="text-xs text-[#14594A] leading-relaxed line-clamp-4">{objective.description}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+
+                {/* Card de Inovação - Largura Total */}
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7 }}
+                  className="group relative overflow-hidden rounded-3xl bg-[#FFE28A] p-6 shadow-lg md:col-span-6 lg:col-span-8 lg:row-start-3"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-[#F9C642]/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+                  <div className="relative flex flex-col gap-4 text-center h-full justify-center">
+                    <div>
+                      <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#A45A00]">
+                        {currentContent.about.innovation.title}
+                      </p>
+                      <h3 className="text-2xl font-semibold text-[#7A4100] leading-snug mt-2">
+                        {currentContent.about.innovation.description}
+                      </h3>
+                    </div>
+                    <p className="text-sm text-[#A45A00]/80">
+                      {currentContent.about.innovation.tagline}
+                    </p>
+                  </div>
+                </motion.div>
               </div>
-            </motion.div>
+            </div>
           </div>
-        </div>
       </section>
 
       <Practices
