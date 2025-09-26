@@ -376,6 +376,9 @@ function App() {
     transition: { type: 'spring', stiffness: 500, damping: 30 }
   };
 
+  const navLinkClasses =
+    'font-semibold tracking-tight text-[#F5F5F5] hover:text-[#00BFFF] transition-colors';
+
   const cardHover = {
     whileHover: { y: -10, scale: 1.01 },
     transition: { type: 'spring', stiffness: 250, damping: 18 }
@@ -410,7 +413,7 @@ function App() {
                 {...navMotion}
                 type="button"
                 onClick={() => scrollToSection('home')}
-                className="text-gray-700 hover:text-green-primary transition-colors"
+                className={navLinkClasses}
               >
                 {currentContent.nav.home}
               </motion.button>
@@ -418,7 +421,7 @@ function App() {
                 {...navMotion}
                 type="button"
                 onClick={() => scrollToSection('why')}
-                className="text-gray-700 hover:text-green-primary transition-colors"
+                className={navLinkClasses}
               >
                 {currentContent.nav.why}
               </motion.button>
@@ -426,7 +429,7 @@ function App() {
                 {...navMotion}
                 type="button"
                 onClick={() => scrollToSection('about')}
-                className="text-gray-700 hover:text-green-primary transition-colors"
+                className={navLinkClasses}
               >
                 {currentContent.nav.about}
               </motion.button>
@@ -434,7 +437,7 @@ function App() {
                 {...navMotion}
                 type="button"
                 onClick={() => scrollToSection('practices')}
-                className="text-gray-700 hover:text-green-primary transition-colors"
+                className={navLinkClasses}
               >
                 {currentContent.nav.practices}
               </motion.button>
@@ -442,7 +445,7 @@ function App() {
                 {...navMotion}
                 type="button"
                 onClick={() => scrollToSection('videos')}
-                className="text-gray-700 hover:text-green-primary transition-colors"
+                className={navLinkClasses}
               >
                 {currentContent.nav.videos}
               </motion.button>
@@ -450,7 +453,7 @@ function App() {
                 {...navMotion}
                 type="button"
                 onClick={() => scrollToSection('publications')}
-                className="text-gray-700 hover:text-green-primary transition-colors"
+                className={navLinkClasses}
               >
                 {currentContent.nav.publications}
               </motion.button>
@@ -458,7 +461,7 @@ function App() {
                 {...navMotion}
                 type="button"
                 onClick={() => scrollToSection('chatbot')}
-                className="text-gray-700 hover:text-green-primary transition-colors"
+                className={navLinkClasses}
               >
                 {currentContent.nav.chatbot}
               </motion.button>
@@ -466,7 +469,7 @@ function App() {
                 {...navMotion}
                 type="button"
                 onClick={() => scrollToSection('contact')}
-                className="text-gray-700 hover:text-green-primary transition-colors"
+                className={navLinkClasses}
               >
                 {currentContent.nav.contact}
               </motion.button>
@@ -477,7 +480,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => setLanguage('pt')}
-                  className={`px-2 py-1 rounded ${language === 'pt' ? 'bg-green-primary text-white' : 'text-gray-700'}`}
+                  className={`px-3 py-1 rounded-full border border-white/30 text-sm font-semibold transition-colors ${language === 'pt' ? 'bg-[#00BFFF] text-[#0b1f14] shadow-[0_12px_30px_rgba(0,191,255,0.35)]' : 'text-[#F5F5F5]/80 hover:text-[#F5F5F5]'}`}
                 >
                   PT
                 </motion.button>
@@ -485,7 +488,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => setLanguage('en')}
-                  className={`px-2 py-1 rounded ${language === 'en' ? 'bg-green-primary text-white' : 'text-gray-700'}`}
+                  className={`px-3 py-1 rounded-full border border-white/30 text-sm font-semibold transition-colors ${language === 'en' ? 'bg-[#00BFFF] text-[#0b1f14] shadow-[0_12px_30px_rgba(0,191,255,0.35)]' : 'text-[#F5F5F5]/80 hover:text-[#F5F5F5]'}`}
                 >
                   EN
                 </motion.button>
@@ -496,7 +499,7 @@ function App() {
             <motion.button
               {...navMotion}
               type="button"
-              className="lg:hidden"
+              className="lg:hidden text-[#F5F5F5]"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -505,17 +508,17 @@ function App() {
 
           {/* Menu Mobile Expandido */}
           {isMenuOpen && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="lg:hidden mt-4 pb-4 border-t border-gray-200 max-w-full overflow-x-hidden"
+              className="lg:hidden mt-4 pb-4 border-t border-white/10 bg-[#1A4D2E]/95 backdrop-blur-xl max-w-full overflow-x-hidden rounded-3xl px-4"
             >
               <div className="flex flex-col space-y-4 pt-4 w-full">
                 <motion.button
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('home')}
-                  className="text-left text-gray-700 hover:text-green-primary"
+                  className={`text-left ${navLinkClasses}`}
                 >
                   {currentContent.nav.home}
                 </motion.button>
@@ -523,7 +526,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('why')}
-                  className="text-left text-gray-700 hover:text-green-primary"
+                  className={`text-left ${navLinkClasses}`}
                 >
                   {currentContent.nav.why}
                 </motion.button>
@@ -531,7 +534,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('about')}
-                  className="text-left text-gray-700 hover:text-green-primary"
+                  className={`text-left ${navLinkClasses}`}
                 >
                   {currentContent.nav.about}
                 </motion.button>
@@ -539,7 +542,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('practices')}
-                  className="text-left text-gray-700 hover:text-green-primary"
+                  className={`text-left ${navLinkClasses}`}
                 >
                   {currentContent.nav.practices}
                 </motion.button>
@@ -547,7 +550,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('videos')}
-                  className="text-left text-gray-700 hover:text-green-primary"
+                  className={`text-left ${navLinkClasses}`}
                 >
                   {currentContent.nav.videos}
                 </motion.button>
@@ -555,7 +558,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('publications')}
-                  className="text-left text-gray-700 hover:text-green-primary"
+                  className={`text-left ${navLinkClasses}`}
                 >
                   {currentContent.nav.publications}
                 </motion.button>
@@ -563,7 +566,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('chatbot')}
-                  className="text-left text-gray-700 hover:text-green-primary"
+                  className={`text-left ${navLinkClasses}`}
                 >
                   {currentContent.nav.chatbot}
                 </motion.button>
@@ -571,7 +574,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('contact')}
-                  className="text-left text-gray-700 hover:text-green-primary"
+                  className={`text-left ${navLinkClasses}`}
                 >
                   {currentContent.nav.contact}
                 </motion.button>
@@ -580,7 +583,7 @@ function App() {
                     {...navMotion}
                     type="button"
                     onClick={() => setLanguage('pt')}
-                    className={`px-3 py-1 rounded ${language === 'pt' ? 'bg-green-primary text-white' : 'text-gray-700 border'}`}
+                    className={`px-3 py-1 rounded-full border border-white/30 text-sm font-semibold transition-colors ${language === 'pt' ? 'bg-[#00BFFF] text-[#0b1f14] shadow-[0_12px_30px_rgba(0,191,255,0.35)]' : 'text-[#F5F5F5]/80 hover:text-[#F5F5F5]'}`}
                   >
                     PT
                   </motion.button>
@@ -588,7 +591,7 @@ function App() {
                     {...navMotion}
                     type="button"
                     onClick={() => setLanguage('en')}
-                    className={`px-3 py-1 rounded ${language === 'en' ? 'bg-green-primary text-white' : 'text-gray-700 border'}`}
+                    className={`px-3 py-1 rounded-full border border-white/30 text-sm font-semibold transition-colors ${language === 'en' ? 'bg-[#00BFFF] text-[#0b1f14] shadow-[0_12px_30px_rgba(0,191,255,0.35)]' : 'text-[#F5F5F5]/80 hover:text-[#F5F5F5]'}`}
                   >
                     EN
                   </motion.button>
