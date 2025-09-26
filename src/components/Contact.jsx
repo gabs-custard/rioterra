@@ -85,7 +85,10 @@ const Contact = ({ content }) => {
     }`;
 
   return (
-    <section id="contact" className="section-padding bg-gray-light">
+    <section
+      id="contact"
+      className="section-padding bg-gradient-to-r from-[#f0f9ff] via-[#e8fff4] to-[#fff5e6]"
+    >
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -102,11 +105,11 @@ const Contact = ({ content }) => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Card className="bg-white p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-green-primary mb-6">Envie uma mensagem</h3>
+            <Card className="bg-white/90 p-8 shadow-xl border border-[#74c69d]/25 backdrop-blur">
+              <h3 className="text-2xl font-bold text-[#0f5132] mb-6">Envie uma mensagem</h3>
               <form className="space-y-6" onSubmit={handleSubmit} noValidate>
                 <div>
-                  <label className="block text-sm font-medium text-[#074536] mb-2">
+                  <label className="block text-sm font-medium text-[#125740] mb-2">
                     {content.form.name}
                   </label>
                   <input
@@ -125,7 +128,7 @@ const Contact = ({ content }) => {
                   )}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[#074536] mb-2">
+                  <label className="block text-sm font-medium text-[#125740] mb-2">
                     {content.form.email}
                   </label>
                   <input
@@ -144,7 +147,7 @@ const Contact = ({ content }) => {
                   )}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[#074536] mb-2">
+                  <label className="block text-sm font-medium text-[#125740] mb-2">
                     {content.form.message}
                   </label>
                   <textarea
@@ -162,7 +165,11 @@ const Contact = ({ content }) => {
                     </p>
                   )}
                 </div>
-                <motion.button type="submit" className="btn-primary w-full" {...interactiveMotion}>
+                <motion.button
+                  type="submit"
+                  className="w-full rounded-lg bg-gradient-to-r from-[#207d0f] to-[#bcdb2e] py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl"
+                  {...interactiveMotion}
+                >
                   {content.form.send}
                 </motion.button>
               </form>
@@ -175,42 +182,42 @@ const Contact = ({ content }) => {
             transition={{ duration: 0.6 }}
             className="space-y-8"
           >
-            <Card className="bg-white p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-green-primary mb-6">Informações de Contato</h3>
+            <Card className="bg-white/90 p-8 shadow-xl border border-[#74c69d]/25 backdrop-blur">
+              <h3 className="text-2xl font-bold text-[#0f5132] mb-6">Informações de Contato</h3>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <MapPin size={24} className="text-green-primary mt-1" />
+                  <MapPin size={24} className="text-[#207d0f] mt-1" />
                   <div>
-                    <h4 className="font-semibold text-[#074536] mb-1">Endereço</h4>
-                    <p className="text-black/70">{content.info.address}</p>
+                    <h4 className="font-semibold text-[#125740] mb-1">Endereço</h4>
+                    <p className="text-[#1f2a37]/80">{content.info.address}</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <Phone size={24} className="text-green-primary" />
+                  <Phone size={24} className="text-[#207d0f]" />
                   <div>
-                    <h4 className="font-semibold text-[#074536] mb-1">Telefone</h4>
-                    <p className="text-black/70">{content.info.phone}</p>
+                    <h4 className="font-semibold text-[#125740] mb-1">Telefone</h4>
+                    <p className="text-[#1f2a37]/80">{content.info.phone}</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <Mail size={24} className="text-green-primary" />
+                  <Mail size={24} className="text-[#207d0f]" />
                   <div>
-                    <h4 className="font-semibold text-[#074536] mb-1">E-mail</h4>
-                    <p className="text-black/70">{content.info.email}</p>
+                    <h4 className="font-semibold text-[#125740] mb-1">E-mail</h4>
+                    <p className="text-[#1f2a37]/80">{content.info.email}</p>
                   </div>
                 </div>
               </div>
             </Card>
 
-            <Card className="bg-white p-8 shadow-lg">
-              <h3 className="text-xl font-bold text-green-primary mb-4">Redes Sociais da Rioterra</h3>
+            <Card className="bg-white/90 p-8 shadow-xl border border-[#74c69d]/25 backdrop-blur">
+              <h3 className="text-xl font-bold text-[#0f5132] mb-4">Redes Sociais da Rioterra</h3>
               <div className="flex space-x-4">
                 {socialLinks.map((Icon) => (
                   <motion.a
                     {...interactiveMotion}
                     key={Icon.displayName || Icon.name}
                     href="#"
-                    className="w-12 h-12 bg-green-primary text-white rounded-full flex items-center justify-center hover:bg-green-secondary transition-colors"
+                    className="w-12 h-12 rounded-full bg-gradient-to-br from-[#207d0f] to-[#74c69d] text-white flex items-center justify-center shadow-md transition-all duration-300 hover:shadow-lg"
                   >
                     <Icon size={20} />
                   </motion.a>

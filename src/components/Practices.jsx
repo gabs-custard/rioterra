@@ -11,7 +11,10 @@ const Practices = ({ title, subtitle, items }) => {
   };
 
   return (
-    <section id="practices" className="section-padding bg-white">
+    <section
+      id="practices"
+      className="section-padding bg-gradient-to-br from-[#f5fce8] via-[#e2f5ee] to-white"
+    >
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -31,14 +34,14 @@ const Practices = ({ title, subtitle, items }) => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               {...cardHover}
             >
-              <Card className="bg-white h-full p-8 shadow-lg">
-                <h3 className="text-2xl font-bold text-green-primary mb-4">{practice.title}</h3>
-                <p className="text-black/70 mb-6 leading-relaxed">{practice.description}</p>
+              <Card className="bg-white/90 h-full p-8 shadow-xl border border-[#74c69d]/30 backdrop-blur">
+                <h3 className="text-2xl font-bold text-[#0f5132] mb-4">{practice.title}</h3>
+                <p className="text-[#1f2a37]/80 mb-6 leading-relaxed">{practice.description}</p>
                 <div className="space-y-3">
                   {practice.benefits.map((benefit) => (
                     <div key={benefit} className="flex items-center space-x-2">
-                      <div className="w-1.5 h-1.5 bg-green-light rounded-full" />
-                      <span className="text-sm text-black/70">{benefit}</span>
+                      <div className="w-2 h-2 bg-[#ffd301] rounded-full" />
+                      <span className="text-sm text-[#1f2a37]/80">{benefit}</span>
                     </div>
                   ))}
                 </div>
