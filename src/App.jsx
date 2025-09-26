@@ -30,7 +30,7 @@ import Card from './components/Card';
 import pecuariaLogo from './assets/pecuaria_logo.svg';
 import heroImage from './assets/banner_pecumais4.webp';
 import publiImage from './assets/banner_pecumais.png';
-import aboutHeroImage from './assets/pecuaria_sustentavel_tech.jpg';
+import aboutHeroImage from './assets/pecuaria_sustentavel_tech.png';
 import rubricaImagem from './assets/rubricaprojeto.jpeg';
 import porqueImage from './assets/porquebg.png';
 
@@ -150,7 +150,7 @@ function App() {
           {
             icon: BrainCircuit,
             title: 'Implementar tecnologias de IA',
-            description: 'Soluções inteligentes para monitoramento em tempo real das propriedades.'
+            description: 'Soluções inteligentes para assistência 24hrs com agentes de IA.'
           },
           {
             icon: ShieldCheck,
@@ -759,12 +759,12 @@ function App() {
             />
           </motion.div>
 
-          <div className="grid w-full grid-cols-1 auto-rows-[minmax(180px,1fr)] gap-6 md:grid-cols-6 lg:grid-cols-8">
+          <div className="grid w-full grid-cols-1 auto-rows-[minmax(180px,1fr)] gap-10 md:grid-cols-6 lg:grid-cols-7">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="group relative overflow-hidden rounded-3xl md:col-span-6 lg:col-span-5 lg:row-span-2 shadow-xl"
+              className="group relative overflow-hidden rounded-3xl md:col-span-8 lg:col-span-5 lg:row-span-3 shadow-xl"
             >
               <img
                 src={aboutHeroImage}
@@ -774,10 +774,10 @@ function App() {
               />
               {currentContent.about.hero.caption && (
                 <div className="absolute inset-x-6 bottom-6 rounded-2xl border border-white/30 bg-white/15 p-4 backdrop-blur-lg">
-                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#0A4738]">
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white">
                     Pecuária+
                   </p>
-                  <p className="text-lg font-medium text-[#0A4738]">
+                  <p className="text-lg font-medium text-white">
                     {currentContent.about.hero.caption}
                   </p>
                 </div>
@@ -826,27 +826,6 @@ function App() {
                 </p>
               </div>
             </motion.div>
-
-            {currentContent.about.metric && (
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7 }}
-                className="group relative overflow-hidden rounded-3xl bg-[#E2F2EB] p-8 shadow-md md:col-span-6 lg:col-span-3"
-              >
-                <div className="absolute inset-0 bg-gradient-to-tr from-white/50 via-transparent to-green-light/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-                <div className="relative flex h-full flex-col justify-center gap-2">
-                  <AnimatedCounter
-                    value={currentContent.about.metric.value}
-                    prefix={currentContent.about.metric.prefix}
-                    locale={language === 'pt' ? 'pt-BR' : 'en-US'}
-                  />
-                  <p className="text-base font-medium text-[#14594A]">
-                    {currentContent.about.metric.label}
-                  </p>
-                </div>
-              </motion.div>
-            )}
           </div>
         </div>
       </section>
