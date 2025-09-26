@@ -5,13 +5,13 @@ import SectionTitle from './SectionTitle';
 
 const Practices = ({ title, subtitle, items }) => {
   const cardHover = {
-    whileHover: { y: -10, scale: 1.02, boxShadow: '0 25px 60px rgba(22, 101, 52, 0.18)' },
+    whileHover: { y: -10, scale: 1.02, boxShadow: '0 25px 60px rgba(7, 69, 54, 0.18)' },
     whileTap: { scale: 0.99 },
     transition: { type: 'spring', stiffness: 260, damping: 20 }
   };
 
   return (
-    <section id="practices" className="section-padding bg-gray-50">
+    <section id="practices" className="section-padding bg-white">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -33,12 +33,12 @@ const Practices = ({ title, subtitle, items }) => {
             >
               <Card className="bg-white h-full p-8 shadow-lg">
                 <h3 className="text-2xl font-bold text-green-primary mb-4">{practice.title}</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">{practice.description}</p>
+                <p className="text-black/70 mb-6 leading-relaxed">{practice.description}</p>
                 <div className="space-y-3">
                   {practice.benefits.map((benefit) => (
                     <div key={benefit} className="flex items-center space-x-2">
                       <div className="w-1.5 h-1.5 bg-green-light rounded-full" />
-                      <span className="text-sm text-gray-600">{benefit}</span>
+                      <span className="text-sm text-black/70">{benefit}</span>
                     </div>
                   ))}
                 </div>

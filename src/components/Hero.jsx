@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
 import heroVideo from '../assets/hero.mp4';
 
 const containerVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 32 },
   visible: {
     opacity: 1,
     y: 0,
@@ -103,7 +103,7 @@ const Hero = ({ content, backgroundImage, onPrimaryClick, onSecondaryClick }) =>
           if (distance < 180) {
             const opacity = 0.25 - distance / 720;
             if (opacity <= 0) continue;
-            context.strokeStyle = `rgba(0, 191, 255, ${opacity})`;
+            context.strokeStyle = `rgba(188, 219, 46, ${opacity})`;
             context.beginPath();
             context.moveTo(projected[i].x, projected[i].y);
             context.lineTo(projected[j].x, projected[j].y);
@@ -115,8 +115,8 @@ const Hero = ({ content, backgroundImage, onPrimaryClick, onSecondaryClick }) =>
       projected.forEach(({ x, y, scale }) => {
         const radius = Math.max(1.2, 2.8 * scale);
         const gradient = context.createRadialGradient(x, y, radius * 0.3, x, y, radius);
-        gradient.addColorStop(0, 'rgba(0, 191, 255, 0.95)');
-        gradient.addColorStop(1, 'rgba(26, 77, 46, 0.05)');
+        gradient.addColorStop(0, 'rgba(188, 219, 46, 0.95)');
+        gradient.addColorStop(1, 'rgba(32, 125, 15, 0.05)');
         context.fillStyle = gradient;
         context.beginPath();
         context.arc(x, y, radius, 0, Math.PI * 2);
@@ -144,7 +144,7 @@ const Hero = ({ content, backgroundImage, onPrimaryClick, onSecondaryClick }) =>
   return (
     <section
       id="home"
-      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#0b1f14]"
+      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#074536]"
       style={{ fontFamily: '"Manrope", "Inter", sans-serif' }}
     >
       <div className="absolute inset-0">
@@ -158,38 +158,40 @@ const Hero = ({ content, backgroundImage, onPrimaryClick, onSecondaryClick }) =>
           loop
           playsInline
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0b1f14]/85 via-[#133320]/75 to-[#1A4D2E]/80 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#074536]/90 via-[#074536]/70 to-[#207d0f]/85 mix-blend-multiply" />
         <canvas
           ref={canvasRef}
           className="absolute inset-0 h-full w-full opacity-80"
           aria-hidden="true"
         />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(0,191,255,0.22)_0%,_transparent_55%)]" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0b1f14] to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(188,219,46,0.22)_0%,_transparent_55%)]" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#074536] to-transparent" />
       </div>
 
       <motion.div
-        className="relative z-20 mx-auto flex max-w-4xl flex-col items-center px-6 text-center text-[#F5F5F5]"
+        className="relative z-20 mx-auto flex max-w-4xl flex-col items-center px-6 text-center text-white"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         <motion.span
-          className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#00BFFF]/40 bg-white/10 px-5 py-2 text-sm uppercase tracking-[0.32em] text-[#00BFFF] shadow-[0_0_25px_rgba(0,191,255,0.25)]"
+          className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#bcdb2e]/40 bg-white/10 px-5 py-2 text-sm uppercase tracking-[0.32em] text-[#bcdb2e] shadow-[0_0_25px_rgba(188,219,46,0.25)]"
           variants={childVariants}
         >
           Tecnologia • Regeneração • Amazônia
         </motion.span>
 
         <motion.h1
-          className="text-balance text-5xl font-extrabold leading-[1.05] text-[#F5F5F5] drop-shadow-[0_16px_40px_rgba(0,0,0,0.55)] sm:text-6xl lg:text-7xl"
+
+          className="text-balance text-5xl font-extrabold leading-[1.05] text-white drop-shadow-[0_16px_40px_rgba(0,0,0,0.55)] sm:text-6xl lg:text-7xl"
           variants={childVariants}
         >
           {title}
         </motion.h1>
 
         <motion.p
-          className="mt-6 max-w-3xl text-lg text-[#F5F5F5]/80 sm:text-xl"
+
+          className="mt-6 max-w-3xl text-lg text-white/80 sm:text-xl"
           variants={childVariants}
         >
           {subtitle}
@@ -201,10 +203,10 @@ const Hero = ({ content, backgroundImage, onPrimaryClick, onSecondaryClick }) =>
             onClick={onPrimaryClick}
             whileHover={{
               scale: 1.05,
-              boxShadow: '0 0 32px rgba(0, 191, 255, 0.45)'
+              boxShadow: '0 0 32px rgba(255, 211, 1, 0.45)'
             }}
             whileTap={{ scale: 0.97 }}
-            className="group inline-flex items-center justify-center rounded-full bg-[#00BFFF] px-10 py-4 text-lg font-semibold uppercase tracking-wide text-[#0b1f14] shadow-[0_20px_40px_rgba(0,191,255,0.3)] transition-all"
+            className="group inline-flex items-center justify-center rounded-full bg-[#ffd301] px-10 py-4 text-lg font-semibold uppercase tracking-wide text-black shadow-[0_20px_40px_rgba(255,211,1,0.3)] transition-all"
           >
             <span>{cta}</span>
             <svg
@@ -223,9 +225,9 @@ const Hero = ({ content, backgroundImage, onPrimaryClick, onSecondaryClick }) =>
             <motion.button
               type="button"
               onClick={onSecondaryClick}
-              whileHover={{ scale: 1.03, color: '#00BFFF' }}
+              whileHover={{ scale: 1.03, color: '#ffd301' }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center justify-center rounded-full border border-white/30 px-8 py-4 text-lg font-semibold uppercase tracking-wide text-[#F5F5F5]/80 transition-all"
+              className="inline-flex items-center justify-center rounded-full border border-white/30 px-8 py-4 text-lg font-semibold uppercase tracking-wide text-white/80 transition-all"
             >
               {content.cta2}
             </motion.button>
