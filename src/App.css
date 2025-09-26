@@ -41,45 +41,53 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-  
-  /* Cores personalizadas do Pecuária+ */
-  --green-primary: #15803d;    /* Um verde mais vibrante e moderno */
-  --green-secondary: #16a34a; /* Um tom complementar para gradientes e destaques */
-  --green-light: #ecfdf5;     /* Um verde bem claro para fundos sutis */
-  --cta-blue: #3b82f6;        /* Azul elétrico para CTAs e elementos interativos */
-  --gray-dark: #1f2937;       /* Um cinza mais azulado e moderno */
-  --gray-light: #f9fafb;      /* Um cinza claro e limpo para fundos */
+  --background: #ffffff;
+  --foreground: #000000;
+  --card: #ffffff;
+  --card-foreground: #000000;
+  --popover: #ffffff;
+  --popover-foreground: #000000;
+  --primary: #074536;
+  --primary-foreground: #ffffff;
+  --secondary: #207d0f;
+  --secondary-foreground: #ffffff;
+  --muted: khaki;
+  --muted-foreground: #074536;
+  --accent: #bcdb2e;
+  --accent-foreground: #074536;
+  --destructive: #ffd301;
+  --border: rgba(7, 69, 54, 0.3);
+  --input: rgba(7, 69, 54, 0.3);
+  --ring: rgba(188, 219, 46, 0.6);
+  --chart-1: #074536;
+  --chart-2: #207d0f;
+  --chart-3: #bcdb2e;
+  --chart-4: #ffd301;
+  --chart-5: khaki;
+  --sidebar: #074536;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #207d0f;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #bcdb2e;
+  --sidebar-accent-foreground: #074536;
+  --sidebar-border: rgba(7, 69, 54, 0.3);
+  --sidebar-ring: rgba(188, 219, 46, 0.6);
+
+  /* Paleta oficial Pecuária+ */
+  --forest-900: #074536;
+  --forest-700: #207d0f;
+  --canopy-lime: #bcdb2e;
+  --sun-gold: #ffd301;
+  --earth-khaki: khaki;
+  --night-black: #000000;
+  --cloud-white: #ffffff;
+
+  --green-primary: var(--forest-900);
+  --green-secondary: var(--forest-700);
+  --green-light: var(--canopy-lime);
+  --cta-accent: var(--sun-gold);
+  --gray-dark: var(--night-black);
+  --gray-light: var(--cloud-white);
 }
 
 @layer base {
@@ -211,7 +219,7 @@ html {
   border: 1px solid rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  box-shadow: 0 25px 55px rgba(15, 23, 42, 0.28);
+  box-shadow: 0 25px 55px rgba(7, 69, 54, 0.28);
   transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
@@ -234,7 +242,7 @@ html {
 .glass-card:hover {
   transform: translateY(-8px);
   border-color: rgba(255, 255, 255, 0.45);
-  box-shadow: 0 35px 85px rgba(15, 23, 42, 0.35);
+  box-shadow: 0 35px 85px rgba(0, 0, 0, 0.35);
 }
 
 /* Estilo para botões */
@@ -251,11 +259,11 @@ html {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(45, 80, 22, 0.3);
+  box-shadow: 0 8px 20px rgba(7, 69, 54, 0.3);
 }
 
 .btn-secondary {
-  background-color: var(--cta-blue);
+  background-color: var(--cta-accent);
   color: white;
   padding: 0.75rem 2rem;
   border-radius: 0.5rem;
@@ -267,7 +275,7 @@ html {
 
 .btn-secondary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 8px 20px rgba(255, 211, 1, 0.3);
 }
 
 /* Estilo para navegação fixa */
@@ -277,8 +285,10 @@ html {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(7, 69, 54, 0.82);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(188, 219, 46, 0.35);
+  box-shadow: 0 32px 60px rgba(7, 69, 54, 0.45);
   transition: all 0.3s ease;
   width: 100%;
   max-width: 100vw;

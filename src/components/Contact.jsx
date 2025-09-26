@@ -81,7 +81,7 @@ const Contact = ({ content }) => {
     `w-full px-4 py-3 border rounded-lg transition-all duration-200 ${
       showError(field)
         ? 'border-red-500 focus:ring-2 focus:ring-red-400 focus:border-red-400'
-        : 'border-gray-300 focus:ring-2 focus:ring-green-primary focus:border-transparent'
+        : 'border-[#074536]/30 focus:ring-2 focus:ring-[#bcdb2e] focus:border-[#bcdb2e]'
     }`;
 
   return (
@@ -106,7 +106,7 @@ const Contact = ({ content }) => {
               <h3 className="text-2xl font-bold text-green-primary mb-6">Envie uma mensagem</h3>
               <form className="space-y-6" onSubmit={handleSubmit} noValidate>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-[#074536] mb-2">
                     {content.form.name}
                   </label>
                   <input
@@ -125,7 +125,7 @@ const Contact = ({ content }) => {
                   )}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-[#074536] mb-2">
                     {content.form.email}
                   </label>
                   <input
@@ -144,7 +144,7 @@ const Contact = ({ content }) => {
                   )}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-[#074536] mb-2">
                     {content.form.message}
                   </label>
                   <textarea
@@ -181,22 +181,22 @@ const Contact = ({ content }) => {
                 <div className="flex items-start space-x-4">
                   <MapPin size={24} className="text-green-primary mt-1" />
                   <div>
-                    <h4 className="font-semibold text-gray-800 mb-1">Endereço</h4>
-                    <p className="text-gray-600">{content.info.address}</p>
+                    <h4 className="font-semibold text-[#074536] mb-1">Endereço</h4>
+                    <p className="text-black/70">{content.info.address}</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
                   <Phone size={24} className="text-green-primary" />
                   <div>
-                    <h4 className="font-semibold text-gray-800 mb-1">Telefone</h4>
-                    <p className="text-gray-600">{content.info.phone}</p>
+                    <h4 className="font-semibold text-[#074536] mb-1">Telefone</h4>
+                    <p className="text-black/70">{content.info.phone}</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
                   <Mail size={24} className="text-green-primary" />
                   <div>
-                    <h4 className="font-semibold text-gray-800 mb-1">E-mail</h4>
-                    <p className="text-gray-600">{content.info.email}</p>
+                    <h4 className="font-semibold text-[#074536] mb-1">E-mail</h4>
+                    <p className="text-black/70">{content.info.email}</p>
                   </div>
                 </div>
               </div>

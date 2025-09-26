@@ -376,6 +376,9 @@ function App() {
     transition: { type: 'spring', stiffness: 500, damping: 30 }
   };
 
+  const navLinkClasses =
+    'font-semibold tracking-tight text-white hover:text-[#ffd301] transition-colors';
+
   const cardHover = {
     whileHover: { y: -10, scale: 1.01 },
     transition: { type: 'spring', stiffness: 250, damping: 18 }
@@ -410,7 +413,7 @@ function App() {
                 {...navMotion}
                 type="button"
                 onClick={() => scrollToSection('home')}
-                className="text-gray-700 hover:text-green-primary transition-colors"
+                className={navLinkClasses}
               >
                 {currentContent.nav.home}
               </motion.button>
@@ -418,7 +421,7 @@ function App() {
                 {...navMotion}
                 type="button"
                 onClick={() => scrollToSection('why')}
-                className="text-gray-700 hover:text-green-primary transition-colors"
+                className={navLinkClasses}
               >
                 {currentContent.nav.why}
               </motion.button>
@@ -426,7 +429,7 @@ function App() {
                 {...navMotion}
                 type="button"
                 onClick={() => scrollToSection('about')}
-                className="text-gray-700 hover:text-green-primary transition-colors"
+                className={navLinkClasses}
               >
                 {currentContent.nav.about}
               </motion.button>
@@ -434,7 +437,7 @@ function App() {
                 {...navMotion}
                 type="button"
                 onClick={() => scrollToSection('practices')}
-                className="text-gray-700 hover:text-green-primary transition-colors"
+                className={navLinkClasses}
               >
                 {currentContent.nav.practices}
               </motion.button>
@@ -442,7 +445,7 @@ function App() {
                 {...navMotion}
                 type="button"
                 onClick={() => scrollToSection('videos')}
-                className="text-gray-700 hover:text-green-primary transition-colors"
+                className={navLinkClasses}
               >
                 {currentContent.nav.videos}
               </motion.button>
@@ -450,7 +453,7 @@ function App() {
                 {...navMotion}
                 type="button"
                 onClick={() => scrollToSection('publications')}
-                className="text-gray-700 hover:text-green-primary transition-colors"
+                className={navLinkClasses}
               >
                 {currentContent.nav.publications}
               </motion.button>
@@ -458,7 +461,7 @@ function App() {
                 {...navMotion}
                 type="button"
                 onClick={() => scrollToSection('chatbot')}
-                className="text-gray-700 hover:text-green-primary transition-colors"
+                className={navLinkClasses}
               >
                 {currentContent.nav.chatbot}
               </motion.button>
@@ -466,7 +469,7 @@ function App() {
                 {...navMotion}
                 type="button"
                 onClick={() => scrollToSection('contact')}
-                className="text-gray-700 hover:text-green-primary transition-colors"
+                className={navLinkClasses}
               >
                 {currentContent.nav.contact}
               </motion.button>
@@ -477,7 +480,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => setLanguage('pt')}
-                  className={`px-2 py-1 rounded ${language === 'pt' ? 'bg-green-primary text-white' : 'text-gray-700'}`}
+                  className={`px-3 py-1 rounded-full border border-white/30 text-sm font-semibold transition-colors ${language === 'pt' ? 'bg-[#ffd301] text-black shadow-[0_12px_30px_rgba(255,211,1,0.35)]' : 'text-white/80 hover:text-white'}`}
                 >
                   PT
                 </motion.button>
@@ -485,7 +488,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => setLanguage('en')}
-                  className={`px-2 py-1 rounded ${language === 'en' ? 'bg-green-primary text-white' : 'text-gray-700'}`}
+                  className={`px-3 py-1 rounded-full border border-white/30 text-sm font-semibold transition-colors ${language === 'en' ? 'bg-[#ffd301] text-black shadow-[0_12px_30px_rgba(255,211,1,0.35)]' : 'text-white/80 hover:text-white'}`}
                 >
                   EN
                 </motion.button>
@@ -496,7 +499,7 @@ function App() {
             <motion.button
               {...navMotion}
               type="button"
-              className="lg:hidden"
+              className="lg:hidden text-white"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -505,17 +508,17 @@ function App() {
 
           {/* Menu Mobile Expandido */}
           {isMenuOpen && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="lg:hidden mt-4 pb-4 border-t border-gray-200 max-w-full overflow-x-hidden"
+              className="lg:hidden mt-4 pb-4 border-t border-white/10 bg-[#074536]/95 backdrop-blur-xl max-w-full overflow-x-hidden rounded-3xl px-4"
             >
               <div className="flex flex-col space-y-4 pt-4 w-full">
                 <motion.button
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('home')}
-                  className="text-left text-gray-700 hover:text-green-primary"
+                  className={`text-left ${navLinkClasses}`}
                 >
                   {currentContent.nav.home}
                 </motion.button>
@@ -523,7 +526,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('why')}
-                  className="text-left text-gray-700 hover:text-green-primary"
+                  className={`text-left ${navLinkClasses}`}
                 >
                   {currentContent.nav.why}
                 </motion.button>
@@ -531,7 +534,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('about')}
-                  className="text-left text-gray-700 hover:text-green-primary"
+                  className={`text-left ${navLinkClasses}`}
                 >
                   {currentContent.nav.about}
                 </motion.button>
@@ -539,7 +542,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('practices')}
-                  className="text-left text-gray-700 hover:text-green-primary"
+                  className={`text-left ${navLinkClasses}`}
                 >
                   {currentContent.nav.practices}
                 </motion.button>
@@ -547,7 +550,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('videos')}
-                  className="text-left text-gray-700 hover:text-green-primary"
+                  className={`text-left ${navLinkClasses}`}
                 >
                   {currentContent.nav.videos}
                 </motion.button>
@@ -555,7 +558,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('publications')}
-                  className="text-left text-gray-700 hover:text-green-primary"
+                  className={`text-left ${navLinkClasses}`}
                 >
                   {currentContent.nav.publications}
                 </motion.button>
@@ -563,7 +566,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('chatbot')}
-                  className="text-left text-gray-700 hover:text-green-primary"
+                  className={`text-left ${navLinkClasses}`}
                 >
                   {currentContent.nav.chatbot}
                 </motion.button>
@@ -571,7 +574,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('contact')}
-                  className="text-left text-gray-700 hover:text-green-primary"
+                  className={`text-left ${navLinkClasses}`}
                 >
                   {currentContent.nav.contact}
                 </motion.button>
@@ -580,7 +583,7 @@ function App() {
                     {...navMotion}
                     type="button"
                     onClick={() => setLanguage('pt')}
-                    className={`px-3 py-1 rounded ${language === 'pt' ? 'bg-green-primary text-white' : 'text-gray-700 border'}`}
+                    className={`px-3 py-1 rounded-full border border-white/30 text-sm font-semibold transition-colors ${language === 'pt' ? 'bg-[#ffd301] text-black shadow-[0_12px_30px_rgba(255,211,1,0.35)]' : 'text-white/80 hover:text-white'}`}
                   >
                     PT
                   </motion.button>
@@ -588,7 +591,7 @@ function App() {
                     {...navMotion}
                     type="button"
                     onClick={() => setLanguage('en')}
-                    className={`px-3 py-1 rounded ${language === 'en' ? 'bg-green-primary text-white' : 'text-gray-700 border'}`}
+                    className={`px-3 py-1 rounded-full border border-white/30 text-sm font-semibold transition-colors ${language === 'en' ? 'bg-[#ffd301] text-black shadow-[0_12px_30px_rgba(255,211,1,0.35)]' : 'text-white/80 hover:text-white'}`}
                   >
                     EN
                   </motion.button>
@@ -616,8 +619,8 @@ function App() {
             loading="lazy"
           />
         </div>
-        <div className="absolute inset-0 bg-emerald-900/80 mix-blend-multiply"></div>
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/70 via-emerald-800/40 to-slate-900/70"></div>
+        <div className="absolute inset-0 bg-[#074536]/85 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#074536]/75 via-[#207d0f]/45 to-black/70"></div>
         <div className="relative z-10 container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -685,13 +688,13 @@ function App() {
                     className="flex items-center space-x-3"
                   >
                     <div className="w-2 h-2 bg-green-primary rounded-full"></div>
-                    <span className="text-gray-700">{objective}</span>
+                    <span className="text-[#074536]">{objective}</span>
                   </motion.div>
                 ))}
               </motion.div>
               
               <div className="bg-green-light p-6 rounded-xl border-l-4 border-green-secondary">
-                <p className="text-gray-700 font-medium">
+                <p className="text-[#074536] font-medium">
                   {currentContent.about.innovation}
                 </p>
               </div>
@@ -737,7 +740,7 @@ function App() {
 
           <div className="bg-gray-light rounded-2xl p-16 text-center">
             <Play size={64} className="text-green-primary mx-auto mb-6" />
-            <p className="text-2xl font-semibold text-gray-600">
+            <p className="text-2xl font-semibold text-[#074536]">
               {currentContent.videos.placeholder}
             </p>
           </div>
@@ -754,8 +757,8 @@ function App() {
             loading="lazy"
           />
         </div>
-        <div className="absolute inset-0 bg-emerald-950/75 mix-blend-multiply"></div>
-        <div className="absolute inset-0 bg-gradient-to-tr from-emerald-900/60 via-emerald-800/45 to-slate-900/70"></div>
+        <div className="absolute inset-0 bg-[#074536]/80 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-[#074536]/70 via-[#207d0f]/45 to-black/70"></div>
         <div className="relative z-10 container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -825,7 +828,7 @@ function App() {
                 subtitle={currentContent.chatbot.subtitle}
                 subtitleClassName="mb-8"
               />
-              <p className="text-lg text-gray-600 mb-12 leading-relaxed">
+              <p className="text-lg text-black/70 mb-12 leading-relaxed">
                 {currentContent.chatbot.description}
               </p>
 
