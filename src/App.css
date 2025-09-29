@@ -194,6 +194,7 @@ html {
 /* Estilo para seções */
 .section-padding {
   padding: 5rem 0;
+  overflow: visible;
 }
 
 @media (max-width: 768px) {
