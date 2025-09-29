@@ -175,7 +175,7 @@ const Hero = ({ content, backgroundImage, onPrimaryClick, onSecondaryClick }) =>
         animate="visible"
       >
         <motion.span
-          className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#bcdb2e]/40 bg-white/10 px-5 py-2 text-sm uppercase tracking-[0.32em] text-[#bcdb2e] shadow-[0_0_25px_rgba(188,219,46,0.25)]"
+          className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#bcdb2e]/40 bg-white/10 px-4 py-1.5 text-xs uppercase tracking-[0.32em] text-[#bcdb2e] shadow-[0_0_25px_rgba(188,219,46,0.25)] sm:text-sm sm:px-5 sm:py-2"
           variants={childVariants}
         >
           Tecnologia • Regeneração • Amazônia
@@ -183,7 +183,7 @@ const Hero = ({ content, backgroundImage, onPrimaryClick, onSecondaryClick }) =>
 
         <motion.h1
 
-          className="text-balance text-5xl font-extrabold leading-[1.05] text-white drop-shadow-[0_16px_40px_rgba(0,0,0,0.55)] sm:text-6xl lg:text-7xl"
+          className="text-balance text-4xl font-extrabold leading-[1.08] text-white drop-shadow-[0_16px_40px_rgba(0,0,0,0.55)] sm:text-5xl lg:text-7xl"
           variants={childVariants}
         >
           {title}
@@ -191,13 +191,13 @@ const Hero = ({ content, backgroundImage, onPrimaryClick, onSecondaryClick }) =>
 
         <motion.p
 
-          className="mt-6 max-w-3xl text-lg text-white/80 sm:text-xl"
+          className="mt-6 max-w-3xl text-base text-white/80 sm:text-lg md:text-xl"
           variants={childVariants}
         >
           {subtitle}
         </motion.p>
 
-        <motion.div className="mt-10 flex flex-wrap items-center justify-center gap-4" variants={childVariants}>
+        <motion.div className="mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4" variants={childVariants}>
           <motion.button
             type="button"
             onClick={onPrimaryClick}
@@ -206,7 +206,7 @@ const Hero = ({ content, backgroundImage, onPrimaryClick, onSecondaryClick }) =>
               boxShadow: '0 0 32px rgba(255, 211, 1, 0.45)'
             }}
             whileTap={{ scale: 0.97 }}
-            className="group inline-flex items-center justify-center rounded-full bg-[#ffd301] px-10 py-4 text-lg font-semibold uppercase tracking-wide text-black shadow-[0_20px_40px_rgba(255,211,1,0.3)] transition-all"
+            className="group inline-flex items-center justify-center rounded-full bg-[#ffd301] px-8 py-3 text-base font-semibold uppercase tracking-wide text-black shadow-[0_20px_40px_rgba(255,211,1,0.3)] transition-all sm:px-10 sm:py-4 sm:text-lg"
           >
             <span>{cta}</span>
             <svg
@@ -227,7 +227,7 @@ const Hero = ({ content, backgroundImage, onPrimaryClick, onSecondaryClick }) =>
               onClick={onSecondaryClick}
               whileHover={{ scale: 1.03, color: '#ffd301' }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center justify-center rounded-full border border-white/30 px-8 py-4 text-lg font-semibold uppercase tracking-wide text-white/80 transition-all"
+              className="inline-flex items-center justify-center rounded-full border border-white/30 px-7 py-3 text-base font-semibold uppercase tracking-wide text-white/80 transition-all sm:px-8 sm:py-4 sm:text-lg"
             >
               {content.cta2}
             </motion.button>

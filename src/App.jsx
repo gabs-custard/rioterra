@@ -697,7 +697,7 @@ function App() {
       />
 
       {/* Por que Pecuária Sustentável */}
-      <section id="why" className="section-padding relative overflow-hidden">
+      <section id="why" className="section-padding relative overflow-visible md:overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={porqueImage}
@@ -713,7 +713,7 @@ function App() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-16"
+            className="mb-10 md:mb-16"
           >
             <SectionTitle
               title={currentContent.why.title}
@@ -723,7 +723,7 @@ function App() {
             />
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid gap-6 md:grid-cols-3 md:gap-8">
             {currentContent.why.items.map((item, index) => (
               <motion.div
                 key={item.title}
@@ -731,12 +731,12 @@ function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="glass-card p-8 text-center h-full">
-                  <div className="w-16 h-16 bg-white/10 border border-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <item.icon size={32} className="text-green-light" />
+                <Card className="glass-card h-full p-6 text-center sm:p-8">
+                  <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-white/10 sm:h-16 sm:w-16">
+                    <item.icon size={28} className="text-green-light sm:size-8" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
-                  <p className="text-white/80 leading-relaxed">{item.description}</p>
+                  <h3 className="mb-4 text-xl font-bold text-white md:text-2xl">{item.title}</h3>
+                  <p className="text-sm leading-relaxed text-white/80 md:text-base">{item.description}</p>
                 </Card>
               </motion.div>
             ))}
@@ -751,7 +751,7 @@ function App() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="max-w-3xl mb-12 text-center"
+              className="max-w-3xl mb-10 text-center md:mb-12"
             >
               <SectionTitle
                 title={currentContent.about.title}
@@ -763,7 +763,7 @@ function App() {
 
             {/* Grid Bento Centralizado */}
             <div className="w-full max-w-5xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-8 gap-6 auto-rows-[200px]">
+              <div className="grid auto-rows-[200px] grid-cols-1 gap-5 md:grid-cols-6 lg:grid-cols-8 md:gap-6">
                 
                 {/* Imagem Principal - Centralizada */}
                 <motion.div
@@ -779,11 +779,11 @@ function App() {
                     loading="lazy"
                   />
                   {currentContent.about.hero.caption && (
-                    <div className="absolute inset-x-6 bottom-6 rounded-2xl border border-white/30 bg-white/15 p-4 backdrop-blur-lg">
+                    <div className="absolute inset-x-6 bottom-6 rounded-2xl border border-white/30 bg-white/15 p-3 backdrop-blur-lg sm:p-4">
                       <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white">
                         Pecuária+
                       </p>
-                      <p className="text-lg font-medium text-white">
+                      <p className="text-base font-medium text-white md:text-lg">
                         {currentContent.about.hero.caption}
                       </p>
                     </div>
@@ -797,8 +797,8 @@ function App() {
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className={`group relative overflow-hidden rounded-3xl bg-[#F4F9F7] border border-green-secondary/10 p-4 shadow-sm md:col-span-3 lg:col-span-2 ${
-                      index === 0 ? 'lg:col-start-1 lg:row-start-1' : 
+                    className={`group relative overflow-hidden rounded-3xl border border-green-secondary/10 bg-[#F4F9F7] p-4 shadow-sm md:col-span-3 lg:col-span-2 ${
+                      index === 0 ? 'lg:col-start-1 lg:row-start-1' :
                       index === 1 ? 'lg:col-start-7 lg:row-start-1' :
                       index === 2 ? 'lg:col-start-1 lg:row-start-2' :
                       'lg:col-start-7 lg:row-start-2'
@@ -810,8 +810,8 @@ function App() {
                         <objective.icon size={22} />
                       </div>
                       <div className="flex-1 min-h-0">
-                        <h3 className="text-lg font-semibold text-[#0A4738] mb-1 line-clamp-2">{objective.title}</h3>
-                        <p className="text-xs text-[#14594A] leading-relaxed line-clamp-4">{objective.description}</p>
+                        <h3 className="mb-1 text-base font-semibold text-[#0A4738] line-clamp-2 md:text-lg">{objective.title}</h3>
+                        <p className="text-xs text-[#14594A] leading-relaxed line-clamp-4 md:text-sm">{objective.description}</p>
                       </div>
                     </div>
                   </motion.div>
@@ -822,19 +822,19 @@ function App() {
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7 }}
-                  className="group relative overflow-hidden rounded-3xl bg-[#FFE28A] p-6 shadow-lg md:col-span-6 lg:col-span-8 lg:row-start-3"
+                  className="group relative overflow-hidden rounded-3xl bg-[#FFE28A] p-5 shadow-lg md:col-span-6 md:p-6 lg:col-span-8 lg:row-start-3"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-[#F9C642]/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-                  <div className="relative flex flex-col gap-4 text-center h-full justify-center">
+                  <div className="relative flex h-full flex-col justify-center gap-4 text-center">
                     <div>
-                      <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#A45A00]">
+                      <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#A45A00] sm:text-sm">
                         {currentContent.about.innovation.title}
                       </p>
-                      <h3 className="text-2xl font-semibold text-[#7A4100] leading-snug mt-2">
+                      <h3 className="mt-2 text-xl font-semibold leading-snug text-[#7A4100] md:text-2xl">
                         {currentContent.about.innovation.description}
                       </h3>
                     </div>
-                    <p className="text-sm text-[#A45A00]/80">
+                    <p className="text-sm text-[#A45A00]/80 md:text-base">
                       {currentContent.about.innovation.tagline}
                     </p>
                   </div>
@@ -857,7 +857,7 @@ function App() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-16"
+            className="mb-10 md:mb-16"
           >
             <SectionTitle
               title={currentContent.videos.title}
@@ -866,9 +866,9 @@ function App() {
             />
           </motion.div>
 
-          <div className="bg-gray-light rounded-2xl p-16 text-center text-green-secondary">
-            <Play size={64} className="text-green-secondary mx-auto mb-6" />
-            <p className="text-2xl font-semibold text-[#074536]">
+          <div className="rounded-2xl bg-gray-light p-10 text-center text-green-secondary md:p-16">
+            <Play size={48} className="mx-auto mb-6 text-green-secondary md:size-16" />
+            <p className="text-xl font-semibold text-[#074536] md:text-2xl">
               {currentContent.videos.placeholder}
             </p>
           </div>
@@ -876,7 +876,7 @@ function App() {
       </section>
 
       {/* Publicações */}
-      <section id="publications" className="section-padding relative overflow-hidden">
+      <section id="publications" className="section-padding relative overflow-visible md:overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={publiImage}
@@ -892,7 +892,7 @@ function App() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-16"
+            className="mb-10 md:mb-16"
           >
             <SectionTitle
               title={currentContent.publications.title}
@@ -902,7 +902,7 @@ function App() {
             />
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid gap-6 md:grid-cols-3 md:gap-8">
             {currentContent.publications.items.map((publication, index) => (
               <motion.div
                 key={publication.title}
@@ -911,17 +911,17 @@ function App() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 {...cardHover}
               >
-                <Card className="glass-card p-8 flex flex-col h-full">
-                  <div className="flex items-center justify-between mb-4">
-                    <Download size={24} className="text-white" />
-                    <span className="text-sm bg-white/10 text-white/80 px-3 py-1 rounded-full border border-white/20">
+                <Card className="glass-card flex h-full flex-col p-6 sm:p-8">
+                  <div className="mb-4 flex items-center justify-between">
+                    <Download size={22} className="text-white sm:size-6" />
+                    <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs text-white/80 sm:text-sm">
                       {publication.type}
                     </span>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-3">
+                  <h3 className="mb-3 text-lg font-bold text-white md:text-xl">
                     {publication.title}
                   </h3>
-                  <p className="text-white/80 mb-6 leading-relaxed">
+                  <p className="mb-6 text-sm leading-relaxed text-white/80 md:text-base">
                     {publication.description}
                   </p>
                   <div className="mt-auto">
@@ -929,7 +929,7 @@ function App() {
                       {...interactiveMotion}
                       type="button"
                       onClick={() => handleDownload(publication.link)}
-                      className="btn-primary w-full"
+                      className="btn-primary w-full text-sm sm:text-base"
                     >
                       Baixar Material
                     </motion.button>
@@ -943,12 +943,12 @@ function App() {
       </section>
 
       {/* Chatbot */}
-   <section id="chatbot" className="section-padding relative overflow-hidden">
+   <section id="chatbot" className="section-padding relative overflow-visible md:overflow-hidden">
         {/* Mascote como background da seção */}
-        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 pointer-events-none">
-          <img 
-            src={assistantAvatar} 
-            className="w-64 h-64 lg:w-80 lg:h-80 opacity-50"
+        <div className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 transform">
+          <img
+            src={assistantAvatar}
+            className="h-48 w-48 opacity-50 sm:h-64 sm:w-64 lg:h-80 lg:w-80"
             style={{
               filter: 'blur(1px)',
               background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(147, 51, 234, 0.05))'
@@ -968,17 +968,17 @@ function App() {
                 subtitle={currentContent.chatbot.subtitle}
                 subtitleClassName="mb-8"
               />
-              <p className="text-lg text-black/70 mb-12 leading-relaxed">
+              <p className="mb-10 text-base leading-relaxed text-black/70 md:mb-12 md:text-lg">
                 {currentContent.chatbot.description}
               </p>
-              
+
               <motion.button
                 {...interactiveMotion}
                 type="button"
                 onClick={handleChatbotClick}
-                className="btn-primary text-xl px-12 py-6 inline-flex items-center space-x-3"
+                className="btn-primary inline-flex items-center space-x-3 text-base sm:text-lg"
               >
-                <img src={whatsappIcon} className="w-10 h-10 justify-center" />
+                <img src={whatsappIcon} className="h-9 w-9 justify-center sm:h-10 sm:w-10" />
                 <span>{currentContent.chatbot.cta}</span>
               </motion.button>
             </motion.div>
@@ -989,9 +989,9 @@ function App() {
       <ContactSection content={currentContent.contact} />
 
       {/* Footer */}
-      <footer className="bg-green-primary text-white py-16">
+      <footer className="bg-green-primary py-12 text-white md:py-16">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid gap-10 md:grid-cols-4 md:gap-8">
             <div className="col-span-2">
               <img src={pecuariaLogo} alt="Pecuária+" className="h-16 w-auto mb-6 brightness-0 invert" />
               <p className="text-white/80 leading-relaxed mb-6">
@@ -1035,9 +1035,9 @@ function App() {
                 </motion.a>
               </div>
             </div>
-            
+
             <div>
-              <h4 className="text-xl font-bold mb-6">{currentContent.footer.links}</h4>
+              <h4 className="mb-6 text-lg font-bold md:text-xl">{currentContent.footer.links}</h4>
               <div className="space-y-3">
                 <motion.button
                   {...navMotion}
@@ -1073,9 +1073,9 @@ function App() {
                 </motion.button>
               </div>
             </div>
-            
+
             <div>
-              <h4 className="text-xl font-bold mb-6">Rioterra</h4>
+              <h4 className="mb-6 text-lg font-bold md:text-xl">Rioterra</h4>
               <div className="space-y-3 text-white/80">
                 <p>Porto Velho - RO</p>
                 <p>Brasil</p>
@@ -1083,8 +1083,8 @@ function App() {
               </div>
             </div>
           </div>
-          
-          <div className="mt-12 flex justify-center">
+
+          <div className="mt-10 flex justify-center md:mt-12">
             <img
               src={rubricaImagem}
               alt="Rubrica do Projeto Pecuária+"
@@ -1092,7 +1092,7 @@ function App() {
             />
           </div>
 
-          <div className="border-t border-white/20 mt-12 pt-8 text-center">
+          <div className="mt-10 border-t border-white/20 pt-6 text-center md:mt-12 md:pt-8">
             <p className="text-white/60">
               {currentContent.footer.rights}
             </p>
