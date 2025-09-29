@@ -876,6 +876,7 @@ function App() {
       </section>
 
       {/* Publicações */}
+
       <section id="publications" className="section-padding relative">
         <div className="absolute inset-0">
           <img
