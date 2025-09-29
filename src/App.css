@@ -320,9 +320,9 @@ html {
   }
 
   section {
-    overflow-x: hidden;
-    overflow-y: visible;
+    width: 100%;
     max-width: 100vw;
+    overflow: visible;
   }
 
   .btn-primary,

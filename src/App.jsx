@@ -697,7 +697,7 @@ function App() {
       />
 
       {/* Por que Pecuária Sustentável */}
-      <section id="why" className="section-padding relative overflow-visible md:overflow-hidden">
+      <section id="why" className="section-padding relative overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={porqueImage}
@@ -851,7 +851,7 @@ function App() {
       />
 
       {/* Vídeos */}
-      <section id="videos" className="section-padding">
+      <section id="videos" className="section-padding pt-12 pb-16 sm:pt-16 sm:pb-20">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -866,9 +866,9 @@ function App() {
             />
           </motion.div>
 
-          <div className="rounded-2xl bg-gray-light p-10 text-center text-green-secondary md:p-16">
-            <Play size={48} className="mx-auto mb-6 text-green-secondary md:size-16" />
-            <p className="text-xl font-semibold text-[#074536] md:text-2xl">
+          <div className="rounded-2xl bg-gray-light px-6 py-10 text-center text-green-secondary sm:px-8 sm:py-12 md:px-12 md:py-16">
+            <Play size={48} className="mx-auto mb-6 text-green-secondary md:mb-8 md:size-16" />
+            <p className="text-lg font-semibold text-[#074536] sm:text-xl md:text-2xl">
               {currentContent.videos.placeholder}
             </p>
           </div>
@@ -876,7 +876,7 @@ function App() {
       </section>
 
       {/* Publicações */}
-      <section id="publications" className="section-padding relative overflow-visible md:overflow-hidden">
+      <section id="publications" className="section-padding relative overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={publiImage}
@@ -943,7 +943,7 @@ function App() {
       </section>
 
       {/* Chatbot */}
-   <section id="chatbot" className="section-padding relative overflow-visible md:overflow-hidden">
+      <section id="chatbot" className="section-padding relative overflow-hidden">
         {/* Mascote como background da seção */}
         <div className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 transform">
           <img

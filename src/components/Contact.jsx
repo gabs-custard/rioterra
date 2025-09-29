@@ -89,7 +89,7 @@ const Contact = ({ content }) => {
       id="contact"
       className="section-padding bg-gradient-to-r from-[#f0f9ff] via-[#e8fff4] to-[#fff5e6]"
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto max-w-6xl px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -105,7 +105,7 @@ const Contact = ({ content }) => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Card className="bg-white/90 p-6 shadow-xl border border-[#74c69d]/25 backdrop-blur md:p-8">
+            <Card className="w-full bg-white/90 p-6 shadow-xl border border-[#74c69d]/25 backdrop-blur md:p-8">
               <h3 className="text-xl font-bold text-[#0f5132] mb-6 md:text-2xl">Envie uma mensagem</h3>
               <form className="space-y-6" onSubmit={handleSubmit} noValidate>
                 <div>
@@ -182,7 +182,7 @@ const Contact = ({ content }) => {
             transition={{ duration: 0.6 }}
             className="space-y-8"
           >
-            <Card className="bg-white/90 p-6 shadow-xl border border-[#74c69d]/25 backdrop-blur md:p-8">
+            <Card className="w-full bg-white/90 p-6 shadow-xl border border-[#74c69d]/25 backdrop-blur md:p-8">
               <h3 className="text-xl font-bold text-[#0f5132] mb-6 md:text-2xl">Informações de Contato</h3>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
