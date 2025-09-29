@@ -485,7 +485,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden max-w-[100vw]">
+    <div className="min-h-[100svh] bg-white overflow-x-hidden max-w-[100vw]">
       {/* Navegação */}
       <nav className={`navbar-fixed ${isScrolled ? 'shadow-lg' : ''}`}>
         <div className="container mx-auto px-4 py-4">
