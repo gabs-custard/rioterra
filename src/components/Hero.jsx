@@ -144,7 +144,7 @@ const Hero = ({ content, backgroundImage, onPrimaryClick, onSecondaryClick }) =>
   return (
     <section
       id="home"
-      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#074536]"
+      className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden bg-[#074536] lg:min-h-screen"
       style={{ fontFamily: '"Manrope", "Inter", sans-serif' }}
     >
       <div className="absolute inset-0">
