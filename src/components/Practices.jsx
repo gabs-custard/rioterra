@@ -16,7 +16,8 @@ const Practices = ({ title, subtitle, items }) => {
   };
 
   return (
-    <section id="practices" className="section-padding relative">
+
+    <section id="practices" className="section-padding relative overflow-visible lg:overflow-hidden">
       <div className="absolute inset-0">
         <img
           src={pecuariaBanner}

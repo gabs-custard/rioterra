@@ -697,7 +697,7 @@ function App() {
       />
 
       {/* Por que Pecuária Sustentável */}
-      <section id="why" className="section-padding relative">
+      <section id="why" className="section-padding relative overflow-visible lg:overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={porqueImage}
@@ -876,8 +876,7 @@ function App() {
       </section>
 
       {/* Publicações */}
-
-      <section id="publications" className="section-padding relative">
+      <section id="publications" className="section-padding relative overflow-visible lg:overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={publiImage}
