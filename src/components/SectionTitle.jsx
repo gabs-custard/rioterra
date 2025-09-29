@@ -13,7 +13,8 @@ const SectionTitle = ({
 
   const containerClasses = [alignmentClass, className].filter(Boolean).join(' ');
   const titleClasses = [
-    'text-4xl',
+    'text-3xl',
+    'sm:text-4xl',
     'lg:text-5xl',
     'font-bold',
     'mb-6',
@@ -24,7 +25,8 @@ const SectionTitle = ({
     .filter(Boolean)
     .join(' ');
   const subtitleClasses = [
-    'text-xl',
+    'text-base',
+    'sm:text-lg',
     'text-black/70',
     align === 'center' ? 'max-w-3xl mx-auto' : '',
     subtitleClassName

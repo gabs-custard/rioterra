@@ -94,19 +94,19 @@ const Contact = ({ content }) => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-10 md:mb-16"
         >
           <SectionTitle title={content.title} subtitle={content.subtitle} />
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Card className="bg-white/90 p-8 shadow-xl border border-[#74c69d]/25 backdrop-blur">
-              <h3 className="text-2xl font-bold text-[#0f5132] mb-6">Envie uma mensagem</h3>
+            <Card className="bg-white/90 p-6 shadow-xl border border-[#74c69d]/25 backdrop-blur md:p-8">
+              <h3 className="text-xl font-bold text-[#0f5132] mb-6 md:text-2xl">Envie uma mensagem</h3>
               <form className="space-y-6" onSubmit={handleSubmit} noValidate>
                 <div>
                   <label className="block text-sm font-medium text-[#125740] mb-2">
@@ -182,8 +182,8 @@ const Contact = ({ content }) => {
             transition={{ duration: 0.6 }}
             className="space-y-8"
           >
-            <Card className="bg-white/90 p-8 shadow-xl border border-[#74c69d]/25 backdrop-blur">
-              <h3 className="text-2xl font-bold text-[#0f5132] mb-6">Informações de Contato</h3>
+            <Card className="bg-white/90 p-6 shadow-xl border border-[#74c69d]/25 backdrop-blur md:p-8">
+              <h3 className="text-xl font-bold text-[#0f5132] mb-6 md:text-2xl">Informações de Contato</h3>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <MapPin size={24} className="text-[#207d0f] mt-1" />
