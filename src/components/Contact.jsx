@@ -105,7 +105,7 @@ const Contact = ({ content }) => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Card className="w-full bg-white/90 p-6 shadow-xl border border-[#74c69d]/25 backdrop-blur md:p-8">
+            <Card className="w-full max-w-full bg-white/90 p-6 shadow-xl border border-[#74c69d]/25 backdrop-blur md:p-8">
               <h3 className="text-xl font-bold text-[#0f5132] mb-6 md:text-2xl">Envie uma mensagem</h3>
               <form className="space-y-6" onSubmit={handleSubmit} noValidate>
                 <div>
@@ -182,7 +182,7 @@ const Contact = ({ content }) => {
             transition={{ duration: 0.6 }}
             className="space-y-8"
           >
-            <Card className="w-full bg-white/90 p-6 shadow-xl border border-[#74c69d]/25 backdrop-blur md:p-8">
+            <Card className="w-full max-w-full bg-white/90 p-6 shadow-xl border border-[#74c69d]/25 backdrop-blur md:p-8">
               <h3 className="text-xl font-bold text-[#0f5132] mb-6 md:text-2xl">Informações de Contato</h3>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
