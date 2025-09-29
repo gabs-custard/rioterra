@@ -194,12 +194,22 @@ html {
 /* Estilo para seções */
 .section-padding {
   padding: 5rem 0;
-  overflow: visible;
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
   .section-padding {
     padding: 3rem 0;
+  }
+  
+  /* Correção específica para seções com background que causam scroll interno */
+  #why, #practices, #publications {
+    overflow: hidden;
+  }
+  
+  /* Ajustar containers internos para evitar corte de conteúdo */
+  #why .container, #practices .container, #publications .container {
+    padding-bottom: 2rem;
   }
 }
 
