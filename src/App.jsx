@@ -762,7 +762,7 @@ function App() {
 
             {/* Grid Bento Centralizado */}
             <div className="w-full max-w-5xl mx-auto">
-              <div className="grid auto-rows-[250px] grid-cols-8 gap-5 md:grid-cols-6 lg:grid-cols-8 md:gap-6">
+              <div className="grid auto-rows-[250px] grid-cols-8 gap-5 md:grid-cols-6 lg:grid-cols-8">
                 
                 {/* Imagem Principal - Centralizada */}
                 <motion.div
@@ -902,7 +902,7 @@ function App() {
             />
           </motion.div>
 
-          <div className="grid gap-6 md:grid-cols-3 md:gap-8">
+          <div className="grid gap-6 lg:grid-cols-3 md:gap-8">
             {currentContent.publications.items.map((publication, index) => (
               <motion.div
                 key={publication.title}
