@@ -135,6 +135,10 @@
   background-color: var(--green-primary);
 }
 
+.bg-green-dark {
+  background-color:#073914;
+}
+
 .bg-green-secondary {
   background-color: var(--green-secondary);
 }
@@ -315,7 +319,7 @@ html {
 }
 
 .nav-link {
-  color:#99b425
+  color:#ffffff
 }
 
 .nav-link:hover {

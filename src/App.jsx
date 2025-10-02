@@ -28,6 +28,7 @@ import Card from './components/Card';
 
 // Importar assets
 import pecuariaLogo from './assets/logo.png';
+import logoFooter from './assets/logo_footer.png';
 import heroImage from './assets/banner_pecumais4.webp';
 import publiImage from './assets/banner_pecumais.png';
 import aboutHeroImage from './assets/pecuaria_sustentavel_tech.png';
@@ -600,7 +601,7 @@ function App() {
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="lg:hidden mt-4 pb-4 border-t border-white/10 bg-[#074536]/95 backdrop-blur-xl max-w-full overflow-x-hidden rounded-3xl px-4"
+              className="lg:hidden mt-4 pb-4 border-t border-white/10 bg-green-dark backdrop-blur-xl max-w-full overflow-x-hidden rounded-3xl px-4"
             >
               <div className="flex flex-col space-y-4 pt-4 w-full">
                 <motion.button
@@ -1194,11 +1195,11 @@ function App() {
       <ContactSection content={currentContent.contact} />
 
       {/* Footer */}
-      <footer className="bg-green-secondary py-12 text-white md:py-16">
+      <footer className="bg-green-dark py-12 text-white md:py-16">
         <div className="container mx-auto px-4">
           <div className="grid gap-10 md:grid-cols-4 md:gap-8">
             <div className="col-span-2">
-              <img src={pecuariaLogo} alt="Pecuária+" className="h-25 w-auto mb-6" />
+              <img src={logoFooter} alt="Pecuária+" className="h-25 w-auto mb-6" />
               <p className="text-white/80 leading-relaxed mb-6">
                 {currentContent.footer.description}
               </p>
