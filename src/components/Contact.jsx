@@ -96,7 +96,7 @@ const Contact = ({ content }) => {
           transition={{ duration: 0.6 }}
           className="mb-10 md:mb-16"
         >
-          <SectionTitle title={content.title} subtitle={content.subtitle} />
+          <SectionTitle title={content.title} subtitle={content.subtitle} titleColor='text-green-secondary'/>
         </motion.div>
 
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">

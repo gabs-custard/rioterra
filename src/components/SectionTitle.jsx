@@ -6,7 +6,8 @@ const SectionTitle = ({
   align = 'center',
   className = '',
   titleClassName = '',
-  subtitleClassName = ''
+  subtitleClassName = '',
+  titleColor= 'text-green-primary'
 }) => {
   const alignmentClass =
     align === 'left' ? 'text-left' : align === 'right' ? 'text-right' : 'text-center';
@@ -19,7 +20,7 @@ const SectionTitle = ({
     'font-bold',
     'mb-6',
     'font-grotesk',
-    'text-green-primary',
+    titleColor,
     titleClassName
   ]
     .filter(Boolean)
