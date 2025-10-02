@@ -161,11 +161,6 @@ function App() {
             description: 'Apoio técnico para adequação legal e conservação de áreas sensíveis.'
           },
           {
-            icon: Recycle,
-            title: 'Desenvolver sistemas agroflorestais',
-            description: 'Integração de produção pecuária com florestas e agricultura regenerativa.'
-          },
-          {
             icon: TrendingUp,
             title: 'Conectar a mercados sustentáveis',
             description: 'Acesso a compradores que valorizam rastreabilidade e baixo impacto.'
@@ -589,7 +584,7 @@ function App() {
             <motion.button
               {...navMotion}
               type="button"
-              className="lg:hidden text-white"
+              className="lg:hidden text-mobile-navbar"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -767,7 +762,7 @@ function App() {
 
             {/* Grid Bento Centralizado */}
             <div className="w-full max-w-5xl mx-auto">
-              <div className="grid auto-rows-[200px] grid-cols-1 gap-5 md:grid-cols-6 lg:grid-cols-8 md:gap-6">
+              <div className="grid auto-rows-[200px] grid-cols-8 gap-5 md:grid-cols-6 lg:grid-cols-8 md:gap-6">
                 
                 {/* Imagem Principal - Centralizada */}
                 <motion.div
@@ -1135,7 +1130,7 @@ function App() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.9 }}
-                className="pt-4"
+                className="pt-4 flex w-full justify-center lg:justify-start"
               >
                 <motion.button
                   type="button"
@@ -1171,21 +1166,6 @@ function App() {
                     →
                   </motion.div>
                 </motion.button>
-
-                {/* Indicador de resposta rápida */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 1.2 }}
-                  className="flex items-center space-x-2 mt-4 text-sm text-green-secondary/60"
-                >
-                  <motion.div
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="w-2 h-2 bg-green-light rounded-full"
-                  />
-                  <span>Resposta em menos de 1 minuto</span>
-                </motion.div>
               </motion.div>
             </motion.div>
           </div>
