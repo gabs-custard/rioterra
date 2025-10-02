@@ -191,7 +191,7 @@ const Hero = ({ content, backgroundImage, onPrimaryClick, onSecondaryClick }) =>
 
         <motion.p
 
-          className="mt-6 max-w-3xl text-base text-white/80 sm:text-lg md:text-xl"
+          className="mt-6 max-w-3xl text-base font-semibold text-white sm:text-lg md:text-xl"
           variants={childVariants}
         >
           {subtitle}
@@ -227,7 +227,7 @@ const Hero = ({ content, backgroundImage, onPrimaryClick, onSecondaryClick }) =>
               onClick={onSecondaryClick}
               whileHover={{ scale: 1.03, color: '#ffd301' }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center justify-center rounded-full border border-white/30 px-7 py-3 text-base font-semibold uppercase tracking-wide text-white/80 transition-all sm:px-8 sm:py-4 sm:text-lg"
+              className="inline-flex items-center justify-center rounded-full border border-white/30 px-7 py-3 text-base font-semibold uppercase tracking-wide text-white transition-all sm:px-8 sm:py-4 sm:text-lg"
             >
               {content.cta2}
             </motion.button>
