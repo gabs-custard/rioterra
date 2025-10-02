@@ -29,22 +29,24 @@ const Contact = ({ content }) => {
     transition: { type: 'spring', stiffness: 420, damping: 28 }
   };
 
+  const validationMessages = content.validation || {};
+
   const validateField = (field, value) => {
     const trimmedValue = value.trim();
 
     if (!trimmedValue) {
-      if (field === 'name') return 'Informe seu nome.';
-      if (field === 'email') return 'Informe um e-mail válido.';
-      if (field === 'message') return 'Descreva sua mensagem.';
+      if (field === 'name') return validationMessages.nameRequired || '';
+      if (field === 'email') return validationMessages.emailRequired || '';
+      if (field === 'message') return validationMessages.messageRequired || '';
     }
 
     if (field === 'email') {
       const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,}$/;
-      return emailRegex.test(trimmedValue) ? '' : 'O e-mail não parece válido.';
+      return emailRegex.test(trimmedValue) ? '' : validationMessages.emailInvalid || '';
     }
 
     if (field === 'message' && trimmedValue.length < 10) {
-      return 'Compartilhe um pouco mais de detalhes (mínimo de 10 caracteres).';
+      return validationMessages.messageTooShort || '';
     }
 
     return '';
@@ -106,7 +108,7 @@ const Contact = ({ content }) => {
             transition={{ duration: 0.6 }}
           >
             <Card className="w-full max-w-[420px] mx-auto bg-white/90 p-6 shadow-xl border border-[#74c69d]/25 backdrop-blur md:p-8 lg:mx-0 lg:max-w-full">
-              <h3 className="text-xl font-bold text-[#0f5132] mb-6 md:text-2xl">Envie uma mensagem</h3>
+              <h3 className="text-xl font-bold text-[#0f5132] mb-6 md:text-2xl">{content.formTitle}</h3>
               <form className="space-y-6" onSubmit={handleSubmit} noValidate>
                 <div>
                   <label className="block text-sm font-medium text-[#125740] mb-2">
@@ -183,26 +185,26 @@ const Contact = ({ content }) => {
             className="space-y-8"
           >
             <Card className="w-full max-w-[420px] mx-auto bg-white/90 p-6 shadow-xl border border-[#74c69d]/25 backdrop-blur md:p-8 lg:mx-0 lg:max-w-full">
-              <h3 className="text-xl font-bold text-[#0f5132] mb-6 md:text-2xl">Informações de Contato</h3>
+              <h3 className="text-xl font-bold text-[#0f5132] mb-6 md:text-2xl">{content.infoTitle}</h3>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <MapPin size={24} className="text-[#207d0f] mt-1" />
                   <div>
-                    <h4 className="font-semibold text-[#125740] mb-1">Endereço</h4>
+                    <h4 className="font-semibold text-[#125740] mb-1">{content.infoLabels?.address}</h4>
                     <p className="text-[#1f2a37]/80">{content.info.address}</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
                   <Phone size={24} className="text-[#207d0f]" />
                   <div>
-                    <h4 className="font-semibold text-[#125740] mb-1">Telefone</h4>
+                    <h4 className="font-semibold text-[#125740] mb-1">{content.infoLabels?.phone}</h4>
                     <p className="text-[#1f2a37]/80">{content.info.phone}</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
                   <Mail size={24} className="text-[#207d0f]" />
                   <div>
-                    <h4 className="font-semibold text-[#125740] mb-1">E-mail</h4>
+                    <h4 className="font-semibold text-[#125740] mb-1">{content.infoLabels?.email}</h4>
                     <p className="text-[#1f2a37]/80">{content.info.email}</p>
                   </div>
                 </div>
@@ -210,7 +212,7 @@ const Contact = ({ content }) => {
             </Card>
 
             <Card className="w-full max-w-[420px] mx-auto bg-white/90 p-6 shadow-xl border border-[#74c69d]/25 backdrop-blur md:p-8 lg:mx-0 lg:max-w-full">
-              <h3 className="text-xl font-bold text-[#0f5132] mb-4">Redes Sociais da Rioterra</h3>
+              <h3 className="text-xl font-bold text-[#0f5132] mb-4">{content.socialTitle}</h3>
               <div className="flex flex-wrap justify-center gap-4">
                 {socialLinks.map((Icon) => (
                   <motion.a
