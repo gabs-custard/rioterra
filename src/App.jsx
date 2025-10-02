@@ -241,6 +241,12 @@ function App() {
       chatbot: {
         title: 'Assistente Virtual',
         subtitle: 'Tire suas dúvidas sobre pecuária sustentável com nosso assistente especializado.',
+        benefits: [
+          { icon: '🌱', title: 'Especialista em Sustentabilidade', description: 'Conhecimento técnico em práticas sustentáveis' },
+          { icon: '📊', title: 'Análise de Dados', description: 'Insights baseados em dados reais do campo' },
+          { icon: '🕒', title: 'Disponível 24/7', description: 'Assistência técnica a qualquer hora' },
+          { icon: '🎯', title: 'Respostas Personalizadas', description: 'Soluções adaptadas ao seu contexto' }
+        ],
         description: 'Nosso chatbot está disponível para responder questões técnicas, fornecer orientações e conectar você com nossa equipe.',
         message: 'Como posso ajudar?',
         cta: 'Iniciar Conversa'
@@ -248,17 +254,32 @@ function App() {
       contact: {
         title: 'Contato',
         subtitle: 'Entre em contato conosco para saber mais sobre o projeto ou participar das ações.',
+        formTitle: 'Envie uma mensagem',
         form: {
           name: 'Nome',
           email: 'E-mail',
           message: 'Mensagem',
           send: 'Enviar Mensagem'
         },
+        validation: {
+          nameRequired: 'Informe seu nome.',
+          emailRequired: 'Informe um e-mail válido.',
+          emailInvalid: 'O e-mail não parece válido.',
+          messageRequired: 'Descreva sua mensagem.',
+          messageTooShort: 'Compartilhe um pouco mais de detalhes (mínimo de 10 caracteres).'
+        },
+        infoTitle: 'Informações de Contato',
+        infoLabels: {
+          address: 'Endereço',
+          phone: 'Telefone',
+          email: 'E-mail'
+        },
         info: {
           address: 'Rua Padre Chiquinho, 1651, B. São João Bosco, Porto Velho – Rondônia – Brasil',
           phone: '(69) 99248-1087',
           email: 'rioterra@rioterra.org.br'
-        }
+        },
+        socialTitle: 'Redes Sociais da Rioterra'
       },
       footer: {
         description: 'Transformando a pecuária amazônica através da sustentabilidade e inovação.',
@@ -428,6 +449,12 @@ function App() {
         title: 'Virtual Assistant',
         subtitle:
           'Get your questions about sustainable livestock answered by our specialized assistant.',
+        benefits: [
+          { icon: '🌱', title: 'Sustainability Specialist', description: 'Technical knowledge in sustainable practices' },
+          { icon: '📊', title: 'Data Analysis', description: 'Insights based on real field data' },
+          { icon: '🕒', title: 'Available 24/7', description: 'Technical assistance anytime you need it' },
+          { icon: '🎯', title: 'Personalized Responses', description: 'Solutions tailored to your context' }
+        ],
         description:
           'Our chatbot is available to answer technical questions, provide guidance and connect you with our team.',
         message: 'Can I help you?',
@@ -437,18 +464,33 @@ function App() {
         title: 'Contact',
         subtitle:
           'Get in touch with us to learn more about the project or participate in the initiatives.',
+        formTitle: 'Send a message',
         form: {
           name: 'Name',
           email: 'Email',
           message: 'Message',
           send: 'Send Message'
         },
+        validation: {
+          nameRequired: 'Please provide your name.',
+          emailRequired: 'Please enter a valid email address.',
+          emailInvalid: 'This email address looks invalid.',
+          messageRequired: 'Please describe your message.',
+          messageTooShort: 'Share a few more details (minimum of 10 characters).'
+        },
+        infoTitle: 'Contact Information',
+        infoLabels: {
+          address: 'Address',
+          phone: 'Phone',
+          email: 'Email'
+        },
         info: {
           address:
             'Rua Padre Chiquinho, 1651, B. São João Bosco, Porto Velho – Rondônia – Brasil',
           phone: '(69) 99248-1087',
           email: 'rioterra@rioterra.org.br'
-        }
+        },
+        socialTitle: 'Rioterra on Social Media'
       },
       footer: {
         description:
@@ -1090,12 +1132,7 @@ function App() {
                 transition={{ duration: 0.6, delay: 0.5 }}
                 className="grid gap-4 sm:grid-cols-2"
               >
-                {[
-                  { icon: "🌱", title: "Especialista em Sustentabilidade", desc: "Conhecimento técnico em práticas sustentáveis" },
-                  { icon: "📊", title: "Análise de Dados", desc: "Insights baseados em dados reais do campo" },
-                  { icon: "🕒", title: "Disponível 24/7", desc: "Assistência técnica a qualquer hora" },
-                  { icon: "🎯", title: "Respostas Personalizadas", desc: "Soluções adaptadas ao seu contexto" }
-                ].map((benefit, index) => (
+                {(currentContent.chatbot.benefits ?? []).map((benefit, index) => (
                   <motion.div
                     key={benefit.title}
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -1108,7 +1145,7 @@ function App() {
                       <span className="text-2xl">{benefit.icon}</span>
                       <div>
                         <h4 className="font-semibold text-green-secondary text-sm">{benefit.title}</h4>
-                        <p className="text-xs text-green-secondary/70 mt-1">{benefit.desc}</p>
+                        <p className="text-xs text-green-secondary/70 mt-1">{benefit.description}</p>
                       </div>
                     </div>
                   </motion.div>
