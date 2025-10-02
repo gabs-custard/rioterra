@@ -80,7 +80,7 @@
   --sun-gold: #ffd301;
   --earth-khaki: khaki;
   --night-black: #000000;
-  --cloud-white: #ffffff;
+  --cloud-white: #c3c1c1;
 
   --green-primary: var(--forest-900);
   --green-secondary: var(--forest-700);
@@ -115,7 +115,7 @@
 }
 
 .text-green-primary {
-  color: var(--green-secondary);
+  color: var(--green-light);
 }
 
 .text-green-secondary {
@@ -124,6 +124,10 @@
 
 .text-green-light {
   color: var(--green-light);
+}
+
+.text-yellow {
+  color: var(--destructive)
 }
 
 
@@ -142,6 +146,10 @@
 
 .bg-gray-light {
   background-color: var(--gray-light);
+}
+
+.bg-muted {
+  background-color: #e1e4d4;
 }
 
 .border-green-primary {

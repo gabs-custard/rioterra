@@ -27,7 +27,7 @@ import SectionTitle from './components/SectionTitle';
 import Card from './components/Card';
 
 // Importar assets
-import pecuariaLogo from './assets/pecuaria_logo.svg';
+import pecuariaLogo from './assets/logo.png';
 import heroImage from './assets/banner_pecumais4.webp';
 import publiImage from './assets/banner_pecumais.png';
 import aboutHeroImage from './assets/pecuaria_sustentavel_tech.png';
@@ -491,7 +491,7 @@ function App() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <img src={pecuariaLogo} alt="Pecuária+" id="pecuariamais-logo" className="h-12 w-auto" />
+              <img src={pecuariaLogo} alt="Pecuária+" id="pecuariamais-logo" className="h-20 w-auto" />
             </div>
             
             {/* Menu Desktop */}
@@ -719,7 +719,7 @@ function App() {
               title={currentContent.why.title}
               subtitle={currentContent.why.subtitle}
               titleClassName="text-white"
-              subtitleClassName="text-white/80"
+              subtitleClassName="text-white"
             />
           </motion.div>
 
@@ -758,6 +758,7 @@ function App() {
                 subtitle={currentContent.about.subtitle}
                 align="center"
                 subtitleClassName="mb-0 leading-relaxed"
+                titleColor='text-green-secondary'
               />
             </motion.div>
 
@@ -863,10 +864,11 @@ function App() {
               title={currentContent.videos.title}
               subtitle={currentContent.videos.subtitle}
               subtitleClassName="mb-8"
+              titleColor='text-green-secondary'
             />
           </motion.div>
 
-          <div className="rounded-2xl bg-gray-light px-6 py-10 text-center text-green-secondary sm:px-8 sm:py-12 md:px-12 md:py-16">
+          <div className="rounded-2xl bg-muted px-6 py-10 text-center text-green-secondary sm:px-8 sm:py-12 md:px-12 md:py-16">
             <Play size={48} className="mx-auto mb-6 text-green-secondary md:mb-8 md:size-16" />
             <p className="text-lg font-semibold text-[#074536] sm:text-xl md:text-2xl">
               {currentContent.videos.placeholder}
@@ -898,7 +900,7 @@ function App() {
               title={currentContent.publications.title}
               subtitle={currentContent.publications.subtitle}
               titleClassName="text-white"
-              subtitleClassName="text-white/80"
+              subtitleClassName="text-white"
             />
           </motion.div>
 
@@ -967,6 +969,7 @@ function App() {
                 title={currentContent.chatbot.title}
                 subtitle={currentContent.chatbot.subtitle}
                 subtitleClassName="mb-8"
+                titleColor='text-green-secondary'
               />
               <p className="mb-10 text-base leading-relaxed text-black/70 md:mb-12 md:text-lg">
                 {currentContent.chatbot.description}
@@ -989,11 +992,11 @@ function App() {
       <ContactSection content={currentContent.contact} />
 
       {/* Footer */}
-      <footer className="bg-green-primary py-12 text-white md:py-16">
+      <footer className="bg-green-secondary py-12 text-white md:py-16">
         <div className="container mx-auto px-4">
           <div className="grid gap-10 md:grid-cols-4 md:gap-8">
             <div className="col-span-2">
-              <img src={pecuariaLogo} alt="Pecuária+" className="h-16 w-auto mb-6 brightness-0 invert" />
+              <img src={pecuariaLogo} alt="Pecuária+" className="h-25 w-auto mb-6" />
               <p className="text-white/80 leading-relaxed mb-6">
                 {currentContent.footer.description}
               </p>
