@@ -598,12 +598,12 @@ function App() {
               animate={{ opacity: 1, y: 0 }}
               className="lg:hidden mt-4 pb-4 border-t border-white/10 bg-green-dark backdrop-blur-xl max-w-full overflow-x-hidden rounded-3xl px-4"
             >
-              <div className="flex flex-col space-y-4 pt-4 w-full">
+              <div className="flex flex-col items-center space-y-4 pt-4 w-full">
                 <motion.button
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('home')}
-                  className={`text-left ${navLinkClasses}`}
+                  className={`w-full text-center ${navLinkClasses}`}
                 >
                   {currentContent.nav.home}
                 </motion.button>
@@ -611,7 +611,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('why')}
-                  className={`text-left ${navLinkClasses}`}
+                  className={`w-full text-center ${navLinkClasses}`}
                 >
                   {currentContent.nav.why}
                 </motion.button>
@@ -619,7 +619,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('about')}
-                  className={`text-left ${navLinkClasses}`}
+                  className={`w-full text-center ${navLinkClasses}`}
                 >
                   {currentContent.nav.about}
                 </motion.button>
@@ -627,7 +627,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('practices')}
-                  className={`text-left ${navLinkClasses}`}
+                  className={`w-full text-center ${navLinkClasses}`}
                 >
                   {currentContent.nav.practices}
                 </motion.button>
@@ -635,7 +635,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('videos')}
-                  className={`text-left ${navLinkClasses}`}
+                  className={`w-full text-center ${navLinkClasses}`}
                 >
                   {currentContent.nav.videos}
                 </motion.button>
@@ -643,7 +643,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('publications')}
-                  className={`text-left ${navLinkClasses}`}
+                  className={`w-full text-center ${navLinkClasses}`}
                 >
                   {currentContent.nav.publications}
                 </motion.button>
@@ -651,7 +651,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('chatbot')}
-                  className={`text-left ${navLinkClasses}`}
+                  className={`w-full text-center ${navLinkClasses}`}
                 >
                   {currentContent.nav.chatbot}
                 </motion.button>
@@ -659,11 +659,11 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('contact')}
-                  className={`text-left ${navLinkClasses}`}
+                  className={`w-full text-center ${navLinkClasses}`}
                 >
                   {currentContent.nav.contact}
                 </motion.button>
-                <div className="flex space-x-2 pt-2">
+                <div className="flex justify-center space-x-2 pt-2">
                   <motion.button
                     {...navMotion}
                     type="button"

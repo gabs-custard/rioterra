@@ -209,9 +209,9 @@ const Contact = ({ content }) => {
               </div>
             </Card>
 
-            <Card className="bg-white/90 p-8 shadow-xl border border-[#74c69d]/25 backdrop-blur">
+            <Card className="w-full max-w-[420px] mx-auto bg-white/90 p-6 shadow-xl border border-[#74c69d]/25 backdrop-blur md:p-8 lg:mx-0 lg:max-w-full">
               <h3 className="text-xl font-bold text-[#0f5132] mb-4">Redes Sociais da Rioterra</h3>
-              <div className="flex space-x-4">
+              <div className="flex flex-wrap justify-center gap-4">
                 {socialLinks.map((Icon) => (
                   <motion.a
                     {...interactiveMotion}
