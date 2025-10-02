@@ -246,6 +246,7 @@ function App() {
         title: 'Assistente Virtual',
         subtitle: 'Tire suas dúvidas sobre pecuária sustentável com nosso assistente especializado.',
         description: 'Nosso chatbot está disponível para responder questões técnicas, fornecer orientações e conectar você com nossa equipe.',
+        message: 'Como posso ajudar?',
         cta: 'Iniciar Conversa'
       },
       contact: {
@@ -433,6 +434,7 @@ function App() {
           'Get your questions about sustainable livestock answered by our specialized assistant.',
         description:
           'Our chatbot is available to answer technical questions, provide guidance and connect you with our team.',
+        message: 'Can I help you?',
         cta: 'Start Conversation'
       },
       contact: {
@@ -1044,12 +1046,9 @@ function App() {
                   animate={{ 
                     y: [-5, 5, -5],
                   }}
-                  transition={{
-                    y: { duration: 3, repeat: Infinity, ease: "easeInOut" }
-                  }}
                   className="absolute -top-4 -right-4 bg-gradient-to-r from-[#ffd301] to-[#ffed4e] text-black px-4 py-2 rounded-full font-bold text-sm shadow-lg border-2 border-white"
                 >
-                  🤖 IA
+                {currentContent.chatbot.message}
                 </motion.div>
               </div>
             </motion.div>
@@ -1075,7 +1074,6 @@ function App() {
                     transition={{ duration: 2, repeat: Infinity }}
                     className="inline-block ml-2 text-green-light"
                   >
-                    💬
                   </motion.span>
                 </motion.h2>
                 
@@ -1146,7 +1144,7 @@ function App() {
                     boxShadow: "0 20px 40px rgba(16, 185, 129, 0.3)"
                   }}
                   whileTap={{ scale: 0.98 }}
-                  className="group relative inline-flex items-center space-x-4 bg-gradient-to-r from-green-light to-green-secondary text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-2xl hover:shadow-green-light/30 transition-all duration-300 overflow-hidden"
+                  className="group relative inline-flex items-center space-x-4 bg-green-secondary from-green-light to-green-secondary text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-2xl hover:shadow-green-light/30 transition-all duration-300 overflow-hidden"
                 >
                   {/* Efeito de brilho animado */}
                   <motion.div
