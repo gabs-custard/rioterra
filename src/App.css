@@ -319,7 +319,8 @@ html {
 }
 
 .nav-link {
-  color:#ffffff
+  color:#ffffff;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.35);
 }
 
 .nav-link:hover {
