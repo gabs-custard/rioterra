@@ -69,6 +69,29 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [language, setLanguage] = useState('pt');
+  const [navLinkColor, setNavLinkColor] = useState('text-white');
+
+  const homeRef = useRef(null);
+  const whyRef = useRef(null);
+  const aboutRef = useRef(null);
+  const practicesRef = useRef(null);
+  const videosRef = useRef(null);
+  const publicationsRef = useRef(null);
+  const chatbotRef = useRef(null);
+  const contactRef = useRef(null);
+
+  const isAboutInView = useInView(aboutRef, { amount: 0.5 });
+  const isVideosInView = useInView(videosRef, { amount: 0.5 });
+  const isChatbotInView = useInView(chatbotRef, { amount: 0.5 });
+  const isContactInView = useInView(contactRef, { amount: 0.5 });
+
+  useEffect(() => {
+    if (isAboutInView || isVideosInView || isChatbotInView || isContactInView) {
+      setNavLinkColor('text-green-primary');
+    } else {
+      setNavLinkColor('text-white');
+    }
+  }, [isAboutInView, isVideosInView, isChatbotInView, isContactInView]);
 
   // Efeito para detectar scroll
   useEffect(() => {
@@ -479,8 +502,7 @@ function App() {
     transition: { type: 'spring', stiffness: 500, damping: 30 }
   };
 
-  const navLinkClasses =
-    'nav-link font-semibold tracking-tight text-white hover:text-[#ffd301] transition-colors';
+  const navLinkClasses = `nav-link font-semibold tracking-tight ${navLinkColor} hover:text-[#ffd301] transition-colors`;
 
   const cardHover = {
     whileHover: { y: -10, scale: 1.01 },
@@ -692,15 +714,17 @@ function App() {
         </div>
       </nav>
 
-      <Hero
-        content={currentContent.hero}
-        backgroundImage={heroImage}
-        onPrimaryClick={() => scrollToSection('why')}
-        onSecondaryClick={() => scrollToSection('contact')}
-      />
+      <div ref={homeRef}>
+        <Hero
+          content={currentContent.hero}
+          backgroundImage={heroImage}
+          onPrimaryClick={() => scrollToSection('why')}
+          onSecondaryClick={() => scrollToSection('contact')}
+        />
+      </div>
 
       {/* Por que Pecuária Sustentável */}
-      <section id="why" className="section-padding relative overflow-hidden">
+      <section ref={whyRef} id="why" className="section-padding relative overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={porqueImage}
@@ -748,7 +772,7 @@ function App() {
       </section>
 
       {/* Sobre o Projeto */}
-     <section id="about" className="section-padding">
+     <section ref={aboutRef} id="about" className="section-padding">
           <div className="mx-auto flex max-w-6xl flex-col items-center px-4">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -848,14 +872,16 @@ function App() {
           </div>
       </section>
 
-      <Practices
-        title={currentContent.practices.title}
-        subtitle={currentContent.practices.subtitle}
-        items={currentContent.practices.items}
-      />
+      <div ref={practicesRef}>
+        <Practices
+          title={currentContent.practices.title}
+          subtitle={currentContent.practices.subtitle}
+          items={currentContent.practices.items}
+        />
+      </div>
 
       {/* Vídeos */}
-      <section id="videos" className="section-padding pt-12 pb-16 sm:pt-16 sm:pb-20">
+      <section ref={videosRef} id="videos" className="section-padding pt-12 pb-16 sm:pt-16 sm:pb-20">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -881,7 +907,7 @@ function App() {
       </section>
 
       {/* Publicações */}
-      <section id="publications" className="section-padding relative overflow-hidden">
+      <section ref={publicationsRef} id="publications" className="section-padding relative overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={publiImage}
@@ -948,7 +974,7 @@ function App() {
       </section>
 
       {/* Assistente Virtual - Redesenhado */}
-      <section id="chatbot" className="section-padding relative overflow-hidden bg-gradient-to-br from-[#E8F5F0] via-[#F0F9F5] to-[#E1F2EE]">
+      <section ref={chatbotRef} id="chatbot" className="section-padding relative overflow-hidden bg-gradient-to-br from-[#E8F5F0] via-[#F0F9F5] to-[#E1F2EE]">
         {/* Background com partículas animadas */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Partículas flutuantes */}
@@ -1192,7 +1218,9 @@ function App() {
         </div>
       </section>
 
-      <ContactSection content={currentContent.contact} />
+      <div ref={contactRef}>
+        <ContactSection content={currentContent.contact} />
+      </div>
 
       {/* Footer */}
       <footer className="bg-green-dark py-12 text-white md:py-16">

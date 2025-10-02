@@ -115,7 +115,7 @@
 }
 
 .text-green-primary {
-  color: var(--green-light);
+  color: var(--green-primary);
 }
 
 .text-green-secondary {
@@ -319,7 +319,6 @@ html {
 }
 
 .nav-link {
-  color:#ffffff
 }
 
 .nav-link:hover {
