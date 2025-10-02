@@ -69,6 +69,8 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [language, setLanguage] = useState('pt');
+  const [activeSection, setActiveSection] = useState('home');
+  const [isDesktop, setIsDesktop] = useState(false);
 
   // Efeito para detectar scroll
   useEffect(() => {
@@ -97,6 +99,49 @@ function App() {
     }
     setIsMenuOpen(false);
   };
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return undefined;
+    }
+
+    const updateIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
+    updateIsDesktop();
+    window.addEventListener('resize', updateIsDesktop);
+
+    return () => window.removeEventListener('resize', updateIsDesktop);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return undefined;
+    }
+
+    const sectionIds = ['home', 'why', 'about', 'practices', 'videos', 'publications', 'chatbot', 'contact'];
+    const observerOptions = { threshold: 0.25 };
+
+    const observer = new IntersectionObserver((entries) => {
+      const visibleEntry = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+      if (visibleEntry?.target?.id) {
+        setActiveSection(visibleEntry.target.id);
+      }
+    }, observerOptions);
+
+    sectionIds.forEach((sectionId) => {
+      const sectionElement = document.getElementById(sectionId);
+      if (sectionElement) {
+        observer.observe(sectionElement);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const content = {
     pt: {
@@ -479,8 +524,14 @@ function App() {
     transition: { type: 'spring', stiffness: 500, damping: 30 }
   };
 
-  const navLinkClasses =
-    'nav-link font-semibold tracking-tight text-white hover:text-[#ffd301] transition-colors';
+  const desktopLightSections = new Set(['about', 'videos', 'chatbot', 'contact']);
+  const isLightDesktopSectionActive = isDesktop && desktopLightSections.has(activeSection);
+
+  const desktopNavLinkClasses = `nav-link font-semibold tracking-tight transition-colors ${
+    isLightDesktopSectionActive ? 'text-green-primary hover:text-[#074536]' : 'text-white hover:text-[#ffd301]'
+  }`;
+
+  const mobileNavLinkClasses = 'nav-link font-semibold tracking-tight text-white hover:text-[#ffd301] transition-colors';
 
   const cardHover = {
     whileHover: { y: -10, scale: 1.01 },
@@ -503,7 +554,7 @@ function App() {
                 {...navMotion}
                 type="button"
                 onClick={() => scrollToSection('home')}
-                className={navLinkClasses}
+                className={desktopNavLinkClasses}
               >
                 {currentContent.nav.home}
               </motion.button>
@@ -511,7 +562,7 @@ function App() {
                 {...navMotion}
                 type="button"
                 onClick={() => scrollToSection('why')}
-                className={navLinkClasses}
+                className={desktopNavLinkClasses}
               >
                 {currentContent.nav.why}
               </motion.button>
@@ -519,7 +570,7 @@ function App() {
                 {...navMotion}
                 type="button"
                 onClick={() => scrollToSection('about')}
-                className={navLinkClasses}
+                className={desktopNavLinkClasses}
               >
                 {currentContent.nav.about}
               </motion.button>
@@ -527,7 +578,7 @@ function App() {
                 {...navMotion}
                 type="button"
                 onClick={() => scrollToSection('practices')}
-                className={navLinkClasses}
+                className={desktopNavLinkClasses}
               >
                 {currentContent.nav.practices}
               </motion.button>
@@ -535,7 +586,7 @@ function App() {
                 {...navMotion}
                 type="button"
                 onClick={() => scrollToSection('videos')}
-                className={navLinkClasses}
+                className={desktopNavLinkClasses}
               >
                 {currentContent.nav.videos}
               </motion.button>
@@ -543,7 +594,7 @@ function App() {
                 {...navMotion}
                 type="button"
                 onClick={() => scrollToSection('publications')}
-                className={navLinkClasses}
+                className={desktopNavLinkClasses}
               >
                 {currentContent.nav.publications}
               </motion.button>
@@ -551,7 +602,7 @@ function App() {
                 {...navMotion}
                 type="button"
                 onClick={() => scrollToSection('chatbot')}
-                className={navLinkClasses}
+                className={desktopNavLinkClasses}
               >
                 {currentContent.nav.chatbot}
               </motion.button>
@@ -559,7 +610,7 @@ function App() {
                 {...navMotion}
                 type="button"
                 onClick={() => scrollToSection('contact')}
-                className={navLinkClasses}
+                className={desktopNavLinkClasses}
               >
                 {currentContent.nav.contact}
               </motion.button>
@@ -608,7 +659,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('home')}
-                  className={`text-left ${navLinkClasses}`}
+                  className={`text-left ${mobileNavLinkClasses}`}
                 >
                   {currentContent.nav.home}
                 </motion.button>
@@ -616,7 +667,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('why')}
-                  className={`text-left ${navLinkClasses}`}
+                  className={`text-left ${mobileNavLinkClasses}`}
                 >
                   {currentContent.nav.why}
                 </motion.button>
@@ -624,7 +675,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('about')}
-                  className={`text-left ${navLinkClasses}`}
+                  className={`text-left ${mobileNavLinkClasses}`}
                 >
                   {currentContent.nav.about}
                 </motion.button>
@@ -632,7 +683,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('practices')}
-                  className={`text-left ${navLinkClasses}`}
+                  className={`text-left ${mobileNavLinkClasses}`}
                 >
                   {currentContent.nav.practices}
                 </motion.button>
@@ -640,7 +691,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('videos')}
-                  className={`text-left ${navLinkClasses}`}
+                  className={`text-left ${mobileNavLinkClasses}`}
                 >
                   {currentContent.nav.videos}
                 </motion.button>
@@ -648,7 +699,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('publications')}
-                  className={`text-left ${navLinkClasses}`}
+                  className={`text-left ${mobileNavLinkClasses}`}
                 >
                   {currentContent.nav.publications}
                 </motion.button>
@@ -656,7 +707,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('chatbot')}
-                  className={`text-left ${navLinkClasses}`}
+                  className={`text-left ${mobileNavLinkClasses}`}
                 >
                   {currentContent.nav.chatbot}
                 </motion.button>
@@ -664,7 +715,7 @@ function App() {
                   {...navMotion}
                   type="button"
                   onClick={() => scrollToSection('contact')}
-                  className={`text-left ${navLinkClasses}`}
+                  className={`text-left ${mobileNavLinkClasses}`}
                 >
                   {currentContent.nav.contact}
                 </motion.button>
