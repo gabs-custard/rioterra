@@ -762,7 +762,7 @@ function App() {
 
             {/* Grid Bento Centralizado */}
             <div className="w-full max-w-5xl mx-auto">
-              <div className="grid auto-rows-[250px] grid-cols-8 gap-5 md:grid-cols-6 lg:grid-cols-8">
+              <div className="grid grid-cols-1 gap-5 md:grid-cols-6 lg:grid-cols-8">
                 
                 {/* Imagem Principal - Centralizada */}
                 <motion.div
@@ -823,7 +823,7 @@ function App() {
                   transition={{ duration: 0.7 }}
                   className="group relative overflow-hidden rounded-3xl bg-[#FFE28A] p-5 shadow-lg md:col-span-6 md:p-6 lg:col-span-8 lg:row-start-3"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-[#F9C642]/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+                  <div className="absolute inset-2 bg-gradient-to-br from-white/40 via-transparent to-[#F9C642]/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
                   <div className="relative flex h-full flex-col justify-center gap-4 text-center">
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#A45A00] sm:text-sm">
