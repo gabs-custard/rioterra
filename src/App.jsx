@@ -87,7 +87,7 @@ function App() {
 
   const handleChatbotClick = () => {
     // Redirecionar para WhatsApp
-    window.open('https://wa.me/5569992481087', '_blank');
+    window.open('https://wa.me/556992923625', '_blank');
   };
 
   const scrollToSection = (sectionId) => {
