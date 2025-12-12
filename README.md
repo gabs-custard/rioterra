@@ -1,6 +1,6 @@
 # Projeto Pecuária+
 
-Site estático one-page para divulgação do projeto Pecuária+ da ONG Rio Terra.
+Site estático one-page para divulgação do projeto Pecuária+ da ONG Rioterra.
 
 ## Como usar
 
