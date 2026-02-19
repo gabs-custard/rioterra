@@ -533,7 +533,7 @@ function App() {
             <div className="flex items-center space-x-4">
               <img src={pecuariaLogo} alt="Pecuária+" id="pecuariamais-logo" className="h-20 w-auto" />
             </div>
-            
+
             {/* Menu Desktop */}
             <div className="hidden lg:flex items-center space-x-8">
               <motion.button
@@ -551,6 +551,14 @@ function App() {
                 className={navLinkClasses}
               >
                 {currentContent.nav.why}
+              </motion.button>
+              <motion.button
+                {...navMotion}
+                type="button"
+                onClick={() => scrollToSection('chatbot')}
+                className={navLinkClasses}
+              >
+                {currentContent.nav.chatbot}
               </motion.button>
               <motion.button
                 {...navMotion}
@@ -583,14 +591,6 @@ function App() {
                 className={navLinkClasses}
               >
                 {currentContent.nav.publications}
-              </motion.button>
-              <motion.button
-                {...navMotion}
-                type="button"
-                onClick={() => scrollToSection('chatbot')}
-                className={navLinkClasses}
-              >
-                {currentContent.nav.chatbot}
               </motion.button>
               <motion.button
                 {...navMotion}
@@ -660,6 +660,14 @@ function App() {
                 <motion.button
                   {...navMotion}
                   type="button"
+                  onClick={() => scrollToSection('chatbot')}
+                  className={`w-full text-center ${navLinkClasses}`}
+                >
+                  {currentContent.nav.chatbot}
+                </motion.button>
+                <motion.button
+                  {...navMotion}
+                  type="button"
                   onClick={() => scrollToSection('about')}
                   className={`w-full text-center ${navLinkClasses}`}
                 >
@@ -688,14 +696,6 @@ function App() {
                   className={`w-full text-center ${navLinkClasses}`}
                 >
                   {currentContent.nav.publications}
-                </motion.button>
-                <motion.button
-                  {...navMotion}
-                  type="button"
-                  onClick={() => scrollToSection('chatbot')}
-                  className={`w-full text-center ${navLinkClasses}`}
-                >
-                  {currentContent.nav.chatbot}
                 </motion.button>
                 <motion.button
                   {...navMotion}
@@ -784,105 +784,329 @@ function App() {
         </div>
       </section>
 
-      {/* Sobre o Projeto */}
-     <section id="about" className="section-padding">
-          <div className="mx-auto flex max-w-6xl flex-col items-center px-4">
+      {/* Assistente Virtual - Redesenhado */}
+      <section id="chatbot" className="section-padding relative overflow-hidden bg-gradient-to-br from-[#E8F5F0] via-[#F0F9F5] to-[#E1F2EE]">
+        {/* Background com partículas animadas */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Partículas flutuantes */}
+          {[...Array(12)].map((_, i) => (
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="max-w-3xl mb-10 text-center md:mb-12"
-            >
-              <SectionTitle
-                title={currentContent.about.title}
-                subtitle={currentContent.about.subtitle}
-                align="center"
-                subtitleClassName="mb-0 leading-relaxed"
-                titleColor='text-green-secondary'
-              />
-            </motion.div>
+              key={i}
+              className="absolute w-2 h-2 bg-green-light/20 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [-20, 20, -20],
+                x: [-10, 10, -10],
+                opacity: [0.2, 0.6, 0.2],
+              }}
+              transition={{
+                duration: 4 + Math.random() * 2,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+              }}
+            />
+          ))}
 
-            {/* Grid Bento Centralizado */}
-            <div className="w-full max-w-5xl mx-auto">
-              <div className="grid grid-cols-1 gap-5 md:grid-cols-6 lg:grid-cols-8">
-                
-                {/* Imagem Principal - Centralizada */}
+          {/* Círculos de fundo */}
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-gradient-to-br from-green-light/10 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-gradient-to-tr from-blue-400/10 to-transparent rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+
+            {/* Coluna do Mascote */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="relative flex justify-center lg:justify-start"
+            >
+              {/* Container do mascote com efeitos */}
+              <div className="relative">
+                {/* Glow effect atrás do mascote */}
+                <div className="absolute inset-0 bg-gradient-to-br from-green-light/30 via-blue-400/20 to-green-secondary/30 rounded-full blur-2xl scale-110 animate-pulse"></div>
+
+                {/* Mascote principal */}
                 <motion.div
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
-                  className="group relative overflow-hidden rounded-3xl md:col-span-6 lg:col-span-4 lg:col-start-3 lg:row-span-2 shadow-xl"
+                  whileHover={{
+                    scale: 1.05,
+                    rotate: [0, -2, 2, 0],
+                  }}
+                  transition={{
+                    scale: { duration: 0.3 },
+                    rotate: { duration: 0.6, repeat: Infinity, repeatDelay: 3 }
+                  }}
+                  className="relative z-10"
                 >
                   <img
-                    src={aboutHeroImage}
-                    alt={currentContent.about.hero.alt}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
+                    src={assistantAvatar}
+                    alt="Assistente Virtual RioTerra"
+                    className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 drop-shadow-2xl"
                   />
-                  {currentContent.about.hero.caption && (
-                    <div className="absolute inset-x-6 bottom-6 rounded-2xl border border-white/30 bg-white/15 p-3 backdrop-blur-lg sm:p-4">
-                      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white">
-                        Pecuária+
-                      </p>
-                      <p className="text-base font-medium text-white md:text-lg">
-                        {currentContent.about.hero.caption}
-                      </p>
-                    </div>
-                  )}
                 </motion.div>
 
-                {/* Cards dos Objetivos - Laterais */}
-                {currentContent.about.objectives.map((objective, index) => (
-                  <motion.div
-                    key={objective.title}
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className={`group relative overflow-hidden rounded-3xl border border-green-secondary/10 bg-[#F4F9F7] p-4 shadow-sm md:col-span-3 lg:col-span-2 ${
-                      index === 0 ? 'lg:col-start-1 lg:row-start-1' :
-                      index === 1 ? 'lg:col-start-7 lg:row-start-1' :
-                      index === 2 ? 'lg:col-start-1 lg:row-start-2' :
-                      'lg:col-start-7 lg:row-start-2'
-                    }`}
+                {/* Elementos flutuantes ao redor do mascote */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0 pointer-events-none"
+                >
+                  {[...Array(6)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute w-3 h-3 bg-green-light rounded-full shadow-lg"
+                      style={{
+                        left: `${50 + 45 * Math.cos((i * 60 * Math.PI) / 180)}%`,
+                        top: `${50 + 45 * Math.sin((i * 60 * Math.PI) / 180)}%`,
+                      }}
+                      animate={{
+                        scale: [1, 1.2, 1],
+                        opacity: [0.6, 1, 0.6],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: i * 0.3,
+                      }}
+                    />
+                  ))}
+                </motion.div>
+
+                {/* Badge "IA" flutuante */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.5, duration: 0.5 }}
+                  animate={{
+                    y: [-5, 5, -5],
+                  }}
+                  className="absolute -top-4 -right-4 bg-gradient-to-r from-[#ffd301] to-[#ffed4e] text-black px-4 py-2 rounded-full font-bold text-sm shadow-lg border-2 border-white"
+                >
+                  {currentContent.chatbot.message}
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Coluna do Conteúdo */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="space-y-8"
+            >
+              {/* Título e subtítulo */}
+              <div className="space-y-4">
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  className="text-4xl md:text-5xl font-bold text-green-secondary leading-tight"
+                >
+                  {currentContent.chatbot.title}
+                  <motion.span
+                    animate={{ opacity: [1, 0.5, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className="inline-block ml-2 text-green-light"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-green-light/0 via-green-light/0 to-green-light/0 transition-colors duration-500 group-hover:from-green-light/40 group-hover:via-green-light/20 group-hover:to-green-secondary/10"></div>
-                    <div className="relative flex h-full flex-col justify-between gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-light/60 text-[#0A4738] transition-all duration-500 group-hover:scale-110 group-hover:bg-[#0A4738] group-hover:text-white shrink-0">
-                        <objective.icon size={22} />
-                      </div>
-                      <div className="flex-1 min-h-0">
-                        <h3 className="mb-1 text-base font-semibold text-[#0A4738] line-clamp-2 md:text-lg">{objective.title}</h3>
-                        <p className="text-xs text-[#14594A] leading-relaxed line-clamp-4 md:text-sm">{objective.description}</p>
+                  </motion.span>
+                </motion.h2>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  className="text-lg text-green-secondary/80 leading-relaxed"
+                >
+                  {currentContent.chatbot.subtitle}
+                </motion.p>
+              </div>
+
+              {/* Cards de benefícios */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="grid gap-4 sm:grid-cols-2"
+              >
+                {(currentContent.chatbot.benefits ?? []).map((benefit, index) => (
+                  <motion.div
+                    key={benefit.title}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    className="bg-white/70 backdrop-blur-sm rounded-2xl p-4 border border-green-light/20 shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    <div className="flex items-start space-x-3">
+                      <span className="text-2xl">{benefit.icon}</span>
+                      <div>
+                        <h4 className="font-semibold text-green-secondary text-sm">{benefit.title}</h4>
+                        <p className="text-xs text-green-secondary/70 mt-1">{benefit.description}</p>
                       </div>
                     </div>
                   </motion.div>
                 ))}
+              </motion.div>
 
-                {/* Card de Inovação - Largura Total */}
-                <motion.div
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7 }}
-                  className="group relative overflow-hidden rounded-3xl bg-[#FFE28A] p-5 shadow-lg md:col-span-6 md:p-6 lg:col-span-8 lg:row-start-3"
+              {/* Descrição adicional */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                className="text-base text-green-secondary/70 leading-relaxed"
+              >
+                {currentContent.chatbot.description}
+              </motion.p>
+
+              {/* Botão de ação principal */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.9 }}
+                className="pt-4 flex w-full justify-center lg:justify-start"
+              >
+                <motion.button
+                  type="button"
+                  onClick={handleChatbotClick}
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0 20px 40px rgba(16, 185, 129, 0.3)"
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group relative inline-flex items-center space-x-4 bg-green-secondary from-green-light to-green-secondary text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-2xl hover:shadow-green-light/30 transition-all duration-300 overflow-hidden"
                 >
-                  <div className="absolute inset-2 bg-gradient-to-br from-white/40 via-transparent to-[#F9C642]/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-                  <div className="relative flex h-full flex-col justify-center gap-4 text-center">
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#A45A00] sm:text-sm">
-                        {currentContent.about.innovation.title}
-                      </p>
-                      <h3 className="mt-2 text-xl font-semibold leading-snug text-[#7A4100] md:text-2xl">
-                        {currentContent.about.innovation.description}
-                      </h3>
-                    </div>
-                    <p className="text-sm text-[#A45A00]/80 md:text-base">
-                      {currentContent.about.innovation.tagline}
+                  {/* Efeito de brilho animado */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                    animate={{ x: [-100, 300] }}
+                    transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
+                  />
+
+                  <motion.img
+                    src={whatsappIcon}
+                    className="h-10 w-10 relative z-10"
+                    whileHover={{ rotate: [0, -10, 10, 0] }}
+                    transition={{ duration: 0.5 }}
+                  />
+                  <span className="relative z-10">{currentContent.chatbot.cta}</span>
+
+                  {/* Seta animada */}
+                  <motion.div
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                    className="relative z-10"
+                  >
+                    →
+                  </motion.div>
+                </motion.button>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sobre o Projeto */}
+      <section id="about" className="section-padding">
+        <div className="mx-auto flex max-w-6xl flex-col items-center px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mb-10 text-center md:mb-12"
+          >
+            <SectionTitle
+              title={currentContent.about.title}
+              subtitle={currentContent.about.subtitle}
+              align="center"
+              subtitleClassName="mb-0 leading-relaxed"
+              titleColor='text-green-secondary'
+            />
+          </motion.div>
+
+          {/* Grid Bento Centralizado */}
+          <div className="w-full max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-6 lg:grid-cols-8">
+
+              {/* Imagem Principal - Centralizada */}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="group relative overflow-hidden rounded-3xl md:col-span-6 lg:col-span-4 lg:col-start-3 lg:row-span-2 shadow-xl"
+              >
+                <img
+                  src={aboutHeroImage}
+                  alt={currentContent.about.hero.alt}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                {currentContent.about.hero.caption && (
+                  <div className="absolute inset-x-6 bottom-6 rounded-2xl border border-white/30 bg-white/15 p-3 backdrop-blur-lg sm:p-4">
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white">
+                      Pecuária+
+                    </p>
+                    <p className="text-base font-medium text-white md:text-lg">
+                      {currentContent.about.hero.caption}
                     </p>
                   </div>
+                )}
+              </motion.div>
+
+              {/* Cards dos Objetivos - Laterais */}
+              {currentContent.about.objectives.map((objective, index) => (
+                <motion.div
+                  key={objective.title}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className={`group relative overflow-hidden rounded-3xl border border-green-secondary/10 bg-[#F4F9F7] p-4 shadow-sm md:col-span-3 lg:col-span-2 ${index === 0 ? 'lg:col-start-1 lg:row-start-1' :
+                    index === 1 ? 'lg:col-start-7 lg:row-start-1' :
+                      index === 2 ? 'lg:col-start-1 lg:row-start-2' :
+                        'lg:col-start-7 lg:row-start-2'
+                    }`}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-light/0 via-green-light/0 to-green-light/0 transition-colors duration-500 group-hover:from-green-light/40 group-hover:via-green-light/20 group-hover:to-green-secondary/10"></div>
+                  <div className="relative flex h-full flex-col justify-between gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-light/60 text-[#0A4738] transition-all duration-500 group-hover:scale-110 group-hover:bg-[#0A4738] group-hover:text-white shrink-0">
+                      <objective.icon size={22} />
+                    </div>
+                    <div className="flex-1 min-h-0">
+                      <h3 className="mb-1 text-base font-semibold text-[#0A4738] line-clamp-2 md:text-lg">{objective.title}</h3>
+                      <p className="text-xs text-[#14594A] leading-relaxed line-clamp-4 md:text-sm">{objective.description}</p>
+                    </div>
+                  </div>
                 </motion.div>
-              </div>
+              ))}
+
+              {/* Card de Inovação - Largura Total */}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+                className="group relative overflow-hidden rounded-3xl bg-[#FFE28A] p-5 shadow-lg md:col-span-6 md:p-6 lg:col-span-8 lg:row-start-3"
+              >
+                <div className="absolute inset-2 bg-gradient-to-br from-white/40 via-transparent to-[#F9C642]/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+                <div className="relative flex h-full flex-col justify-center gap-4 text-center">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#A45A00] sm:text-sm">
+                      {currentContent.about.innovation.title}
+                    </p>
+                    <h3 className="mt-2 text-xl font-semibold leading-snug text-[#7A4100] md:text-2xl">
+                      {currentContent.about.innovation.description}
+                    </h3>
+                  </div>
+                  <p className="text-sm text-[#A45A00]/80 md:text-base">
+                    {currentContent.about.innovation.tagline}
+                  </p>
+                </div>
+              </motion.div>
             </div>
           </div>
+        </div>
       </section>
 
       <Practices
@@ -984,230 +1208,7 @@ function App() {
         </div>
       </section>
 
-      {/* Assistente Virtual - Redesenhado */}
-      <section id="chatbot" className="section-padding relative overflow-hidden bg-gradient-to-br from-[#E8F5F0] via-[#F0F9F5] to-[#E1F2EE]">
-        {/* Background com partículas animadas */}
-        <div className="absolute inset-0 overflow-hidden">
-          {/* Partículas flutuantes */}
-          {[...Array(12)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-2 h-2 bg-green-light/20 rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [-20, 20, -20],
-                x: [-10, 10, -10],
-                opacity: [0.2, 0.6, 0.2],
-              }}
-              transition={{
-                duration: 4 + Math.random() * 2,
-                repeat: Infinity,
-                delay: Math.random() * 2,
-              }}
-            />
-          ))}
-          
-          {/* Círculos de fundo */}
-          <div className="absolute -top-24 -right-24 w-96 h-96 bg-gradient-to-br from-green-light/10 to-transparent rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-gradient-to-tr from-blue-400/10 to-transparent rounded-full blur-3xl"></div>
-        </div>
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-            
-            {/* Coluna do Mascote */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="relative flex justify-center lg:justify-start"
-            >
-              {/* Container do mascote com efeitos */}
-              <div className="relative">
-                {/* Glow effect atrás do mascote */}
-                <div className="absolute inset-0 bg-gradient-to-br from-green-light/30 via-blue-400/20 to-green-secondary/30 rounded-full blur-2xl scale-110 animate-pulse"></div>
-                
-                {/* Mascote principal */}
-                <motion.div
-                  whileHover={{ 
-                    scale: 1.05,
-                    rotate: [0, -2, 2, 0],
-                  }}
-                  transition={{ 
-                    scale: { duration: 0.3 },
-                    rotate: { duration: 0.6, repeat: Infinity, repeatDelay: 3 }
-                  }}
-                  className="relative z-10"
-                >
-                  <img
-                    src={assistantAvatar}
-                    alt="Assistente Virtual RioTerra"
-                    className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 drop-shadow-2xl"
-                  />
-                </motion.div>
-
-                {/* Elementos flutuantes ao redor do mascote */}
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-0 pointer-events-none"
-                >
-                  {[...Array(6)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-3 h-3 bg-green-light rounded-full shadow-lg"
-                      style={{
-                        left: `${50 + 45 * Math.cos((i * 60 * Math.PI) / 180)}%`,
-                        top: `${50 + 45 * Math.sin((i * 60 * Math.PI) / 180)}%`,
-                      }}
-                      animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.6, 1, 0.6],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: i * 0.3,
-                      }}
-                    />
-                  ))}
-                </motion.div>
-
-                {/* Badge "IA" flutuante */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.5, duration: 0.5 }}
-                  animate={{ 
-                    y: [-5, 5, -5],
-                  }}
-                  className="absolute -top-4 -right-4 bg-gradient-to-r from-[#ffd301] to-[#ffed4e] text-black px-4 py-2 rounded-full font-bold text-sm shadow-lg border-2 border-white"
-                >
-                {currentContent.chatbot.message}
-                </motion.div>
-              </div>
-            </motion.div>
-
-            {/* Coluna do Conteúdo */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="space-y-8"
-            >
-              {/* Título e subtítulo */}
-              <div className="space-y-4">
-                <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                  className="text-4xl md:text-5xl font-bold text-green-secondary leading-tight"
-                >
-                  {currentContent.chatbot.title}
-                  <motion.span
-                    animate={{ opacity: [1, 0.5, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="inline-block ml-2 text-green-light"
-                  >
-                  </motion.span>
-                </motion.h2>
-                
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                  className="text-lg text-green-secondary/80 leading-relaxed"
-                >
-                  {currentContent.chatbot.subtitle}
-                </motion.p>
-              </div>
-
-              {/* Cards de benefícios */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                className="grid gap-4 sm:grid-cols-2"
-              >
-                {(currentContent.chatbot.benefits ?? []).map((benefit, index) => (
-                  <motion.div
-                    key={benefit.title}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
-                    whileHover={{ scale: 1.02, y: -2 }}
-                    className="bg-white/70 backdrop-blur-sm rounded-2xl p-4 border border-green-light/20 shadow-lg hover:shadow-xl transition-all duration-300"
-                  >
-                    <div className="flex items-start space-x-3">
-                      <span className="text-2xl">{benefit.icon}</span>
-                      <div>
-                        <h4 className="font-semibold text-green-secondary text-sm">{benefit.title}</h4>
-                        <p className="text-xs text-green-secondary/70 mt-1">{benefit.description}</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              {/* Descrição adicional */}
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                className="text-base text-green-secondary/70 leading-relaxed"
-              >
-                {currentContent.chatbot.description}
-              </motion.p>
-
-              {/* Botão de ação principal */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.9 }}
-                className="pt-4 flex w-full justify-center lg:justify-start"
-              >
-                <motion.button
-                  type="button"
-                  onClick={handleChatbotClick}
-                  whileHover={{ 
-                    scale: 1.05,
-                    boxShadow: "0 20px 40px rgba(16, 185, 129, 0.3)"
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                  className="group relative inline-flex items-center space-x-4 bg-green-secondary from-green-light to-green-secondary text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-2xl hover:shadow-green-light/30 transition-all duration-300 overflow-hidden"
-                >
-                  {/* Efeito de brilho animado */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                    animate={{ x: [-100, 300] }}
-                    transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
-                  />
-                  
-                  <motion.img 
-                    src={whatsappIcon} 
-                    className="h-10 w-10 relative z-10" 
-                    whileHover={{ rotate: [0, -10, 10, 0] }}
-                    transition={{ duration: 0.5 }}
-                  />
-                  <span className="relative z-10">{currentContent.chatbot.cta}</span>
-                  
-                  {/* Seta animada */}
-                  <motion.div
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                    className="relative z-10"
-                  >
-                    →
-                  </motion.div>
-                </motion.button>
-              </motion.div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       <ContactSection content={currentContent.contact} />
 
