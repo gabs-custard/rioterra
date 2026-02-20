@@ -205,8 +205,8 @@ function App() {
       },
       videos: {
         title: 'Vídeos',
-        subtitle: 'Em breve, você encontrará aqui uma galeria completa com vídeos institucionais e de campo mostrando as práticas sustentáveis em ação.',
-        placeholder: 'Conteúdo em produção...'
+        subtitle: 'Confira as práticas de pecuária sustentável em ação no campo amazônico.',
+        videoUrl: 'https://www.youtube.com/embed/89PEdDYcrhM'
       },
       publications: {
         title: 'Publicações Úteis',
@@ -410,9 +410,8 @@ function App() {
       },
       videos: {
         title: 'Videos',
-        subtitle:
-          'Coming soon, you will find here a complete gallery with institutional and field videos showing sustainable practices in action.',
-        placeholder: 'Content in production...'
+        subtitle: 'Check out sustainable livestock practices in action in the Amazonian field.',
+        videoUrl: 'https://www.youtube.com/embed/89PEdDYcrhM'
       },
       publications: {
         title: 'Useful Publications',
@@ -1132,11 +1131,15 @@ function App() {
             />
           </motion.div>
 
-          <div className="rounded-2xl bg-muted px-6 py-10 text-center text-green-secondary sm:px-8 sm:py-12 md:px-12 md:py-16">
-            <Play size={48} className="mx-auto mb-6 text-green-secondary md:mb-8 md:size-16" />
-            <p className="text-lg font-semibold text-[#074536] sm:text-xl md:text-2xl">
-              {currentContent.videos.placeholder}
-            </p>
+          <div className="max-w-4xl mx-auto overflow-hidden rounded-3xl shadow-2xl bg-black aspect-video">
+            <iframe
+              className="w-full h-full"
+              src={currentContent.videos.videoUrl}
+              title={currentContent.videos.title}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
           </div>
         </div>
       </section>
